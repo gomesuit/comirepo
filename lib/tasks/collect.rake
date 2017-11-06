@@ -25,9 +25,9 @@ namespace :collect do
         title: item.get('ItemAttributes/Title'),
         detail_page_url: item.get('DetailPageURL'),
         asin: item.get('ASIN'),
-        small_image: item.get('SmallImage'),
-        medium_image: item.get('MediumImage'),
-        large_image: item.get('LargeImage'),
+        small_image: item.get('SmallImage/URL'),
+        medium_image: item.get('MediumImage/URL'),
+        large_image: item.get('LargeImage/URL'),
         author: author,
         publication_date: Date.parse(item.get('ItemAttributes/ReleaseDate')),
         introduction: item.get('EditorialReviews/EditorialReview/Content')
