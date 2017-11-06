@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 # add external gems
 gem 'annotate'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'amazon-ecs'
 gem 'mechanize'
 
