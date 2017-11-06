@@ -1,5 +1,5 @@
 namespace :collect do
-  task :sample do
+  task :sample => :environment do
     asins = []
     Mechanize.start do |m|
       m.get('https://www.amazon.co.jp/s/?rh=n%3A2250738051%2Cn%3A%212250739051%2Cn%3A2275256051%2Cn%3A2293143051%2Cp_n_date%3A2275273051')
@@ -20,7 +20,18 @@ namespace :collect do
 
     res = Amazon::Ecs.item_lookup(asins.first(10).join(','))
     res.items.each do |item|
-      binding.pry
+      author = Author.find_or_create_by(name: item.get('ItemAttributes/Author'))
+      Item.create!(
+        title: item.get('ItemAttributes/Title'),
+        detail_page_url: item.get('DetailPageURL'),
+        asin: item.get('ASIN'),
+        small_image: item.get('SmallImage'),
+        medium_image: item.get('MediumImage'),
+        large_image: item.get('LargeImage'),
+        author: author,
+        publication_date: Date.parse(item.get('ItemAttributes/ReleaseDate')),
+        introduction: item.get('EditorialReviews/EditorialReview/Content')
+      )
     end
   end
 end
