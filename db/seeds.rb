@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+author = Author.create!(name: 'name')
+Item.create!(title: 'title', detail_page_url: 'detail_page_url', asin: 'asin', author: author, publication_date: Date.new, introduction: 'introduction')
