@@ -15,9 +15,9 @@ table
       tr
         td = item.id
         - if item.medium_image
-          td = image_tag item.medium_image
+          td = image_tag item.medium_image, width: 120
         - else
-          td = image_tag 'noimage_m.png'
+          td = image_tag 'noimage_m.png', width: 120
         td = item.title
         td = link_to 'Show', item
         td = link_to 'Edit', edit_item_path(item)
