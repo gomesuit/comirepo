@@ -14,7 +14,10 @@ table
     - @items.each do |item|
       tr
         td = item.id
-        td = image_tag item.medium_image if item.medium_image
+        - if item.medium_image
+          td = image_tag item.medium_image
+        - else
+          td = image_tag 'noimage_m.png'
         td = item.title
         td = link_to 'Show', item
         td = link_to 'Edit', edit_item_path(item)
