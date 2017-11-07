@@ -21,7 +21,7 @@ namespace :collect do
     res = Amazon::Ecs.item_lookup(asins.first(10).join(','))
     res.items.each do |item|
       author = Author.find_or_create_by(name: item.get('ItemAttributes/Author'))
-      Item.create!(
+      data = Item.create!(
         title: item.get('ItemAttributes/Title'),
         detail_page_url: item.get('DetailPageURL'),
         asin: item.get('ASIN'),
@@ -32,6 +32,17 @@ namespace :collect do
         publication_date: Date.parse(item.get('ItemAttributes/ReleaseDate')),
         introduction: item.get('EditorialReviews/EditorialReview/Content')
       )
+      nodes = item.get_elements('BrowseNodes/BrowseNode')
+      nodes.each do |node|
+        category = Category.find_or_create_by(
+          name: node.get('Name'),
+          browse_node_id: node.get('BrowseNodeId')
+        )
+        ItemCategory.create!(
+          item: data,
+          category: category
+        )
+      end
     end
   end
 end
