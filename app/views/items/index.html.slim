@@ -3,6 +3,8 @@ h1 Listing items
 table
   thead
     tr
+      th id
+      th image
       th title
       th show
       th edit
@@ -11,6 +13,8 @@ table
   tbody
     - @items.each do |item|
       tr
+        td = item.id
+        td = image_tag item.medium_image if item.medium_image
         td = item.title
         td = link_to 'Show', item
         td = link_to 'Edit', edit_item_path(item)
