@@ -32,17 +32,17 @@ namespace :collect do
         publication_date: Date.parse(item.get('ItemAttributes/ReleaseDate')),
         introduction: item.get('EditorialReviews/EditorialReview/Content')
       )
+      pp data
       nodes = item.get_elements('BrowseNodes/BrowseNode')
       nodes.each do |node|
         category = Category.find_or_create_by(
           name: node.get('Name'),
           browse_node_id: node.get('BrowseNodeId')
         )
-        ItemCategory.create!(
-          item: data,
-          category: category
-        )
+        pp category
+        data.categories << category
       end
+      data.save!
     end
   end
 end
