@@ -1,4 +1,6 @@
 namespace :collect do
+  desc 'description'
+
   task :sample => :environment do
     asins = []
     Mechanize.start do |m|
@@ -21,7 +23,8 @@ namespace :collect do
     res = Amazon::Ecs.item_lookup(asins.first(10).join(','))
     res.items.each do |item|
       author = Author.find_or_create_by(name: item.get('ItemAttributes/Author'))
-      data = Item.create!(
+      data = Item.find_or_initialize_by(asin: item.get('ASIN'))
+      data.update_attributes(
         title: item.get('ItemAttributes/Title'),
         detail_page_url: item.get('DetailPageURL'),
         asin: item.get('ASIN'),
