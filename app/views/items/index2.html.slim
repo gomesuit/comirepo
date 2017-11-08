@@ -14,7 +14,7 @@
 - @days.each do |day|
   p.display-3 = day
   .card-columns
-    - Item.where(publication_date: day).each do |item|
+    - Item.where(publication_date: day).order(:title).each do |item|
       .card.p-2
         - if item.medium_image
           = image_tag item.large_image, class: 'card-img-top'
