@@ -1,19 +1,22 @@
 h1 Listing items
 
-/.row
-  .col-2
-    .card
-      = image_tag @items.first.medium_image, class: 'card-img-top'
-      .card-body
-        p.card-title = @items.first.title
-
+.row
+  - @items.each do |item|
+    .col-2.p-1
+      .card.p-2
+        - if item.medium_image
+          = image_tag item.large_image, class: 'card-img-top'
+        - else
+          = image_tag 'noimage_m.png', class: 'card-img-top'
+        .card-body.p-1
+          p.card-title.m-0 = item.title
 
 .card-columns
   - @items.each do |item|
-    .card.p-3
+    .card.p-2
       - if item.medium_image
         = image_tag item.large_image, class: 'card-img-top'
       - else
         = image_tag 'noimage_m.png', class: 'card-img-top'
-      .card-body
-        p.card-title = item.title
+      .card-body.p-1
+        p.card-title.m-0 = item.title
