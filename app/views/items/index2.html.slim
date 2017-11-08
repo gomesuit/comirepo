@@ -1,4 +1,4 @@
-h1 Listing items
+/h1 Listing items
 
 /.row
   - @items.each do |item|
@@ -12,7 +12,7 @@ h1 Listing items
           p.card-title.m-0 = item.title
 
 - @days.each do |day|
-  p = day
+  p.display-3 = day
   .card-columns
     - Item.where(publication_date: day).each do |item|
       .card.p-2
