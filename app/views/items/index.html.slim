@@ -6,6 +6,8 @@ table.table
       th id
       th image
       th title
+      th publication_date
+      th categories
       th show
       th edit
       th destroy
@@ -19,6 +21,10 @@ table.table
         - else
           td.align-middle = image_tag 'noimage_m.png', width: 120
         td.align-middle = item.title
+        td.align-middle = item.publication_date
+        td.align-middle
+          - item.categories.each do |category|
+            = category.name
         td.align-middle = link_to 'Show', item
         td.align-middle = link_to 'Edit', edit_item_path(item)
         td.align-middle = link_to 'Destroy', item, data: { confirm: 'Are you sure?' }, method: :delete
