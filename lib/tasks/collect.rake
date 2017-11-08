@@ -29,7 +29,6 @@ namespace :collect do
 
   def save_data(item)
     begin
-      author = Author.find_or_create_by(name: item.get('ItemAttributes/Author'))
       data = Item.find_or_initialize_by(asin: item.get('ASIN'))
       data.update_attributes(
         title: item.get('ItemAttributes/Title'),
@@ -38,11 +37,12 @@ namespace :collect do
         small_image: item.get('SmallImage/URL'),
         medium_image: item.get('MediumImage/URL'),
         large_image: item.get('LargeImage/URL'),
-        author: author,
         publication_date: Date.parse(item.get('ItemAttributes/ReleaseDate')),
         introduction: item.get('EditorialReviews/EditorialReview/Content')
       )
       pp data
+
+      # category
       nodes = item.get_elements('BrowseNodes/BrowseNode')
       nodes.each do |node|
         category = Category.find_or_create_by(
@@ -52,6 +52,15 @@ namespace :collect do
         pp category
         data.categories << category
       end
+
+      # author
+      nodes = item.get_array('ItemAttributes/Author')
+      nodes.each do |node|
+        author = Author.find_or_create_by(name: node)
+        pp author
+        data.authors << author
+      end
+
       data.save!
     rescue => error
       pp item
