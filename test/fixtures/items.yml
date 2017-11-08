@@ -9,7 +9,6 @@
 #  small_image      :string
 #  medium_image     :string
 #  large_image      :string
-#  author_id        :integer          not null
 #  publication_date :date             not null
 #  introduction     :string           not null
 #  created_at       :datetime         not null
