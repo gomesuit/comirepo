@@ -8,7 +8,7 @@ html
     = stylesheet_pack_tag 'application'
   body
     nav.navbar.navbar-dark.bg-dark
-      a.navbar-brand href="#" Comirepo
+      = link_to 'Comirepo', items_path, class: 'navbar-brand'
     .bg-light
       .container
         = yield
