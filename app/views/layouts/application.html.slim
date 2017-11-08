@@ -7,9 +7,10 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application'
   body
-    nav.navbar.navbar-light.bg-light
-      a.navbar-brand Comirepo
-    .container
-      = yield
+    nav.navbar.navbar-dark.bg-dark
+      a.navbar-brand href="#" Comirepo
+    .bg-light
+      .container
+        = yield
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
