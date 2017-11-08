@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @days = Item.order(publication_date: :asc).pluck('DISTINCT publication_date')
+    @items = Item.all.order(publication_date: :desc)
 
     if params[:test]
       render template: 'items/index2'

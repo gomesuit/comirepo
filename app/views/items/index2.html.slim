@@ -1,6 +1,6 @@
 h1 Listing items
 
-.row
+/.row
   - @items.each do |item|
     .col-2.p-1
       .card.p-2
@@ -11,7 +11,20 @@ h1 Listing items
         .card-body.p-1
           p.card-title.m-0 = item.title
 
-.card-columns
+- @days.each do |day|
+  p = day
+  .card-columns
+    - Item.where(publication_date: day).each do |item|
+      .card.p-2
+        - if item.medium_image
+          = image_tag item.large_image, class: 'card-img-top'
+        - else
+          = image_tag 'noimage_m.png', class: 'card-img-top'
+        .card-body.p-1
+          p.card-title.m-0 = item.title
+          p.card-title.m-0 = item.publication_date
+
+/.card-columns
   - @items.each do |item|
     .card.p-2
       - if item.medium_image
@@ -20,3 +33,4 @@ h1 Listing items
         = image_tag 'noimage_m.png', class: 'card-img-top'
       .card-body.p-1
         p.card-title.m-0 = item.title
+        p.card-title.m-0 = item.publication_date
