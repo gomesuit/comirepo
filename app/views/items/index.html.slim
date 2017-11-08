@@ -24,7 +24,7 @@ table.table
         td.align-middle = item.publication_date
         td.align-middle
           - item.categories.each do |category|
-            = category.name
+            p = "#{category.name}[#{category.browse_node_id}]"
         td.align-middle = link_to 'Show', item
         td.align-middle = link_to 'Edit', edit_item_path(item)
         td.align-middle = link_to 'Destroy', item, data: { confirm: 'Are you sure?' }, method: :delete
