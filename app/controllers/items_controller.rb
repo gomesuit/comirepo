@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+
+    if params[:test]
+      render template: 'items/index2'
+    end
   end
 
   # GET /items/1
