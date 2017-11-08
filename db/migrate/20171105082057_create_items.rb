@@ -7,7 +7,6 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.string :small_image
       t.string :medium_image
       t.string :large_image
-      t.references :author, null: false, foreign_key: true
       t.date :publication_date, null: false
       t.string :introduction, null: false
 

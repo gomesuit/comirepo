@@ -17,7 +17,8 @@
 #
 
 class Item < ApplicationRecord
-  belongs_to :author
+  has_many :item_authors, dependent: :destroy
+  has_many :authors, through: :item_authors
 
   has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
