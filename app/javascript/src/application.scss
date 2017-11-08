@@ -1,1 +1,4 @@
-@import '~bootstrap/dist/css/bootstrap'
+// @import '~bootstrap/dist/css/bootstrap'
+
+$card-columns-count: 5 !default;
+@import '~bootstrap/scss/bootstrap.scss'

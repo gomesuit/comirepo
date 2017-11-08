@@ -12,7 +12,7 @@ h1 Listing items
   - @items.each do |item|
     .card.p-3
       - if item.medium_image
-        = image_tag item.medium_image, class: 'card-img-top'
+        = image_tag item.large_image, class: 'card-img-top'
       - else
         = image_tag 'noimage_m.png', class: 'card-img-top'
       .card-body
