@@ -1,34 +1,37 @@
-h1 Listing items
+/h1 Listing items
 
-table.table
-  thead.thead-light
-    tr
-      th id
-      th image
-      th title
-      th publication_date
-      th categories
-      th show
-      th edit
-      th destroy
-
-  tbody
-    - @items.each do |item|
-      tr height=200
-        td.align-middle = item.id
+/.row
+  - @items.each do |item|
+    .col-2.p-1
+      .card.p-2
         - if item.medium_image
-          td.align-middle = image_tag item.medium_image, width: 120
+          = image_tag item.large_image, class: 'card-img-top'
         - else
-          td.align-middle = image_tag 'noimage_m.png', width: 120
-        td.align-middle = item.title
-        td.align-middle = item.publication_date
-        td.align-middle
-          - item.categories.each do |category|
-            p = "#{category.name}[#{category.browse_node_id}]"
-        td.align-middle = link_to 'Show', item
-        td.align-middle = link_to 'Edit', edit_item_path(item)
-        td.align-middle = link_to 'Destroy', item, data: { confirm: 'Are you sure?' }, method: :delete
+          = image_tag 'noimage_m.png', class: 'card-img-top'
+        .card-body.p-1
+          p.card-title.m-0 = item.title
 
-br
+- @days.each do |day|
+  p.display-3 = day
+  .card-columns
+    - Item.where(publication_date: day).order(:title).each do |item|
+      .card.p-2
+        = link_to item_path item
+          - if item.medium_image
+            = image_tag item.large_image, class: 'card-img-top'
+          - else
+            = image_tag 'noimage_m.png', class: 'card-img-top'
+        .card-body.p-1
+          p.card-title.m-0 = item.title
+          p.card-title.m-0 = item.publication_date
 
-= link_to 'New Item', new_item_path
+/.card-columns
+  - @items.each do |item|
+    .card.p-2
+      - if item.medium_image
+        = image_tag item.large_image, class: 'card-img-top'
+      - else
+        = image_tag 'noimage_m.png', class: 'card-img-top'
+      .card-body.p-1
+        p.card-title.m-0 = item.title
+        p.card-title.m-0 = item.publication_date
