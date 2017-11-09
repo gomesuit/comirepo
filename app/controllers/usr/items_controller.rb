@@ -2,7 +2,9 @@ class Usr::ItemsController < Usr::BaseController
   # GET /items
   # GET /items.json
   def index
-    @days = Item.order(publication_date: :asc).pluck('DISTINCT publication_date')
+    @days = Item.where('publication_date >= ?', Date.today)
+                .order(publication_date: :asc)
+                .pluck('DISTINCT publication_date')
   end
 
   # GET /items/1
