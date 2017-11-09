@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-  root 'sample#index'
-  resources :items
-  resources :authors
-  resources :categories
-
   scope module: :usr do
-    root 'top#index'
+    root 'items#index'
 
+    resources :items
   end
 
   scope module: :adm, as: :admin, path: :admin do
