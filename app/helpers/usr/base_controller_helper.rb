@@ -1,2 +1,0 @@
-module Usr::BaseControllerHelper
-end

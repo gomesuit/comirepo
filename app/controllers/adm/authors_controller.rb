@@ -1,4 +1,4 @@
-class Adm::AuthorsController < Adm::BaseControllerController
+class Adm::AuthorsController < Adm::BaseController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   # GET /authors

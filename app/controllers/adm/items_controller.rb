@@ -1,4 +1,4 @@
-class Adm::ItemsController < Adm::BaseControllerController
+class Adm::ItemsController < Adm::BaseController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
