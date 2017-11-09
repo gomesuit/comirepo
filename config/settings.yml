@@ -1,0 +1,6 @@
+site:
+  default:
+    name: 'comirepo'
+    title: 'comirepo'
+    keywords: 'comirepo,電子書籍'
+    description: '電子書籍の発売日'
