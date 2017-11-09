@@ -17,10 +17,11 @@ table.table
     tr
       td large_image
       td
-        - if @item.large_image
-          = image_tag @item.large_image
-        - else
-          = image_tag 'noimage_m.png'
+        = link_to @item.detail_page_url, target: '_blank'
+          - if @item.large_image
+            = image_tag @item.large_image
+          - else
+            = image_tag 'noimage_m.png'
     tr
       td introduction
       td == CGI.unescapeHTML @item.introduction
