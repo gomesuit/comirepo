@@ -33,7 +33,7 @@ class Adm::ItemsController < Adm::BaseController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to admin_item_url(@item), notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class Adm::ItemsController < Adm::BaseController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to admin_item_url(@item), notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class Adm::ItemsController < Adm::BaseController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to admin_items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
