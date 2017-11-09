@@ -5,6 +5,9 @@ class Usr::ItemsController < Usr::BaseController
     @days = Item.where('publication_date >= ?', Date.today)
                 .order(publication_date: :asc)
                 .pluck('DISTINCT publication_date')
+    #@days = Item.where(publication_date: Date.yesterday..Date.tomorrow)
+    #            .order(publication_date: :asc)
+    #            .pluck('DISTINCT publication_date')
   end
 
   # GET /items/1
