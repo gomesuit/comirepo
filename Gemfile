@@ -37,6 +37,7 @@ gem 'amazon-ecs'
 gem 'mechanize'
 gem 'webpacker', '~> 3.0'
 gem 'config'
+gem 'meta-tags'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
