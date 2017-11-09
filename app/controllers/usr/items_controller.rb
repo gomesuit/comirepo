@@ -1,6 +1,4 @@
 class Usr::ItemsController < Usr::BaseController
-  before_action :set_item, only: [:show]
-
   # GET /items
   # GET /items.json
   def index
@@ -15,11 +13,6 @@ class Usr::ItemsController < Usr::BaseController
   # GET /items/1
   # GET /items/1.json
   def show
+    @item = Item.find(params[:id])
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
 end
