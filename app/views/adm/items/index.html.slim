@@ -1,0 +1,34 @@
+h1 Listing items
+
+table.table
+  thead.thead-light
+    tr
+      th id
+      th image
+      th title
+      th publication_date
+      th categories
+      th show
+      th edit
+      th destroy
+
+  tbody
+    - @items.each do |item|
+      tr height=200
+        td.align-middle = item.id
+        - if item.medium_image
+          td.align-middle = image_tag item.medium_image, width: 120
+        - else
+          td.align-middle = image_tag 'noimage_m.png', width: 120
+        td.align-middle = item.title
+        td.align-middle = item.publication_date
+        td.align-middle
+          - item.categories.each do |category|
+            p = "#{category.name}[#{category.browse_node_id}]"
+        td.align-middle = link_to 'Show', item
+        td.align-middle = link_to 'Edit', edit_item_path(item)
+        td.align-middle = link_to 'Destroy', item, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Item', new_item_path

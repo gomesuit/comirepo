@@ -1,0 +1,33 @@
+p#notice = notice
+
+table.table
+  tbody
+    tr
+      td id
+      td = @item.id
+    tr
+      td asin
+      td = @item.asin
+    tr
+      td title
+      td = @item.title
+    tr
+      td large_image
+      td = image_tag @item.large_image
+    tr
+      td introduction
+      td == CGI.unescapeHTML @item.introduction
+    tr
+      td authors
+      td
+        - @item.authors.each do |author|
+          p = author.name
+    tr
+      td categories
+      td
+        - @item.categories.each do |category|
+          p = category.name
+
+=> link_to 'Edit', edit_item_path(@item)
+'|
+=< link_to 'Back', items_path
