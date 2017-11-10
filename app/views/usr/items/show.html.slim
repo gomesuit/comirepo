@@ -19,9 +19,7 @@
     h1 = @item.title
     p
       = link_to 'amazon購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark btn-sm'
-      span.pl-4 = "ASIN: #{@item.asin}"
-      span.pl-4 = "著者: #{@item.authors.map(&:name).join(', ')}"
-      span.pl-4 = "カテゴリ: #{@item.categories.map(&:name).join(', ')}"
+      span.pl-3 = "著者: #{@item.authors.map(&:name).join(', ')}"
     p.m-0
       == CGI.unescapeHTML @item.introduction
 
