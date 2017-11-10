@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    = display_meta_tags default_meta_tags
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application'
+  body.bg-light
+    nav.navbar.navbar-dark.bg-dark
+      = link_to 'Comirepo', root_path, class: 'navbar-brand'
+    .container-fluid
+        = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
