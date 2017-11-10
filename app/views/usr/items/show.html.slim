@@ -4,32 +4,19 @@
 - set_meta_tags og:      { image: @item.large_image }
 - set_meta_tags twitter: { image: @item.large_image }
 
-table.table
-  tbody
-    tr
-      td asin
-      td = @item.asin
-    tr
-      td タイトル
-      td = @item.title
-    tr
-      td image
-      td
-        = link_to @item.detail_page_url, target: '_blank'
-          - if @item.large_image
-            = image_tag @item.large_image
-          - else
-            = image_tag 'noimage_m.png'
-    tr
-      td 内容
-      td == CGI.unescapeHTML @item.introduction
-    tr
-      td 著者
-      td
-        - @item.authors.each do |author|
-          p = author.name
-    tr
-      td カテゴリ
-      td
-        - @item.categories.each do |category|
-          p = category.name
+.row
+  .col-12.bg-white.m-2.p-2.rounded
+    h1 = @item.title
+    p = @item.asin
+    - @item.authors.each do |author|
+      p = author.name
+    - @item.categories.each do |category|
+      p = category.name
+    == CGI.unescapeHTML @item.introduction
+  .col-12.bg-white.m-2.p-2.rounded
+    .text-center
+      = link_to @item.detail_page_url, target: '_blank'
+        - if @item.large_image
+          = image_tag @item.large_image, class: 'img-thumbnail'
+        - else
+          = image_tag 'noimage_m.png', class: 'img-thumbnail'

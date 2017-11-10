@@ -5,11 +5,10 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application'
-  body
+  body.bg-light
     nav.navbar.navbar-dark.bg-dark
       = link_to 'Comirepo', root_path, class: 'navbar-brand'
-    .bg-light
-      .container
+    .container
         = yield
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
