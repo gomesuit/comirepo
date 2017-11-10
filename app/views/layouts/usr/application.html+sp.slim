@@ -9,7 +9,7 @@ html
   body.bg-light
     nav.navbar.navbar-dark.bg-dark
       = link_to 'Comirepo', root_path, class: 'navbar-brand'
-    .container-fluid
+    .container
         = yield
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
