@@ -12,7 +12,7 @@
           p.card-title.m-0 = item.title
 
 - @days.each do |day|
-  p.display-3 = day
+  p.display-4 = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
   .card-columns
     - Item.where(publication_date: day).order(:title).each do |item|
       .card.p-2
