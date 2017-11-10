@@ -15,13 +15,14 @@
 .row
   .col-12.bg-white.m-2.p-3.rounded
     h1 = @item.title
-    = link_to 'amazon購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark btn-sm'
-    p = @item.asin
-    - @item.authors.each do |author|
-      p = author.name
-    - @item.categories.each do |category|
-      p = category.name
-    == CGI.unescapeHTML @item.introduction
+    p = link_to 'amazon購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark btn-sm'
+    p
+      span = "ASIN: #{@item.asin}"
+      span.pl-4 = "著者: #{@item.authors.map(&:name).join(', ')}"
+      span.pl-4 = "カテゴリ: #{@item.categories.map(&:name).join(', ')}"
+    p.m-0
+      == CGI.unescapeHTML @item.introduction
+
 .row
   .col-12.bg-white.m-2.p-3.rounded
     .text-center
