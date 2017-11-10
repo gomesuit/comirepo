@@ -5,15 +5,24 @@
 - set_meta_tags twitter: { image: @item.large_image }
 
 .row
-  .col-12.bg-white.m-2.p-2.rounded
+  ol.breadcrumb
+    li.breadcrumb-item
+      = link_to 'Home', root_path
+    li.breadcrumb-item.active
+      = @item.title
+
+.row
+  .col-12.bg-white.m-2.p-3.rounded
     h1 = @item.title
+    = link_to 'amazon購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark btn-sm'
     p = @item.asin
     - @item.authors.each do |author|
       p = author.name
     - @item.categories.each do |category|
       p = category.name
     == CGI.unescapeHTML @item.introduction
-  .col-12.bg-white.m-2.p-2.rounded
+.row
+  .col-12.bg-white.m-2.p-3.rounded
     .text-center
       = link_to @item.detail_page_url, target: '_blank'
         - if @item.large_image
