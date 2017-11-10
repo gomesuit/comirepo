@@ -4,18 +4,16 @@
 - set_meta_tags og:      { image: @item.large_image }
 - set_meta_tags twitter: { image: @item.large_image }
 
-p#notice = notice
-
 table.table
   tbody
     tr
       td asin
       td = @item.asin
     tr
-      td title
+      td タイトル
       td = @item.title
     tr
-      td large_image
+      td image
       td
         = link_to @item.detail_page_url, target: '_blank'
           - if @item.large_image
@@ -23,15 +21,15 @@ table.table
           - else
             = image_tag 'noimage_m.png'
     tr
-      td introduction
+      td 内容
       td == CGI.unescapeHTML @item.introduction
     tr
-      td authors
+      td 著者
       td
         - @item.authors.each do |author|
           p = author.name
     tr
-      td categories
+      td カテゴリ
       td
         - @item.categories.each do |category|
           p = category.name
