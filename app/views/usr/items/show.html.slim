@@ -10,6 +10,8 @@
       li.breadcrumb-item
         = link_to 'Home', root_path
       li.breadcrumb-item.active
+        = @item.publication_date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[@item.publication_date.wday]})")
+      li.breadcrumb-item.active
         = @item.title
 
 .row

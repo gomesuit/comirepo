@@ -12,7 +12,9 @@
           p.card-title.m-0 = item.title
 
 - @days.each do |day|
-  p.display-4 = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
+  p.display-4.m-0.pt-4
+    = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
+  hr.mt-0
   .card-columns
     - Item.where(publication_date: day).order(:title).each do |item|
       .card.p-2
@@ -23,7 +25,7 @@
             = image_tag 'noimage_m.png', class: 'card-img-top'
         .card-body.p-1
           p.card-title.m-0 = item.title
-          p.card-title.m-0 = item.publication_date
+          /p.card-title.m-0 = item.publication_date
 
 /.card-columns
   - @items.each do |item|
