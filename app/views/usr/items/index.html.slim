@@ -1,3 +1,11 @@
+ul.nav.nav-tabs.nav-fill.pt-3
+  li.nav-item
+    = link_to '昨日', '#', class: 'nav-link active'
+  li.nav-item
+    = link_to '今日', '#', class: 'nav-link'
+  li.nav-item
+    = link_to '明日', '#', class: 'nav-link'
+
 ul.p-0
   - @days.each do |day|
     li style='list-style-type: none;'
