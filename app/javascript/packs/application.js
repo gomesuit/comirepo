@@ -1,2 +1,5 @@
+// css
 import 'src/application'
-import 'bootstrap/dist/js/bootstrap'
+
+// js
+import 'bootstrap/dist/js/bootstrap.min'
