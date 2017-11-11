@@ -74,7 +74,12 @@ namespace :collect do
     Mechanize.start do |m|
       m.get('https://www.amazon.co.jp/s/?rh=n%3A2250738051%2Cn%3A%212250739051%2Cn%3A2275256051%2Cn%3A2293143051%2Cp_n_date%3A2275273051')
       m.page.parser.xpath('//li[@class="s-result-item celwidget "]').each do |node|
-        asins.push node.attributes['data-asin'].value
+        # 画像がないものはスキップ
+        next if node.css('.s-access-image.cfMarker').attribute('src').value.include? 'no-img'
+
+        asin = node.attributes['data-asin'].value
+        pp asin
+        asins.push asin
       end
     end
 
