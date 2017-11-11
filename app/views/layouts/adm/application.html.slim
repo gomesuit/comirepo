@@ -4,7 +4,7 @@ html
     title
       | Comirepo
     = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_pack_tag 'application'
   body
     nav.navbar.navbar-dark.bg-dark
@@ -12,5 +12,5 @@ html
     .bg-light
       .container
         = yield
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
     = javascript_pack_tag 'application'
