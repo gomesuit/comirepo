@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   scope module: :usr do
     root 'items#index'
+
+    get :yesterday, to: 'items#yesterday'
     get :today, to: 'items#today'
+    get :tomorrow, to: 'items#tomorrow'
+    get :thisweek, to: 'items#thisweek'
+    get :nextweek, to: 'items#nextweek'
 
     resources :items, only: %w[index show]
   end
