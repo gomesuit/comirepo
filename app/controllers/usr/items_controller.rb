@@ -2,7 +2,7 @@ class Usr::ItemsController < Usr::BaseController
   # GET /items
   # GET /items.json
   def index
-    @tab = params[:tab].to_sym
+    @tab = params[:tab]&.to_sym
     @days = Item
 
     case @tab
@@ -17,7 +17,8 @@ class Usr::ItemsController < Usr::BaseController
     when :nextweek then
       @days = @days.where(publication_date: Date.today.next_week.beginning_of_week..Date.today.next_week.end_of_week)
     else
-      @days = @days.where('publication_date >= ?', Date.today)
+      @tab = :thisweek
+      @days = @days.where(publication_date: Date.today.beginning_of_week..Date.today.end_of_week)
     end
 
     @days = @days.order(publication_date: :asc)
