@@ -8,6 +8,10 @@ table.table
       th title
       th publication_date
       th categories
+      th is_adult_content
+      th adult_score
+      th is_racy_content
+      th racy_score
       th show
       th edit
       th destroy
@@ -25,6 +29,10 @@ table.table
         td.align-middle
           - item.categories.each do |category|
             p = "#{category.name}[#{category.browse_node_id}]"
+        td.align-middle = item.is_adult_content
+        td.align-middle = item.adult_score.round 2
+        td.align-middle = item.is_racy_content
+        td.align-middle = item.racy_score.round 2
         td.align-middle = link_to 'Show', admin_item_path(item)
         td.align-middle = link_to 'Edit', edit_admin_item_path(item)
         td.align-middle = link_to 'Destroy', admin_item_path(item), data: { confirm: 'Are you sure?' }, method: :delete
