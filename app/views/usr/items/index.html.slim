@@ -1,14 +1,14 @@
 ul.nav.nav-tabs.nav-fill.pt-3.h4
   li.nav-item
-    = link_to '昨日', '#', class: 'nav-link active'
+    = link_to '昨日', root_path(tab: :yesterday), class: 'nav-link active'
   li.nav-item
-    = link_to '今日', '#', class: 'nav-link'
+    = link_to '今日', root_path(tab: :today), class: 'nav-link'
   li.nav-item
-    = link_to '明日', '#', class: 'nav-link'
+    = link_to '明日', root_path(tab: :tomorrow), class: 'nav-link'
   li.nav-item
-    = link_to '今週', '#', class: 'nav-link'
+    = link_to '今週', root_path(tab: :thisweek), class: 'nav-link'
   li.nav-item
-    = link_to '来週', '#', class: 'nav-link'
+    = link_to '来週', root_path(tab: :nextweek), class: 'nav-link'
 
 ul.p-0
   - @days.each do |day|

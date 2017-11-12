@@ -6,9 +6,11 @@ class Usr::ItemsController < Usr::BaseController
 
     case params['tab']
     when 'yesterday' then
+      @days = @days.where(publication_date: Date.today - 1)
     when 'today' then
       @days = @days.where(publication_date: Date.today)
     when 'tomorrow' then
+      @days = @days.where(publication_date: Date.today + 1)
     when 'thisweek' then
       @days = @days.where(publication_date: Date.today.beginning_of_week..Date.today.end_of_week)
     when 'nextweek' then
