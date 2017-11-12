@@ -10,19 +10,22 @@ ul.nav.nav-tabs.nav-fill.pt-3.h4
   li.nav-item
     = link_to '来週', root_path(tab: :nextweek), class: 'nav-link'
 
-ul.p-0
-  - @days.each do |day|
-    li style='list-style-type: none;'
-      p.display-4.m-0.pt-4
-        = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
-      hr.mt-0
-      .card-columns
-        - Item.where(publication_date: day).order(:title).each do |item|
-          .card.p-2
-            = link_to item_path item
-              - if item.large_image
-                = image_tag item.large_image, class: 'card-img-top'
-              - else
-                = image_tag 'noimage_m.png', class: 'card-img-top'
-            .card-body.p-1
-              p.card-title.m-0 = item.title
+- if @days.present?
+  ul.p-0
+    - @days.each do |day|
+      li style='list-style-type: none;'
+        p.display-4.m-0.pt-4
+          = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
+        hr.mt-0
+        .card-columns
+          - Item.where(publication_date: day).order(:title).each do |item|
+            .card.p-2
+              = link_to item_path item
+                - if item.large_image
+                  = image_tag item.large_image, class: 'card-img-top'
+                - else
+                  = image_tag 'noimage_m.png', class: 'card-img-top'
+              .card-body.p-1
+                p.card-title.m-0 = item.title
+- else
+  p.h2.pt-5.text-center 発売予定の電子書籍はありません。
