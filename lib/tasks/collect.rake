@@ -33,6 +33,8 @@ namespace :collect do
       http.request(request)
     end
 
+    pp response.body
+    sleep 3
     JSON.parse(response.body)['adult']
   end
 
@@ -52,8 +54,16 @@ namespace :collect do
   def save_data(item)
     begin
       data = Item.find_or_initialize_by(asin: item.get('ASIN'))
-      analyze_data = analyze_image(item.get('LargeImage/URL'))
-      data.update_attributes(
+      if data.adult_score.blank?
+        analyze_data = analyze_image(item.get('LargeImage/URL'))
+        data.assign_attributes(
+          is_adult_content: analyze_data['isAdultContent'],
+          adult_score: analyze_data['adultScore'],
+          is_racy_content: analyze_data['isRacyContent'],
+          racy_score: analyze_data['racyScore']
+        )
+      end
+      data.assign_attributes(
         title: item.get('ItemAttributes/Title'),
         detail_page_url: item.get('DetailPageURL'),
         asin: item.get('ASIN'),
@@ -61,11 +71,7 @@ namespace :collect do
         medium_image: item.get('MediumImage/URL'),
         large_image: item.get('LargeImage/URL'),
         publication_date: Date.parse(item.get('ItemAttributes/ReleaseDate')),
-        introduction: item.get('EditorialReviews/EditorialReview/Content'),
-        is_adult_content: analyze_data['isAdultContent'],
-        adult_score: analyze_data['adultScore'],
-        is_racy_content: analyze_data['isRacyContent'],
-        racy_score: analyze_data['racyScore']
+        introduction: item.get('EditorialReviews/EditorialReview/Content')
       )
       pp data
 

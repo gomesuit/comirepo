@@ -27,6 +27,18 @@ table.table
       td
         - @item.categories.each do |category|
           p = category.name
+    tr
+      td is_adult_content
+      td = @item.is_adult_content
+    tr
+      td adult_score
+      td = @item.adult_score
+    tr
+      td is_racy_content
+      td = @item.is_racy_content
+    tr
+      td racy_score
+      td = @item.racy_score
 
 => link_to 'Edit', edit_admin_item_path(@item)
 '|
