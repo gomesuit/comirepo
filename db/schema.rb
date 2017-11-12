@@ -52,6 +52,10 @@ ActiveRecord::Schema.define(version: 20171108161217) do
     t.string "large_image"
     t.date "publication_date", null: false
     t.string "introduction", null: false
+    t.boolean "is_adult_content", default: false, null: false
+    t.float "adult_score", null: false
+    t.boolean "is_racy_content", default: false, null: false
+    t.float "racy_score", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

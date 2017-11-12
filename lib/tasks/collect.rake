@@ -14,6 +14,28 @@ namespace :collect do
     end
   end
 
+  def analyze_image(url)
+    uri = URI('https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze')
+    uri.query = URI.encode_www_form({
+      'visualFeatures' => 'adult',
+      'language' => 'en'
+    })
+
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request['Content-Type'] = 'application/json'
+    request['Ocp-Apim-Subscription-Key'] = ENV['SUBSCRIPTION_KEY']
+    body = {}
+    body[:url] = url
+    request.body = body.to_json
+
+    # {"adult":{"isAdultContent":false,"adultScore":0.32129335403442383,"isRacyContent":true,"racyScore":0.49613615870475769},"requestId":"xxxxxxxxxxxxx","metadata":{"height":500,"width":318,"format":"Jpeg"}}
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+      http.request(request)
+    end
+
+    JSON.parse(response.body)['adult']
+  end
+
   def amazon_ecs(asins)
     # Amazon::Ecs::debug = true
     Amazon::Ecs.configure do |options|
@@ -30,6 +52,7 @@ namespace :collect do
   def save_data(item)
     begin
       data = Item.find_or_initialize_by(asin: item.get('ASIN'))
+      analyze_data = analyze_image(item.get('LargeImage/URL'))
       data.update_attributes(
         title: item.get('ItemAttributes/Title'),
         detail_page_url: item.get('DetailPageURL'),
@@ -38,7 +61,11 @@ namespace :collect do
         medium_image: item.get('MediumImage/URL'),
         large_image: item.get('LargeImage/URL'),
         publication_date: Date.parse(item.get('ItemAttributes/ReleaseDate')),
-        introduction: item.get('EditorialReviews/EditorialReview/Content')
+        introduction: item.get('EditorialReviews/EditorialReview/Content'),
+        is_adult_content: analyze_data['isAdultContent'],
+        adult_score: analyze_data['adultScore'],
+        is_racy_content: analyze_data['isRacyContent'],
+        racy_score: analyze_data['racyScore']
       )
       pp data
 
