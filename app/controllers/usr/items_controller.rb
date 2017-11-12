@@ -2,18 +2,19 @@ class Usr::ItemsController < Usr::BaseController
   # GET /items
   # GET /items.json
   def index
+    @tab = params[:tab].to_sym
     @days = Item
 
-    case params['tab']
-    when 'yesterday' then
+    case @tab
+    when :yesterday then
       @days = @days.where(publication_date: Date.today - 1)
-    when 'today' then
+    when :today then
       @days = @days.where(publication_date: Date.today)
-    when 'tomorrow' then
+    when :tomorrow then
       @days = @days.where(publication_date: Date.today + 1)
-    when 'thisweek' then
+    when :thisweek then
       @days = @days.where(publication_date: Date.today.beginning_of_week..Date.today.end_of_week)
-    when 'nextweek' then
+    when :nextweek then
       @days = @days.where(publication_date: Date.today.next_week.beginning_of_week..Date.today.next_week.end_of_week)
     else
       @days = @days.where('publication_date >= ?', Date.today)
