@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope module: :usr do
     root 'items#index'
+    get :today, to: 'items#today'
 
     resources :items, only: %w[index show]
   end

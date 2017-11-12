@@ -7,22 +7,27 @@ class Usr::ItemsController < Usr::BaseController
 
     case @tab
     when :yesterday then
-      @days = @days.where(publication_date: Date.today - 1)
+      @days = @days.yesterday
     when :today then
-      @days = @days.where(publication_date: Date.today)
+      @days = @days.today
     when :tomorrow then
-      @days = @days.where(publication_date: Date.today + 1)
+      @days = @days.tomorrow
     when :thisweek then
-      @days = @days.where(publication_date: Date.today.beginning_of_week..Date.today.end_of_week)
+      @days = @days.thisweek
     when :nextweek then
-      @days = @days.where(publication_date: Date.today.next_week.beginning_of_week..Date.today.next_week.end_of_week)
+      @days = @days.nextweek
     else
       @tab = :thisweek
-      @days = @days.where(publication_date: Date.today.beginning_of_week..Date.today.end_of_week)
+      @days = @days.thisweek
     end
 
-    @days = @days.order(publication_date: :asc)
-                 .pluck('DISTINCT publication_date')
+    @days = @days.publication_dates
+  end
+
+  def today
+    @tab = :today
+    @days = Item.today.publication_dates
+    render :index
   end
 
   # GET /items/1
