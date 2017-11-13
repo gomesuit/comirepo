@@ -18,7 +18,7 @@ ul.nav.nav-tabs.nav-fill.pt-3.h4
           = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
         hr.mt-0
         .card-columns
-          - Item.where(publication_date: day).order(:title).category_filter.each do |item|
+          - Item.where(publication_date: day).order(:title).category_filter.adult_filter.each do |item|
             .card.p-2
               = link_to item_path item
                 - if item.large_image

@@ -52,10 +52,17 @@ class Item < ApplicationRecord
         2293147051, # ボーイズラブコミックス
         12075851,   # ボーイズラブコミックス
         3432431051, # ティーンズラブ
+        3686141051, # ロマンス
+        2291905051, # ビジネス・経済
+        2291948051, # 経営学
         3418785051  # コミック雑誌
       ]
       sub = select(:id).joins(:categories).where(categories: { browse_node_id: categories })
       where.not(id: sub)
+    end
+
+    def adult_filter
+      where(is_adult_content: false, is_racy_content: false)
     end
   end
 end
