@@ -46,5 +46,16 @@ class Item < ApplicationRecord
     def publication_dates
       order(publication_date: :asc).pluck('DISTINCT publication_date')
     end
+
+    def category_filter
+      categories = [
+        2293147051, # ボーイズラブコミックス
+        12075851,   # ボーイズラブコミックス
+        3432431051, # ティーンズラブ
+        3418785051  # コミック雑誌
+      ]
+      sub = select(:id).joins(:categories).where(categories: { browse_node_id: categories })
+      where.not(id: sub)
+    end
   end
 end
