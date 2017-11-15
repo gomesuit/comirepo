@@ -1,3 +1,0 @@
-#!/bin/bash -ex
-
-docker build --build-arg CUSTOM=$VAR -t $IMAGE_NAME .
