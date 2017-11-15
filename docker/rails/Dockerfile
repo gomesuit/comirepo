@@ -2,18 +2,9 @@ FROM node:8.5.0-alpine as node
 
 FROM ruby:2.4.1-alpine3.6 as gem-builder
 
-WORKDIR /home/port/app
+WORKDIR /home/rails/app
 
 COPY Gemfile Gemfile.lock ./
-
-# RUN gem install bundler && \
-#     apk --update --no-cache add mariadb-dev tzdata && \
-#     apk --update --no-cache --virtual gem-builddeps add alpine-sdk && \
-#     bundle install --without development test --path vendor/bundle && \
-#     apk --update --no-cache --virtual passenger-builddeps add pcre-dev linux-headers curl-dev && \
-#     bundle exec passenger-config compile-nginx-engine && \
-#     bundle exec passenger-config compile-agent --auto --optimize && \
-#     apk del --purge gem-builddeps passenger-builddeps
 
 RUN gem install bundler && \
     apk --update --no-cache add mariadb-dev tzdata && \
@@ -30,11 +21,11 @@ RUN apk add --update --no-cache tzdata && \
 EXPOSE 3000
 
 RUN apk --update --no-cache add shadow
-RUN useradd port -u 3333 -d /home/port && \
-    mkdir -p /home/port/app && \
-    chown port.port -R /home/port
-#USER port
-WORKDIR /home/port/app
+RUN useradd rails -u 3333 -d /home/rails && \
+    mkdir -p /home/rails/app && \
+    chown rails.rails -R /home/rails
+#USER rails
+WORKDIR /home/rails/app
 
 # install nodejs yarn
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -52,7 +43,7 @@ RUN apk --update --no-cache add mariadb-dev tzdata execline
 
 # bundle install
 COPY Gemfile Gemfile.lock ./
-COPY --from=gem-builder /home/port/app/vendor/bundle vendor/bundle
+COPY --from=gem-builder /home/rails/app/vendor/bundle vendor/bundle
 COPY --from=gem-builder /usr/local/bundle /usr/local/bundle
 
 # yarn install
@@ -66,11 +57,11 @@ COPY app app
 COPY bin bin
 RUN RAILS_ENV=production bin/rails assets:precompile
 
-COPY . /home/port/app
+COPY . /home/rails/app
 RUN mkdir -p tmp/uploads
-RUN chown port.port . * db/schema.rb && \
-    chown port.port -R log tmp
-USER port
+RUN chown rails.rails . * db/schema.rb && \
+    chown rails.rails -R log tmp
+USER rails
 
 ENTRYPOINT ["docker/rails/entrypoint.sh"]
 

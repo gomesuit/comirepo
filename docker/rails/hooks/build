@@ -1,3 +1,5 @@
 #!/bin/bash -ex
 
+pwd
+ls -lat
 docker build -f docker/rails/Dockerfile -t $IMAGE_NAME .
