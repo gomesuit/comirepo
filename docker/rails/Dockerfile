@@ -1,0 +1,77 @@
+FROM node:8.5.0-alpine as node
+
+FROM ruby:2.4.1-alpine3.6 as gem-builder
+
+WORKDIR /home/port/app
+
+COPY Gemfile Gemfile.lock ./
+
+# RUN gem install bundler && \
+#     apk --update --no-cache add mariadb-dev tzdata && \
+#     apk --update --no-cache --virtual gem-builddeps add alpine-sdk && \
+#     bundle install --without development test --path vendor/bundle && \
+#     apk --update --no-cache --virtual passenger-builddeps add pcre-dev linux-headers curl-dev && \
+#     bundle exec passenger-config compile-nginx-engine && \
+#     bundle exec passenger-config compile-agent --auto --optimize && \
+#     apk del --purge gem-builddeps passenger-builddeps
+
+RUN gem install bundler && \
+    apk --update --no-cache add mariadb-dev tzdata && \
+    apk --update --no-cache --virtual gem-builddeps add alpine-sdk && \
+    bundle install --jobs=4 --without development test --path vendor/bundle && \
+    apk del --purge gem-builddeps
+
+FROM ruby:2.4.1-alpine3.6
+
+RUN apk add --update --no-cache tzdata && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    apk del --purge tzdata
+
+EXPOSE 3000
+
+RUN apk --update --no-cache add shadow
+RUN useradd port -u 3333 -d /home/port && \
+    mkdir -p /home/port/app && \
+    chown port.port -R /home/port
+#USER port
+WORKDIR /home/port/app
+
+# install nodejs yarn
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/include/node /usr/local/include/node
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node /opt/yarn /opt/yarn
+RUN ln -s /usr/local/bin/node /usr/local/bin/nodejs && \
+    ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
+    ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn
+
+# install dependency package
+# mariadb-dev for mysql
+# execline for exec
+RUN apk --update --no-cache add mariadb-dev tzdata execline
+
+# bundle install
+COPY Gemfile Gemfile.lock ./
+COPY --from=gem-builder /home/port/app/vendor/bundle vendor/bundle
+COPY --from=gem-builder /usr/local/bundle /usr/local/bundle
+
+# yarn install
+COPY package.json yarn.lock .postcssrc.yml ./
+RUN yarn install
+
+# assets precompile
+COPY Rakefile .babelrc ./
+COPY config config
+COPY app app
+COPY bin bin
+RUN RAILS_ENV=production bin/rails assets:precompile
+
+COPY . /home/port/app
+RUN mkdir -p tmp/uploads
+RUN chown port.port . * db/schema.rb && \
+    chown port.port -R log tmp
+USER port
+
+ENTRYPOINT ["docker/rails/entrypoint.sh"]
+
+CMD exec bundle exec puma -t 5:5 -p 3000 -e "$RAILS_ENV" -C config/puma.rb
