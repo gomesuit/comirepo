@@ -1,17 +1,5 @@
 FROM node:8.5.0-alpine as node
 
-FROM ruby:2.4.1-alpine3.6 as gem-builder
-
-WORKDIR /home/rails/app
-
-COPY Gemfile Gemfile.lock ./
-
-RUN gem install bundler && \
-    apk --update --no-cache add mariadb-dev tzdata && \
-    apk --update --no-cache --virtual gem-builddeps add alpine-sdk && \
-    bundle install --jobs=4 --without development test --path vendor/bundle && \
-    apk del --purge gem-builddeps
-
 FROM ruby:2.4.1-alpine3.6
 
 RUN apk add --update --no-cache tzdata && \
@@ -43,8 +31,13 @@ RUN apk --update --no-cache add mariadb-dev tzdata execline
 
 # bundle install
 COPY Gemfile Gemfile.lock ./
-COPY --from=gem-builder /home/rails/app/vendor/bundle vendor/bundle
-COPY --from=gem-builder /usr/local/bundle /usr/local/bundle
+RUN gem install bundler && \
+    apk --update --no-cache add mariadb-dev tzdata && \
+    apk --update --no-cache --virtual gem-builddeps add alpine-sdk && \
+    bundle install --jobs=4 --without development test --path vendor/bundle && \
+    apk del --purge gem-builddeps
+# COPY --from=gem-builder /home/rails/app/vendor/bundle vendor/bundle
+# COPY --from=gem-builder /usr/local/bundle /usr/local/bundle
 
 # yarn install
 COPY package.json yarn.lock .postcssrc.yml ./
