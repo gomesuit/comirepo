@@ -8,6 +8,7 @@ table.table
       th title
       th publication_date
       th categories
+      th label
       th is_adult_content
       th adult_score
       th is_racy_content
@@ -29,6 +30,7 @@ table.table
         td.align-middle
           - item.categories.each do |category|
             p = "#{category.name}[#{category.browse_node_id}]"
+        td.align-middle = item.label&.name
         td.align-middle = item.is_adult_content
         td.align-middle = item.adult_score.round 2
         td.align-middle = item.is_racy_content

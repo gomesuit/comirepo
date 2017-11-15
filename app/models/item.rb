@@ -69,5 +69,11 @@ class Item < ApplicationRecord
     def adult_filter
       where(is_adult_content: false, is_racy_content: false)
     end
+
+    def label_filter
+      labels = [135, 42, 34]
+      sub = select(:id).where(label_id: labels)
+      where.not(id: sub)
+    end
   end
 end
