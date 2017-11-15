@@ -27,3 +27,8 @@ services:
       - SECRET_KEY_BASE=2fcf495ce43d469ebc2f489880fc729d63f6d852ae7ded00a3546e4da56761a62b3c45e0409332b98a91836318af0c311904dfe435972dca11ba1604efe4cd47
       - RAILS_SERVE_STATIC_FILES=true
     restart: always
+  rails_push:
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+    image: "gomesuit/comirepo_rails:${GIT_COMMIT_ID}"
