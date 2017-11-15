@@ -11,16 +11,21 @@
 #  large_image      :string
 #  publication_date :date             not null
 #  introduction     :string           not null
+#  is_adult_content :boolean          default(FALSE), not null
+#  adult_score      :float            not null
+#  is_racy_content  :boolean          default(FALSE), not null
+#  racy_score       :float            not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  label_id         :integer
 #
 
 class Item < ApplicationRecord
   has_many :item_authors, dependent: :destroy
   has_many :authors, through: :item_authors
-
   has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
+  belongs_to :label
 
   class << self
     def today

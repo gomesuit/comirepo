@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108161217) do
+ActiveRecord::Schema.define(version: 20171115154331) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 20171108161217) do
     t.float "adult_score", null: false
     t.boolean "is_racy_content", default: false, null: false
     t.float "racy_score", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "label_id"
+    t.index ["label_id"], name: "index_items_on_label_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
