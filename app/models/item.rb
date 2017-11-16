@@ -25,7 +25,7 @@ class Item < ApplicationRecord
   has_many :authors, through: :item_authors
   has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
-  belongs_to :label
+  belongs_to :label, optional: true
 
   class << self
     def today
