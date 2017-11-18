@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115154331) do
+ActiveRecord::Schema.define(version: 20171118085836) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name", null: false
@@ -45,13 +45,13 @@ ActiveRecord::Schema.define(version: 20171115154331) do
 
   create_table "items", force: :cascade do |t|
     t.string "title", null: false
-    t.string "detail_page_url", null: false
+    t.text "detail_page_url", null: false
     t.string "asin", null: false
     t.string "small_image"
     t.string "medium_image"
     t.string "large_image"
     t.date "publication_date", null: false
-    t.string "introduction", null: false
+    t.text "introduction", null: false
     t.boolean "is_adult_content", default: false, null: false
     t.float "adult_score", null: false
     t.boolean "is_racy_content", default: false, null: false
