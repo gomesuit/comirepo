@@ -116,7 +116,10 @@ namespace :collect do
       end
     end
 
-    res = amazon_ecs(asins)
+    res = []
+    retry_on_error times: 10 do
+      res = amazon_ecs(arr)
+    end
     res.items.each do |item|
       save_data(item)
     end
