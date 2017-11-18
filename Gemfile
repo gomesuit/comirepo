@@ -37,6 +37,7 @@ gem 'mechanize'
 gem 'webpacker', '~> 3.0'
 gem 'config'
 gem 'meta-tags'
+gem 'sitemap_generator'
 
 group :production do
   gem 'mysql2'
