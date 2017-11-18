@@ -1,9 +1,7 @@
 class Usr::ItemsController < Usr::BaseController
   before_action only: [:yesterday, :today, :tomorrow, :thisweek, :nextweek] do
     @tab = action_name.to_sym
-    @days = Item.send(action_name)
-                .category_filter
-                .adult_filter
+    @days = Item.published.send(action_name)
                 .publication_dates
     render :index
   end
@@ -12,10 +10,7 @@ class Usr::ItemsController < Usr::BaseController
   # GET /items.json
   def index
     @tab = :thisweek
-    @days = Item.thisweek
-                .category_filter
-                .adult_filter
-                .label_filter
+    @days = Item.published.thisweek
                 .publication_dates
   end
 

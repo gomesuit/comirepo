@@ -27,6 +27,10 @@ class Item < ApplicationRecord
   has_many :categories, through: :item_categories
   belongs_to :label, optional: true
 
+  scope :published, -> do
+    category_filter.adult_filter.label_filter
+  end
+
   class << self
     def today
       where(publication_date: Date.today)

@@ -19,7 +19,7 @@ ul.nav.nav-tabs.nav-fill.pt-1.h4
           = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
         hr.m-0
         .row
-          - Item.where(publication_date: day).order(:title).category_filter.adult_filter.label_filter.each do |item|
+          - Item.published.where(publication_date: day).order(:title).each do |item|
             / 著者が一人のみ表示
             - if item.authors.count == 1
               .col-6.p-1
