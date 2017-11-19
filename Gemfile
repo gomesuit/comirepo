@@ -38,6 +38,7 @@ gem 'webpacker', '~> 3.0'
 gem 'config'
 gem 'meta-tags'
 gem 'sitemap_generator'
+gem 'kaminari'
 
 group :production do
   gem 'mysql2'
