@@ -20,14 +20,13 @@ ul.nav.nav-tabs.nav-fill.pt-3.h4
         .card-columns
           - Item.published.where(publication_date: day).order(:title).each do |item|
             / 著者が一人のみ表示
-            - if item.authors.count == 1
-              .card.p-2
-                = link_to item_path item
-                  - if item.large_image
-                    = image_tag item.large_image, class: 'card-img-top'
-                  - else
-                    = image_tag 'noimage_m.png', class: 'card-img-top'
-                .card-body.p-1
-                  p.card-title.m-0 = item.title
+            .card.p-2
+              = link_to item_path item
+                - if item.large_image
+                  = image_tag item.large_image, class: 'card-img-top'
+                - else
+                  = image_tag 'noimage_m.png', class: 'card-img-top'
+              .card-body.p-1
+                p.card-title.m-0 = item.title
 - else
   p.h2.pt-5.text-center 発売予定の電子書籍はありません。
