@@ -1,5 +1,10 @@
 h1 Listing items
 
+= search_form_for @search, url: admin_items_path do |f|
+  = f.label :title_cont, 'タイトル'
+  = f.text_field :title_cont
+  = f.submit '検索する'
+
 = page_entries_info @items
 
 table.table

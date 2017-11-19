@@ -39,6 +39,7 @@ gem 'config'
 gem 'meta-tags'
 gem 'sitemap_generator'
 gem 'kaminari'
+gem 'ransack'
 
 group :production do
   gem 'mysql2'

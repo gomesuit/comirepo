@@ -15,5 +15,9 @@ module Comirepo
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.generators.template_engine = :slim
+
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+    config.encoding = 'utf-8'
   end
 end

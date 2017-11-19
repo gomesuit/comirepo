@@ -4,7 +4,8 @@ class Adm::ItemsController < Adm::BaseController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all.order(publication_date: :desc).page(params[:page])
+    @search = Item.search(params[:q])
+    @items = @search.result.page(params[:page])
   end
 
   # GET /items/1
