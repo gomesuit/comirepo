@@ -38,4 +38,4 @@ config/environments/*.local.yml
 /node_modules
 
 # sitemap
-public/sitemap.xml.gz
+public/sitemap.*
