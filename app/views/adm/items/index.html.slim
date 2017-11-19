@@ -1,5 +1,7 @@
 h1 Listing items
 
+= page_entries_info @items
+
 table.table
   thead.thead-light
     tr
@@ -38,6 +40,8 @@ table.table
         td.align-middle = link_to 'Show', admin_item_path(item)
         td.align-middle = link_to 'Edit', edit_admin_item_path(item)
         td.align-middle = link_to 'Destroy', admin_item_path(item), data: { confirm: 'Are you sure?' }, method: :delete
+
+= paginate @items
 
 br
 

@@ -4,8 +4,7 @@ class Adm::ItemsController < Adm::BaseController
   # GET /items
   # GET /items.json
   def index
-    @days = Item.order(publication_date: :asc).pluck('DISTINCT publication_date')
-    @items = Item.all.order(publication_date: :desc)
+    @items = Item.all.order(publication_date: :desc).page(params[:page])
   end
 
   # GET /items/1
