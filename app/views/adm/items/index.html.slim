@@ -20,18 +20,18 @@ table.table
       th = sort_link @search, :adult_score, 'adult_score'
       th is_racy_content
       th racy_score
-      th show
-      th edit
       th destroy
 
   tbody
     - @items.each do |item|
       tr height=200
         td.align-middle = item.id
-        - if item.medium_image
-          td.align-middle = image_tag item.medium_image, width: 120
-        - else
-          td.align-middle = image_tag 'noimage_m.png', width: 120
+        td.align-middle
+          = link_to admin_item_path(item)
+            - if item.medium_image
+              = image_tag item.medium_image, width: 120
+            - else
+              = image_tag 'noimage_m.png', width: 120
         td.align-middle = item.title
         td.align-middle = item.publication_date
         td.align-middle
@@ -42,12 +42,6 @@ table.table
         td.align-middle = item.adult_score.round 2
         td.align-middle = item.is_racy_content
         td.align-middle = item.racy_score.round 2
-        td.align-middle = link_to 'Show', admin_item_path(item)
-        td.align-middle = link_to 'Edit', edit_admin_item_path(item)
         td.align-middle = link_to 'Destroy', admin_item_path(item), data: { confirm: 'Are you sure?' }, method: :delete
 
 = paginate @items
-
-br
-
-= link_to 'New Item', new_admin_item_path

@@ -22,22 +22,6 @@ class Adm::ItemsController < Adm::BaseController
   def edit
   end
 
-  # POST /items
-  # POST /items.json
-  def create
-    @item = Item.new(item_params)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to admin_item_url(@item), notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
@@ -63,6 +47,7 @@ class Adm::ItemsController < Adm::BaseController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
