@@ -20,14 +20,13 @@ table.table
       th id
       th image
       th title
-      th publication_date
+      th = sort_link @search, :publication_date, 'publication_date'
       th categories
       th label
       th is_adult_content
       th = sort_link @search, :adult_score, 'adult_score'
       th is_racy_content
-      th racy_score
-      th destroy
+      th = sort_link @search, :racy_score, 'racy_score'
 
   tbody
     - @items.each do |item|
@@ -49,6 +48,5 @@ table.table
         td.align-middle = item.adult_score.round 2
         td.align-middle = item.is_racy_content
         td.align-middle = item.racy_score.round 2
-        td.align-middle = link_to 'Destroy', admin_item_path(item), data: { confirm: 'Are you sure?' }, method: :delete
 
 = paginate @items
