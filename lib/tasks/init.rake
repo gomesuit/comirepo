@@ -10,4 +10,16 @@ namespace :init do
       end
     end
   end
+
+  task :free => :environment do
+    Item.all.each do |item|
+      reg = /(\d+年\d+月\d+日).*までの期間限定無料/
+      match = item.introduction.match(reg)
+      if match
+        pp match[1]
+        free_last_date = Date.strptime(match[1],'%Y年%m月%d日')
+        item.update!(free_last_date: free_last_date)
+      end
+    end
+  end
 end
