@@ -32,6 +32,14 @@ class Item < ApplicationRecord
     category_filter.adult_filter.label_filter
   end
 
+  scope :limited_freedoms, -> do
+    where.not(free_last_date: nil)
+  end
+
+  def is_limited_free
+    free_last_date.present?
+  end
+
   class << self
     def today
       where(publication_date: Date.today)
