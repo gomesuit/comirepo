@@ -9,9 +9,17 @@ h1.pt-3 検索
           .col-9
             = f.text_field :title_cont, class: 'form-control'
         .form-group.row
+          = f.label :title_not_cont, 'タイトル（含まない）', class: 'col-3 col-form-label'
+          .col-9
+            = f.text_field :title_not_cont, class: 'form-control'
+        .form-group.row
           = f.label :label_name_eq, 'レーベル（一致）', class: 'col-3 col-form-label'
           .col-9
             = f.text_field :label_name_eq, class: 'form-control'
+        .form-group.row
+          = f.label :introductioncont, 'あらすじ（含む）', class: 'col-3 col-form-label'
+          .col-9
+            = f.text_field :introduction_cont, class: 'form-control'
         = f.submit '検索する', class: 'btn btn-primary'
 
 .pt-3
