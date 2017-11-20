@@ -20,7 +20,6 @@ ul.nav.nav-tabs.nav-fill.pt-1.h4
         hr.m-0
         .row
           - Item.published.not_limited_freedoms.where(publication_date: day).order(:title).each do |item|
-            / 著者が一人のみ表示
             .col-6.p-1
               .card.p-2
                 = link_to item_path item
