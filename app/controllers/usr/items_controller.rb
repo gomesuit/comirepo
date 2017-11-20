@@ -22,6 +22,12 @@ class Usr::ItemsController < Usr::BaseController
   def thisweek; end
   def nextweek; end
 
+  def free
+    @days = Item.published
+                .limited_freedoms
+                .free_last_dates
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show

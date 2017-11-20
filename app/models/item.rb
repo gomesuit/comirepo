@@ -64,6 +64,10 @@ class Item < ApplicationRecord
       order(publication_date: :asc).pluck('DISTINCT publication_date')
     end
 
+    def free_last_dates
+      order(free_last_date: :asc).pluck('DISTINCT free_last_date')
+    end
+
     def category_filter
       categories = [
         2293147051, # ボーイズラブコミックス

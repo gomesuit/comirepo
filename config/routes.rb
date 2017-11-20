@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get :tomorrow, to: 'items#tomorrow'
     get :thisweek, to: 'items#thisweek'
     get :nextweek, to: 'items#nextweek'
+    get :free, to: 'items#free'
 
     resources :items, only: %w[index show]
   end
