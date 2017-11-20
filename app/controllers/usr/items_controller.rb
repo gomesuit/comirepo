@@ -2,6 +2,7 @@ class Usr::ItemsController < Usr::BaseController
   before_action only: [:yesterday, :today, :tomorrow, :thisweek, :nextweek] do
     @tab = action_name.to_sym
     @days = Item.published.send(action_name)
+                .not_limited_freedoms
                 .publication_dates
     render :index
   end
@@ -11,6 +12,7 @@ class Usr::ItemsController < Usr::BaseController
   def index
     @tab = :thisweek
     @days = Item.published.thisweek
+                .not_limited_freedoms
                 .publication_dates
   end
 

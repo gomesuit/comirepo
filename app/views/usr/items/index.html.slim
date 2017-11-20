@@ -18,7 +18,7 @@ ul.nav.nav-tabs.nav-fill.pt-3.h4
           = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
         hr.mt-0
         .row
-          - Item.published.where(publication_date: day).order(:title).each do |item|
+          - Item.published.not_limited_freedoms.where(publication_date: day).order(:title).each do |item|
             / 著者が一人のみ表示
             .col-2.p-1
               .card.p-2
