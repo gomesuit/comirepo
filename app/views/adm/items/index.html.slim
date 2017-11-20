@@ -23,6 +23,7 @@ h1.pt-3 検索
         = f.submit '検索する', class: 'btn btn-primary'
 
 .pt-3
+  = paginate @items
   = page_entries_info @items
 
 .pt-3
