@@ -1,12 +1,19 @@
-h1 Listing items
+h1.pt-3 検索
 
-= search_form_for @search, url: admin_items_path do |f|
-  = f.label :title_cont, 'タイトル'
-  = f.text_field :title_cont
-  = f.submit '検索する'
+.row
+  .col-6
+    .bg-dark.text-white.rounded.p-3
+      = search_form_for @search, url: admin_items_path do |f|
+        .form-group.row
+          = f.label :title_cont, 'タイトル', class: 'col-2 col-form-label'
+          .col-10
+            = f.text_field :title_cont, class: 'form-control'
+        = f.submit '検索する', class: 'btn btn-primary'
 
-= page_entries_info @items
+.pt-3
+  = page_entries_info @items
 
+.pt-3
 table.table
   thead.thead-light
     tr

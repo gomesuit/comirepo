@@ -1,16 +1,15 @@
 doctype html
-html
+html lang="ja"
   head
     title
       | Comirepo
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_pack_tag 'application'
-  body
+  body.bg-light
     nav.navbar.navbar-dark.bg-dark
       = link_to 'Comirepo', items_path, class: 'navbar-brand'
-    .bg-light
-      .container-fluid
-        = yield
+    .container-fluid
+      = yield
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'
