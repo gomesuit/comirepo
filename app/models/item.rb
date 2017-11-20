@@ -65,7 +65,7 @@ class Item < ApplicationRecord
     end
 
     def free_last_dates
-      order(free_last_date: :asc).pluck('DISTINCT free_last_date')
+      where('free_last_date >= ?', Date.today).order(free_last_date: :asc).pluck('DISTINCT free_last_date')
     end
 
     def category_filter
