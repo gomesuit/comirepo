@@ -23,6 +23,7 @@ class Usr::ItemsController < Usr::BaseController
   def nextweek; end
 
   def free
+    @tab = action_name.to_sym
     @days = Item.published
                 .limited_freedoms
                 .free_last_dates
