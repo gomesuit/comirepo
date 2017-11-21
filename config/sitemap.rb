@@ -1,4 +1,4 @@
-SitemapGenerator::Sitemap.default_host = 'http://localhost:3000'
+SitemapGenerator::Sitemap.default_host = ENV['SITE_URL']
 
 SitemapGenerator::Sitemap.create do
   add root_path
