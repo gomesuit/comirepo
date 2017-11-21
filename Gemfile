@@ -43,6 +43,7 @@ gem 'ransack'
 
 group :production do
   gem 'mysql2'
+  gem 'google-analytics-rails'
 end
 
 group :development, :test do
