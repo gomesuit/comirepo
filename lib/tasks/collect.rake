@@ -87,6 +87,7 @@ namespace :collect do
       end
 
       # author
+      data.authors.clear
       nodes = item.get_array('ItemAttributes/Author')
       nodes.each do |node|
         author = Author.find_or_create_by(name: node)
