@@ -28,6 +28,9 @@ class Item < ApplicationRecord
   has_many :categories, through: :item_categories
   belongs_to :label, optional: true
 
+  before_validation :save_free_last_date
+  before_validation :save_label
+
   scope :published, -> do
     category_filter.adult_filter.label_filter
   end
@@ -90,6 +93,25 @@ class Item < ApplicationRecord
       labels = [135, 42, 34]
       sub = select(:id).where(label_id: labels)
       where.not(id: sub)
+    end
+  end
+
+  private
+
+  def save_free_last_date
+    reg = /(\d+年\d+月\d+日).*までの期間限定無料/
+    match = introduction.match(reg)
+    if match
+      free_last_date = Date.strptime(match[1],'%Y年%m月%d日')
+      self.free_last_date = free_last_date
+    end
+  end
+
+  def save_label
+    match = title.match(/.+\((.+?)\)/)
+    if match
+      label = Label.find_or_initialize_by(name: match[1])
+      self.label = label
     end
   end
 end
