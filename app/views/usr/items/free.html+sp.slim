@@ -20,14 +20,13 @@ ul.nav.nav-tabs.nav-fill.pt-1.h4
         p.h2.m-0.pt-3
           = "#{day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")}まで無料"
         hr.m-0
-        .row
+        .row.pt-2
           - Item.published.limited_freedoms.where(free_last_date: day).order(:title).each do |item|
-            .col-4.p-1
-              .card.p-2
-                = link_to item_path item
-                  - if item.large_image
-                    = image_tag item.large_image, class: 'card-img-top'
-                  - else
-                    = image_tag 'noimage_m.png', class: 'card-img-top'
+            .col-4.p-0.border.border-light
+              = link_to item_path item
+                - if item.large_image
+                  = image_tag item.large_image, class: 'img-fluid rounded'
+                - else
+                  = image_tag 'noimage_m.png', class: 'img-fluid rounded'
 - else
   p.h2.pt-5.text-center 発売予定の電子書籍はありません。
