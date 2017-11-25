@@ -33,6 +33,7 @@ services:
       - "127.0.0.1:3000:3000"
     links:
       - mysql
+      - redis
     environment:
       - RAILS_ENV=production
       - DB_POOL=5
@@ -44,6 +45,9 @@ services:
       - RAILS_SERVE_STATIC_FILES=true
       - GA_TRACKING_ID=xxxxxxxx
       - SITE_URL=http://127.0.0.1:3000
+      - BASIC_AUTH_USERNAME=xxxx
+      - BASIC_AUTH_PASSWORD=xxxx
+      - SIDEKIQ_REDIS_URL=redis://127.0.0.1:6379/0
     restart: always
   nginx_push:
     build:
