@@ -9,6 +9,18 @@ services:
       - MYSQL_DATABASE=comirepo
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     restart: always
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    links:
+      - rails
+    ports:
+      - "80:80"
+    environment:
+      - RAILS_HOST=rails
+      - RAILS_PORT=3000
+    restart: always
   rails:
     build:
       context: .
@@ -29,6 +41,11 @@ services:
       - GA_TRACKING_ID=xxxxxxxx
       - SITE_URL=http://127.0.0.1:3000
     restart: always
+  nginx_push:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    image: "gomesuit/comirepo_nginx:${GIT_COMMIT_ID}"
   rails_push:
     build:
       context: .
