@@ -9,7 +9,8 @@ html lang="ja"
     = analytics_init if Rails.env.production?
   body.bg-light
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-      = link_to 'Comirepo', root_path, class: 'navbar-brand'
+      .container
+        = link_to 'Comirepo', root_path, class: 'navbar-brand'
     .container
       = yield
     = javascript_include_tag 'application'
