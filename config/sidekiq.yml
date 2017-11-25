@@ -1,4 +1,4 @@
 :schedule:
-  hard_worker:
-    cron: '0 * * * * *'
-    class: HardWorker
+  collect:
+    cron: '0 0 4 * * *'
+    class: CollectWorker
