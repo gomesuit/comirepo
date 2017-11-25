@@ -1,0 +1,4 @@
+:schedule:
+  collect:
+    cron: '0 0 4 * * *'
+    class: CollectWorker

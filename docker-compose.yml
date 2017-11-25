@@ -9,6 +9,10 @@ services:
       - MYSQL_DATABASE=comirepo
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     restart: always
+  redis:
+    image: redis:2.8
+    ports:
+      - "127.0.0.1:6379:6379"
   nginx:
     build:
       context: ./docker/nginx
@@ -29,7 +33,8 @@ services:
       - "127.0.0.1:3000:3000"
     links:
       - mysql
-    environment:
+      - redis
+    environment: &rails_environment
       - RAILS_ENV=production
       - DB_POOL=5
       - DB_HOST=mysql
@@ -40,7 +45,18 @@ services:
       - RAILS_SERVE_STATIC_FILES=true
       - GA_TRACKING_ID=xxxxxxxx
       - SITE_URL=http://127.0.0.1:3000
+      - BASIC_AUTH_USERNAME=xxxx
+      - BASIC_AUTH_PASSWORD=xxxx
+      - SIDEKIQ_REDIS_URL=redis://127.0.0.1:6379/0
     restart: always
+  sidekiq:
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+    links:
+      - mysql
+      - redis
+    environment: *rails_environment
   nginx_push:
     build:
       context: ./docker/nginx

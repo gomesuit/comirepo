@@ -19,5 +19,7 @@ module Comirepo
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
     config.encoding = 'utf-8'
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -40,6 +40,8 @@ gem 'meta-tags'
 gem 'sitemap_generator'
 gem 'kaminari'
 gem 'ransack'
+gem 'sidekiq-scheduler'
+gem 'sinatra'
 
 group :production do
   gem 'mysql2'
@@ -53,6 +55,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'foreman'
 end
 
 group :development do
