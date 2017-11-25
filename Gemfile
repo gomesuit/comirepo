@@ -40,6 +40,7 @@ gem 'meta-tags'
 gem 'sitemap_generator'
 gem 'kaminari'
 gem 'ransack'
+gem 'sidekiq-scheduler'
 
 group :production do
   gem 'mysql2'
