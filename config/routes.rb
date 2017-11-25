@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   end
 
   scope module: :adm, as: :admin, path: :admin do
+    if ENV['BASIC_AUTH_USERNAME'].present? && ENV['BASIC_AUTH_PASSWORD'].present?
+      Sidekiq::Web.use Rack::Auth::Basic do |name, password|
+        name == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']
+      end
+    end
     mount Sidekiq::Web, at: '/sidekiq'
 
     root 'items#index'
