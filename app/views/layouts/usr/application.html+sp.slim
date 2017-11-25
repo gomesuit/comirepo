@@ -12,7 +12,7 @@ html lang="ja"
       = link_to 'Comirepo', root_path, class: 'navbar-brand'
     .container
       = yield
-      hr
+      hr.mt-5
         p.h5 このサイトについて
         = render 'layouts/usr/notice_content'
     = javascript_include_tag 'application'
