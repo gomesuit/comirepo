@@ -9,6 +9,10 @@ services:
       - MYSQL_DATABASE=comirepo
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     restart: always
+  redis:
+    image: redis:2.8
+    ports:
+      - "127.0.0.1:6379:6379"
   nginx:
     build:
       context: ./docker/nginx
