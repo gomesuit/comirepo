@@ -10,14 +10,7 @@ html lang="ja"
   body.bg-light
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       = link_to 'Comirepo', root_path, class: 'navbar-brand'
-      /button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'
-      /  span.navbar-toggler-icon
-      /#navbarSupportedContent.collapse.navbar-collapse
-      /  ul.navbar-nav.mr-auto
-      /    /li.nav-item.active
-      /    li.nav-item
-      /      = link_to '期間限定無料', free_path, class: 'nav-link'
     .container
-        = yield
+      = yield
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'
