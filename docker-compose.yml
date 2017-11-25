@@ -47,7 +47,7 @@ services:
       - SITE_URL=http://127.0.0.1:3000
       - BASIC_AUTH_USERNAME=xxxx
       - BASIC_AUTH_PASSWORD=xxxx
-      - SIDEKIQ_REDIS_URL=redis://127.0.0.1:6379/0
+      - SIDEKIQ_REDIS_URL=redis://redis:6379/0
     restart: always
   sidekiq:
     build:
