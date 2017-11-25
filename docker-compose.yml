@@ -53,6 +53,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile
+    command: bundle exec sidekiq
     links:
       - mysql
       - redis
