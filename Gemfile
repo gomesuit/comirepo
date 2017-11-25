@@ -41,6 +41,7 @@ gem 'sitemap_generator'
 gem 'kaminari'
 gem 'ransack'
 gem 'sidekiq-scheduler'
+gem 'sinatra'
 
 group :production do
   gem 'mysql2'
