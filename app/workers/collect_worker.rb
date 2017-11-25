@@ -76,6 +76,7 @@ class CollectWorker
       pp data
 
       # category
+      data.categories.clear
       nodes = item.get_elements('BrowseNodes/BrowseNode')
       nodes.each do |node|
         category = Category.find_or_create_by(
