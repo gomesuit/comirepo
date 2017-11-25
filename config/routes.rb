@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   scope module: :usr do
     root 'items#index'
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :adm, as: :admin, path: :admin do
+    mount Sidekiq::Web, at: '/sidekiq'
+
     root 'items#index'
 
     resources :items
