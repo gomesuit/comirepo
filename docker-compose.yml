@@ -34,7 +34,7 @@ services:
     links:
       - mysql
       - redis
-    environment:
+    environment: &rails_environment
       - RAILS_ENV=production
       - DB_POOL=5
       - DB_HOST=mysql
@@ -49,6 +49,14 @@ services:
       - BASIC_AUTH_PASSWORD=xxxx
       - SIDEKIQ_REDIS_URL=redis://127.0.0.1:6379/0
     restart: always
+  sidekiq:
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+    links:
+      - mysql
+      - redis
+    environment: *rails_environment
   nginx_push:
     build:
       context: ./docker/nginx
