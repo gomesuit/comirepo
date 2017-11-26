@@ -1,0 +1,2 @@
+module Adm::LabelsHelper
+end
