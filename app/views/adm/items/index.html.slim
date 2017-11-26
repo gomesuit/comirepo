@@ -58,7 +58,8 @@ table.table
           - item.categories.each do |category|
             p = "#{category.name}[#{category.browse_node_id}]"
         td.align-middle
-          = link_to item.label&.name, edit_admin_label_path(item.label)
+          - if item.label
+            = link_to item.label.name, edit_admin_label_path(item.label)
         td.align-middle = item.is_adult_content
         td.align-middle = item.adult_score.round 2
         td.align-middle = item.is_racy_content
