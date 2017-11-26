@@ -1,8 +1,12 @@
-h1 Listing adm_labels
+.pt-3
+  = paginate @labels
+  = page_entries_info @labels
 
-table
-  thead
+.pt-3
+table.table
+  thead.thead-light
     tr
+      th id
       th name
       th
       th
@@ -11,11 +15,7 @@ table
   tbody
     - @labels.each do |label|
       tr
-        td = label.name
-        td = link_to 'Show', admin_label_path(label)
-        td = link_to 'Edit', edit_admin_label_path(label)
-        td = link_to 'Destroy', admin_label_path(label), data: { confirm: 'Are you sure?' }, method: :delete
+        td = label.id
+        td = link_to label.name, edit_admin_label_path(label)
 
-br
-
-= link_to 'New Label', new_admin_label_path
+= paginate @labels

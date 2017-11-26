@@ -4,7 +4,9 @@ class Adm::LabelsController < Adm::BaseController
   # GET /adm/labels
   # GET /adm/labels.json
   def index
-    @labels = Label.all
+    @search = Label.search(params[:q])
+    @labels = @search.result
+                     .page(params[:page])
   end
 
   # GET /adm/labels/1
@@ -42,7 +44,7 @@ class Adm::LabelsController < Adm::BaseController
   def update
     respond_to do |format|
       if @label.update(label_params)
-        format.html { redirect_to @label, notice: 'Label was successfully updated.' }
+        format.html { redirect_to edit_admin_label_url(@label), notice: 'Label was successfully updated.' }
         format.json { render :show, status: :ok, location: @label }
       else
         format.html { render :edit }
@@ -69,6 +71,6 @@ class Adm::LabelsController < Adm::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def label_params
-      params.fetch(:label, {})
+      params.require(:label).permit(:name)
     end
 end
