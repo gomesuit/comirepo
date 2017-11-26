@@ -3,17 +3,19 @@ h1 Listing adm_labels
 table
   thead
     tr
+      th name
       th
       th
       th
 
   tbody
-    - @adm_labels.each do |adm_label|
+    - @labels.each do |label|
       tr
-        td = link_to 'Show', adm_label
-        td = link_to 'Edit', edit_adm_label_path(adm_label)
-        td = link_to 'Destroy', adm_label, data: { confirm: 'Are you sure?' }, method: :delete
+        td = label.name
+        td = link_to 'Show', admin_label_path(label)
+        td = link_to 'Edit', edit_admin_label_path(label)
+        td = link_to 'Destroy', admin_label_path(label), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Label', new_adm_label_path
+= link_to 'New Label', new_admin_label_path

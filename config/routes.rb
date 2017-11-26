@@ -28,5 +28,6 @@ Rails.application.routes.draw do
     resources :items
     resources :authors
     resources :categories
+    resources :labels
   end
 end
