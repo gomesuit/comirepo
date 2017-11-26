@@ -71,6 +71,6 @@ class Adm::LabelsController < Adm::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def label_params
-      params.require(:label).permit(:name)
+      params.require(:label).permit(:name, :hided)
     end
 end
