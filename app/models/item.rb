@@ -90,7 +90,7 @@ class Item < ApplicationRecord
     end
 
     def label_filter
-      labels = [135, 42, 34]
+      labels = Label.hided.ids
       sub = select(:id).where(label_id: labels)
       where.not(id: sub)
     end
