@@ -79,6 +79,7 @@ class Item < ApplicationRecord
         3686141051, # ロマンス
         2291905051, # ビジネス・経済
         2291948051, # 経営学
+        3686143051, # スポーツ
         3418785051  # コミック雑誌
       ]
       sub = select(:id).joins(:categories).where(categories: { browse_node_id: categories })
