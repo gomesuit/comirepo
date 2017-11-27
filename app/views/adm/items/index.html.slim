@@ -54,6 +54,12 @@ h1.pt-3 検索
               label.form-check-label.ml-3
                 = f.radio_button :is_racy_content_eq, false, class: 'form-check-input'
                 | false
+        .form-group.row
+          = f.label :publication_date, '発売日', class: 'col-3 col-form-label'
+          .col-9
+            = f.date_select :publication_date_gteq, { start_year: 2017, include_blank: true }, { class: 'form-control', style: 'width: auto;display: inline-block;'}
+            | 〜
+            = f.date_select :publication_date_lteq, { start_year: 2017, include_blank: true }, { class: 'form-control', style: 'width: auto;display: inline-block;'}
         = f.submit '検索する', class: 'btn btn-primary'
 
 .pt-3
