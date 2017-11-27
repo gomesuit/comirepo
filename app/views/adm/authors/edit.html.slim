@@ -16,4 +16,15 @@
         tr
           th name
           td = f.text_field :name, readonly: true
+        tr
+          th hided
+          td
+            .form-check
+              label.form-check-label
+                = f.radio_button :hided, :hided, checked: @author.hided?, class: 'form-check-input'
+                | hided
+            .form-check
+              label.form-check-label
+                = f.radio_button :hided, :displayed, checked: @author.displayed?, class: 'form-check-input'
+                | displayed
     = f.submit '更新', class: 'btn btn-primary'

@@ -10,11 +10,13 @@ table.table
     tr
       th = sort_link @search, :id, 'id'
       th = sort_link @search, :name, 'name'
+      th = sort_link @search, :hided, 'hided'
 
   tbody
     - @authors.each do |author|
       tr
         td = author.id
         td = link_to author.name, edit_admin_author_path(author)
+        td = author.hided
 
 = paginate @authors

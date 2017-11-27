@@ -32,7 +32,7 @@ class Item < ApplicationRecord
   before_validation :save_label
 
   scope :published, -> do
-    category_filter.adult_filter.label_filter
+    category_filter.adult_filter.label_filter.author_filter
   end
 
   scope :limited_freedoms, -> { where.not(free_last_date: nil) }
@@ -94,6 +94,12 @@ class Item < ApplicationRecord
     def label_filter
       labels = Label.hided.ids
       sub = select(:id).where(label_id: labels)
+      where.not(id: sub)
+    end
+
+    def author_filter
+      authors = Author.hided.ids
+      sub = select(:id).joins(:authors).where(authors: { id: authors })
       where.not(id: sub)
     end
   end

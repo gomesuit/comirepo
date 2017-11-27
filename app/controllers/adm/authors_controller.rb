@@ -43,7 +43,7 @@ class Adm::AuthorsController < Adm::BaseController
   def update
     respond_to do |format|
       if @author.update(author_params)
-        format.html { redirect_to @author, notice: 'Author was successfully updated.' }
+        format.html { redirect_to edit_admin_author_url(@author), notice: 'Author was successfully updated.' }
         format.json { render :show, status: :ok, location: @author }
       else
         format.html { render :edit }
@@ -63,13 +63,11 @@ class Adm::AuthorsController < Adm::BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_author
       @author = Author.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def author_params
-      params.fetch(:author, {})
+      params.require(:author).permit(:hided)
     end
 end
