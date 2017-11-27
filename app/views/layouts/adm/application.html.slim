@@ -20,6 +20,8 @@ html lang="ja"
           li.nav-item
             = link_to 'Label', admin_labels_path, class: 'nav-link'
     .container-fluid
+      - if notice.present?
+        p.alert.alert-success = notice
       = yield
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'
