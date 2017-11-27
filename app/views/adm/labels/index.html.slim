@@ -6,16 +6,15 @@
 table.table
   thead.thead-light
     tr
-      th id
-      th name
-      th
-      th
-      th
+      th = sort_link @search, :id, 'id'
+      th = sort_link @search, :name, 'name'
+      th = sort_link @search, :hided, 'hided'
 
   tbody
     - @labels.each do |label|
       tr
         td = label.id
         td = link_to label.name, edit_admin_label_path(label)
+        td = label.hided
 
 = paginate @labels

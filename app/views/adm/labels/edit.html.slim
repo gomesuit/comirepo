@@ -1,8 +1,30 @@
-h1 Editing label
+.container
+  .pt-3
+  = form_for [:admin, @label] do |f|
+    - if @label.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@label.errors.count, "error")} prohibited this label from being saved:"
+        ul
+          - @label.errors.full_messages.each do |message|
+            li = message
 
-== render 'form'
-
-=> link_to 'Show', admin_label_path(@label)
-'|
-=< link_to 'Back', admin_labels_path
-
+    table.table.table-bordered
+      tbody
+        tr
+          th id
+          td = @label.id
+        tr
+          th name
+          td = f.text_field :name, readonly: true
+        tr
+          th hided
+          td
+            .form-check
+              label.form-check-label
+                = f.radio_button :hided, :hided, checked: @label.hided?, class: 'form-check-input'
+                | hided
+            .form-check
+              label.form-check-label
+                = f.radio_button :hided, :displayed, checked: @label.displayed?, class: 'form-check-input'
+                | displayed
+    = f.submit '更新', class: 'btn btn-primary'
