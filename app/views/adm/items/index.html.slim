@@ -21,6 +21,10 @@ h1.pt-3 検索
           .col-9
             = f.collection_select :label_id_eq, Label.all, :id, :name, { include_blank: '指定なし' }, { class: 'form-control' }
         .form-group.row
+          = f.label :authors_name_cont, '著者（含む）', class: 'col-3 col-form-label'
+          .col-9
+            = f.text_field :authors_name_cont, class: 'form-control'
+        .form-group.row
           = f.label :introduction_cont, 'あらすじ（含む）', class: 'col-3 col-form-label'
           .col-9
             = f.text_field :introduction_cont, class: 'form-control'
@@ -75,6 +79,7 @@ table.table
       th title
       th = sort_link @search, :publication_date, 'publication_date'
       th categories
+      th authors
       th label
       th is_adult_content
       th = sort_link @search, :adult_score, 'adult_score'
@@ -99,6 +104,9 @@ table.table
         td.align-middle
           - item.categories.each do |category|
             p = link_to "#{category.name}[#{category.browse_node_id}]", edit_admin_category_path(category)
+        td.align-middle
+          - item.authors.each do |author|
+            p = link_to author.name, edit_admin_author_path(author)
         td.align-middle
           - if item.label
             = link_to item.label.name, edit_admin_label_path(item.label)
