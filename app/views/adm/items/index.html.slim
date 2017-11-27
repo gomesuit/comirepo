@@ -17,7 +17,11 @@ h1.pt-3 検索
           .col-9
             = f.text_field :label_name_eq, class: 'form-control'
         .form-group.row
-          = f.label :introductioncont, 'あらすじ（含む）', class: 'col-3 col-form-label'
+          = f.label :label_id_eq, 'レーベル', class: 'col-3 col-form-label'
+          .col-9
+            = f.collection_select :label_id_eq, Label.all, :id, :name, { include_blank: '指定なし' }, { class: 'form-control' }
+        .form-group.row
+          = f.label :introduction_cont, 'あらすじ（含む）', class: 'col-3 col-form-label'
           .col-9
             = f.text_field :introduction_cont, class: 'form-control'
         = f.submit '検索する', class: 'btn btn-primary'
@@ -40,6 +44,8 @@ table.table
       th = sort_link @search, :adult_score, 'adult_score'
       th is_racy_content
       th = sort_link @search, :racy_score, 'racy_score'
+      th = sort_link @search, :created_at, 'created_at'
+      th = sort_link @search, :updated_at, 'updated_at'
       th destroy
 
   tbody
@@ -64,6 +70,8 @@ table.table
         td.align-middle = item.adult_score.round 2
         td.align-middle = item.is_racy_content
         td.align-middle = item.racy_score.round 2
+        td.align-middle = l item.created_at, format: :short
+        td.align-middle = l item.updated_at, format: :short
         td.align-middle = link_to 'Destroy', admin_item_path(item), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
 
 = paginate @items

@@ -17,6 +17,7 @@ module Comirepo
     config.generators.template_engine = :slim
 
     config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
     config.active_record.default_timezone = :local
     config.encoding = 'utf-8'
 

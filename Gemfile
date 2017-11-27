@@ -42,6 +42,7 @@ gem 'kaminari'
 gem 'ransack'
 gem 'sidekiq-scheduler'
 gem 'sinatra'
+gem 'rails-i18n', '~> 5.0.0'
 
 group :production do
   gem 'mysql2'
