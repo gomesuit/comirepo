@@ -62,7 +62,7 @@ table.table
         td.align-middle = item.publication_date
         td.align-middle
           - item.categories.each do |category|
-            p = "#{category.name}[#{category.browse_node_id}]"
+            p = link_to "#{category.name}[#{category.browse_node_id}]", edit_admin_category_path(category)
         td.align-middle
           - if item.label
             = link_to item.label.name, edit_admin_label_path(item.label)
