@@ -12,4 +12,5 @@
 class Author < ApplicationRecord
   has_many :item_authors, dependent: :destroy
   has_many :items, through: :item_authors
+  enum hided: { hided: true, displayed: false }
 end
