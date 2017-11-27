@@ -28,6 +28,32 @@ h1.pt-3 検索
           = f.label :categories_id_in, 'カテゴリ', class: 'col-3 col-form-label'
           .col-9
             = f.collection_select :categories_id_in, Category.all, :id, :name, { include_blank: '指定なし' }, { class: 'form-control' }
+        .form-group.row
+          = f.label :is_adult_content_eq, 'アダルトコンテンツ', class: 'col-3 col-form-label'
+          .col-9
+            .form-check.form-check-inline
+              label.form-check-label.ml-3
+                = f.radio_button :is_adult_content_eq, '', checked: true, class: 'form-check-input'
+                | 指定なし
+              label.form-check-label.ml-3
+                = f.radio_button :is_adult_content_eq, true, class: 'form-check-input'
+                | true
+              label.form-check-label.ml-3
+                = f.radio_button :is_adult_content_eq, false, class: 'form-check-input'
+                | false
+        .form-group.row
+          = f.label :is_racy_content_eq, '卑猥なコンテンツ', class: 'col-3 col-form-label'
+          .col-9
+            .form-check.form-check-inline
+              label.form-check-label.ml-3
+                = f.radio_button :is_racy_content_eq, '', checked: true, class: 'form-check-input'
+                | 指定なし
+              label.form-check-label.ml-3
+                = f.radio_button :is_racy_content_eq, true, class: 'form-check-input'
+                | true
+              label.form-check-label.ml-3
+                = f.radio_button :is_racy_content_eq, false, class: 'form-check-input'
+                | false
         = f.submit '検索する', class: 'btn btn-primary'
 
 .pt-3
