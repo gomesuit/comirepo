@@ -1,6 +1,8 @@
 class CollectWorker
   include Sidekiq::Worker
 
+  sidekiq_options retry: 0
+
   def retry_on_error(times: 3)
     try = 0
     begin

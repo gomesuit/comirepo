@@ -25,7 +25,11 @@ Rails.application.routes.draw do
 
     root 'items#index'
 
-    resources :items
+    resources :items do
+      member do
+        post :ecs
+      end
+    end
     resources :authors
     resources :categories
     resources :labels

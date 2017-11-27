@@ -1,5 +1,5 @@
 class Adm::ItemsController < Adm::BaseController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :ecs]
 
   # GET /items
   # GET /items.json
@@ -46,6 +46,11 @@ class Adm::ItemsController < Adm::BaseController
       format.html { redirect_to admin_items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def ecs
+    UpdateItemWorker.perform_async [@item.asin]
+    redirect_to admin_item_url(@item), notice: '更新Jobの追加が正常終了しました。'
   end
 
   private
