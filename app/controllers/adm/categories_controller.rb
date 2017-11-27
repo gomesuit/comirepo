@@ -58,6 +58,6 @@ class Adm::CategoriesController < Adm::BaseController
     end
 
     def category_params
-      params.require(:category).permit()
+      params.require(:category).permit(:hided)
     end
 end

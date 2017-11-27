@@ -72,17 +72,18 @@ class Item < ApplicationRecord
     end
 
     def category_filter
-      categories = [
-        2293147051, # ボーイズラブコミックス
-        12075851,   # ボーイズラブコミックス
-        3432431051, # ティーンズラブ
-        3686141051, # ロマンス
-        2291905051, # ビジネス・経済
-        2291948051, # 経営学
-        3686143051, # スポーツ
-        3418785051  # コミック雑誌
-      ]
-      sub = select(:id).joins(:categories).where(categories: { browse_node_id: categories })
+      categories = Category.hided.ids
+      # categories = [
+      #   2293147051, # ボーイズラブコミックス
+      #   12075851,   # ボーイズラブコミックス
+      #   3432431051, # ティーンズラブ
+      #   3686141051, # ロマンス
+      #   2291905051, # ビジネス・経済
+      #   2291948051, # 経営学
+      #   3686143051, # スポーツ
+      #   3418785051  # コミック雑誌
+      # ]
+      sub = select(:id).joins(:categories).where(categories: { id: categories })
       where.not(id: sub)
     end
 
