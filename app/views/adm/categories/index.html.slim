@@ -4,8 +4,8 @@ h1.pt-3 カテゴリ一覧
 table.table
   thead.thead-light
     tr
-      th id
-      th name
+      th = sort_link @search, :id, 'id'
+      th = sort_link @search, :name, 'name'
       th browse_node_id
 
   tbody

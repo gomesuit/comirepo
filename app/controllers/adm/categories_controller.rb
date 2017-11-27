@@ -4,7 +4,8 @@ class Adm::CategoriesController < Adm::BaseController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @search = Category.search(params[:q])
+    @categories = @search.result
   end
 
   # GET /categories/1
