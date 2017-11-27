@@ -47,7 +47,7 @@ table.table
       tr height=200
         td.align-middle = item.id
         td.align-middle
-          = link_to admin_item_path(item)
+          = link_to edit_admin_item_path(item)
             - if item.medium_image
               = image_tag item.medium_image, width: 120
             - else
