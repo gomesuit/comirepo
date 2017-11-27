@@ -6,6 +6,7 @@
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  hided      :boolean          default(FALSE), not null
 #
 
 require 'test_helper'
