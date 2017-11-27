@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126165740) do
+ActiveRecord::Schema.define(version: 20171127165444) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name", null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20171126165740) do
     t.string "browse_node_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "hided", default: false, null: false
   end
 
   create_table "item_authors", force: :cascade do |t|

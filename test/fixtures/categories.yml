@@ -7,6 +7,7 @@
 #  browse_node_id :string           not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  hided          :boolean          default("displayed"), not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
