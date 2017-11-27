@@ -1,7 +1,7 @@
 class UpdateItemWorker
   include Sidekiq::Worker
 
-  sidekiq_options retry: 5
+  sidekiq_options retry: 10
 
   def analyze_image(url)
     uri = URI('https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze')
