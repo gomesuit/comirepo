@@ -23,6 +23,7 @@ html lang="ja"
             = link_to 'sidekiq', admin_sidekiq_web_path, class: 'nav-link'
     .container-fluid
       - if notice.present?
+        .pt-3
         p.alert.alert-success = notice
       = yield
     = javascript_include_tag 'application'

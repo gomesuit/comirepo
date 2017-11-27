@@ -1,8 +1,22 @@
-h1 Editing category
+.container
+  .pt-3
+  = form_for [:admin, @category] do |f|
+    - if @category.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
+        ul
+          - @category.errors.full_messages.each do |message|
+            li = message
 
-== render 'form'
-
-=> link_to 'Show', @category
-'|
-=< link_to 'Back', categories_path
-
+    table.table.table-bordered
+      tbody
+        tr
+          th id
+          td = @category.id
+        tr
+          th name
+          td = f.text_field :name, readonly: true
+        tr
+          th browse_node_id
+          td = f.text_field :browse_node_id, readonly: true
+    = f.submit '更新', class: 'btn btn-primary'

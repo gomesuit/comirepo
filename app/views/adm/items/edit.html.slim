@@ -1,45 +1,49 @@
-= link_to '更新', ecs_admin_item_path(@item), data: { confirm: 'Are you sure?' }, method: :post, class: 'btn btn-danger'
+.container
+  .pt-3
+  = link_to '更新', ecs_admin_item_path(@item), data: { confirm: 'Are you sure?' }, method: :post, class: 'btn btn-primary'
 
-table.table
-  tbody
-    tr
-      td id
-      td = @item.id
-    tr
-      td asin
-      td = @item.asin
-    tr
-      td title
-      td = @item.title
-    tr
-      td large_image
-      td = image_tag @item.large_image
-    tr
-      td introduction
-      td == CGI.unescapeHTML @item.introduction
-    tr
-      td authors
-      td
-        - @item.authors.each do |author|
-          p = author.name
-    tr
-      td categories
-      td
-        - @item.categories.each do |category|
-          p = category.name
-    tr
-      td is_adult_content
-      td = @item.is_adult_content
-    tr
-      td adult_score
-      td = @item.adult_score
-    tr
-      td is_racy_content
-      td = @item.is_racy_content
-    tr
-      td racy_score
-      td = @item.racy_score
-
-=> link_to 'Edit', edit_admin_item_path(@item)
-'|
-=< link_to 'Back', admin_items_path
+  .pt-3
+  table.table.table-bordered
+    tbody
+      tr
+        th id
+        td = @item.id
+      tr
+        th asin
+        td = @item.asin
+      tr
+        th title
+        td = @item.title
+      tr
+        th large_image
+        td = image_tag @item.large_image
+      tr
+        th introduction
+        td == CGI.unescapeHTML @item.introduction
+      tr
+        th authors
+        td
+          - @item.authors.each do |author|
+            p = author.name
+      tr
+        th label
+        td
+          - if @item.label
+            = link_to @item.label.name, edit_admin_label_path(@item.label)
+      tr
+        th categories
+        td
+          - @item.categories.each do |category|
+            p = link_to category.name, edit_admin_category_path(category)
+      tr
+        th is_adult_content
+        td = @item.is_adult_content
+      tr
+        th adult_score
+        td = @item.adult_score
+      tr
+        th is_racy_content
+        td = @item.is_racy_content
+      tr
+        th racy_score
+        td = @item.racy_score
