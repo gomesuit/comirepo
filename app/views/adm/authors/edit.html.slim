@@ -1,11 +1,19 @@
-h1 Editing author
+.container
+  .pt-3
+  = form_for [:admin, @author] do |f|
+    - if @author.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@author.errors.count, "error")} prohibited this author from being saved:"
+        ul
+          - @author.errors.full_messages.each do |message|
+            li = message
 
-= form_for @author do |f|
-  - if @author.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@author.errors.count, "error")} prohibited this author from being saved:"
-      ul
-        - @author.errors.full_messages.each do |message|
-          li = message
-
-  .actions = f.submit
+    table.table.table-bordered
+      tbody
+        tr
+          th id
+          td = @author.id
+        tr
+          th name
+          td = f.text_field :name, readonly: true
+    = f.submit '更新', class: 'btn btn-primary'

@@ -4,7 +4,8 @@ class Adm::AuthorsController < Adm::BaseController
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
+    @search = Author.ransack(params[:q])
+    @authors = @search.result.page(params[:page])
   end
 
   # GET /authors/1

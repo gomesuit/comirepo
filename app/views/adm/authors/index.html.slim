@@ -1,17 +1,20 @@
-h1 Listing authors
+h1.pt-3 著者一覧
 
-table
-  thead
+.pt-3
+  = paginate @authors
+  = page_entries_info @authors
+
+.pt-3
+table.table
+  thead.thead-light
     tr
-      th
-      th
-      th
+      th = sort_link @search, :id, 'id'
+      th = sort_link @search, :name, 'name'
 
   tbody
     - @authors.each do |author|
       tr
         td = author.id
-        td = author.name
-        td = link_to 'Show', admin_author_path(author)
-        td = link_to 'Edit', edit_admin_author_path(author)
-        td = link_to 'Destroy', admin_author_path(author), data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to author.name, edit_admin_author_path(author)
+
+= paginate @authors
