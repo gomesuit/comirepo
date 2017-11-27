@@ -7,6 +7,7 @@ table.table
       th = sort_link @search, :id, 'id'
       th = sort_link @search, :name, 'name'
       th browse_node_id
+      th = sort_link @search, :hided, 'hided'
 
   tbody
     - @categories.each do |category|
@@ -14,3 +15,4 @@ table.table
         td = category.id
         td = link_to category.name, edit_admin_category_path(category)
         td = category.browse_node_id
+        td = category.hided
