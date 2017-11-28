@@ -35,8 +35,15 @@ class Item < ApplicationRecord
                     :save_is_magazine,
                     :save_is_novel
 
+  enum is_magazine: { is_magazine: true, is_not_magazine: false }
+  enum is_novel: { is_novel: true, is_not_novel: false }
+
   scope :published, -> do
-    category_filter.adult_filter.label_filter.author_filter
+    category_filter.adult_filter
+                   .label_filter
+                   .author_filter
+                   .is_not_magazine
+                   .is_not_novel
   end
 
   scope :limited_freedoms, -> { where.not(free_last_date: nil) }
@@ -128,10 +135,10 @@ class Item < ApplicationRecord
   end
 
   def save_is_magazine
-    self.is_magazine = title.include?('[雑誌]')
+    self.is_magazine = :is_magazine if title.include?('[雑誌]')
   end
 
   def save_is_novel
-    self.is_novel = title.include?('文庫')
+    self.is_novel = :is_novel if title.include?('文庫')
   end
 end
