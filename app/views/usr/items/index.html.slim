@@ -16,30 +16,19 @@ ul.nav.nav-tabs.nav-fill.pt-3.h4
   ul.p-0
     - @days.each do |day|
       li style='list-style-type: none;'
-        p.display-4.m-0.pt-4
+        p.display-4.m-0.pt-4.text-center
           = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
         hr.mt-0
-        .row
-          - Item.published.not_limited_freedoms.where(publication_date: day).order(:title).each do |item|
-            .col-2.p-1
-              .card.p-2
-                = link_to item_path item
-                  - if item.large_image
-                    = image_tag item.large_image, class: 'card-img-top'
-                  - else
-                    = image_tag 'noimage_m.png', class: 'card-img-top'
-                .card-body.p-1
-                  p.card-title.m-0 = item.title
         .swiper-container
           .swiper-wrapper
             - Item.published.not_limited_freedoms.where(publication_date: day).order(:title).each do |item|
               .swiper-slide
-                = link_to item_path item
+                = link_to item_path(item), target: '_blank'
                   - if item.large_image
                     = image_tag item.large_image, class: 'card-img-top'
                   - else
                     = image_tag 'noimage_m.png', class: 'card-img-top'
-          .swiper-pagination
+          /.swiper-pagination
           .swiper-button-next
           .swiper-button-prev
           .swiper-scrollbar

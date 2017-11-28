@@ -1,6 +1,6 @@
 var itemsSwiper = new Swiper ('.swiper-container', {
-  slidesPerView: 5,
-  spaceBetween: 30,
+  slidesPerView: 5.5,
+  spaceBetween: 10,
   slidesPerColumn: 2,
   //centeredSlides: true,
   //loop: true,
@@ -10,7 +10,7 @@ var itemsSwiper = new Swiper ('.swiper-container', {
   },
   scrollbar: {
     el: '.swiper-scrollbar',
-    hide: true,
+    draggable: true,
   },
   navigation: {
     nextEl: '.swiper-button-next',
