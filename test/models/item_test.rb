@@ -19,6 +19,7 @@
 #  updated_at       :datetime         not null
 #  label_id         :integer
 #  free_last_date   :date
+#  is_magazine      :boolean          default(FALSE), not null
 #
 
 require 'test_helper'

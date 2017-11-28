@@ -19,6 +19,7 @@
 #  updated_at       :datetime         not null
 #  label_id         :integer
 #  free_last_date   :date
+#  is_magazine      :boolean          default(FALSE), not null
 #
 
 class Item < ApplicationRecord
@@ -30,6 +31,7 @@ class Item < ApplicationRecord
 
   before_validation :save_free_last_date
   before_validation :save_label
+  before_validation :save_is_magazine
 
   scope :published, -> do
     category_filter.adult_filter.label_filter.author_filter
@@ -121,5 +123,9 @@ class Item < ApplicationRecord
       label = Label.find_or_initialize_by(name: match[1])
       self.label = label
     end
+  end
+
+  def save_is_magazine
+    self.is_magazine = title.include?('[雑誌]')
   end
 end
