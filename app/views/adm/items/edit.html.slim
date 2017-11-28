@@ -59,9 +59,6 @@
           td = @item.adult_score
         tr
           th is_racy_content
-          td = @item.is_racy_content
-        tr
-          th is_racy_content
           td
             .form-check
               label.form-check-label
@@ -74,4 +71,10 @@
         tr
           th racy_score
           td = @item.racy_score
+        tr
+          th is_magazine
+          td = @item.is_magazine
+        tr
+          th is_novel
+          td = @item.is_novel
     = f.submit '更新', class: 'btn btn-primary'
