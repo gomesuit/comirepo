@@ -29,7 +29,7 @@ class Adm::ItemsController < Adm::BaseController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to admin_item_url(@item), notice: 'Item was successfully updated.' }
+        format.html { redirect_to edit_admin_item_url(@item), notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -55,13 +55,11 @@ class Adm::ItemsController < Adm::BaseController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.fetch(:item, {})
+      params.require(:item).permit(:is_adult_content)
     end
 end
