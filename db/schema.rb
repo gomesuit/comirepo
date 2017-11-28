@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128170643) do
+ActiveRecord::Schema.define(version: 20171128171729) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20171128170643) do
     t.integer "label_id"
     t.date "free_last_date"
     t.boolean "is_magazine", default: false, null: false
+    t.boolean "is_novel", default: false, null: false
     t.index ["label_id"], name: "index_items_on_label_id"
   end
 

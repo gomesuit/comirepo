@@ -20,6 +20,7 @@
 #  label_id         :integer
 #  free_last_date   :date
 #  is_magazine      :boolean          default(FALSE), not null
+#  is_novel         :boolean          default(FALSE), not null
 #
 
 class Item < ApplicationRecord
@@ -29,9 +30,10 @@ class Item < ApplicationRecord
   has_many :categories, through: :item_categories
   belongs_to :label, optional: true
 
-  before_validation :save_free_last_date
-  before_validation :save_label
-  before_validation :save_is_magazine
+  before_validation :save_free_last_date,
+                    :save_label,
+                    :save_is_magazine,
+                    :save_is_novel
 
   scope :published, -> do
     category_filter.adult_filter.label_filter.author_filter
@@ -127,5 +129,9 @@ class Item < ApplicationRecord
 
   def save_is_magazine
     self.is_magazine = title.include?('[雑誌]')
+  end
+
+  def save_is_novel
+    self.is_novel = title.include?('文庫')
   end
 end
