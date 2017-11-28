@@ -11,4 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require swiper/dist/js/swiper.min
 //= require_tree .
+
