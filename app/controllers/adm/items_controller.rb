@@ -60,6 +60,6 @@ class Adm::ItemsController < Adm::BaseController
     end
 
     def item_params
-      params.require(:item).permit(:is_adult_content)
+      params.require(:item).permit(:is_adult_content, :is_racy_content)
     end
 end
