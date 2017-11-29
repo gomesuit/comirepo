@@ -34,4 +34,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :labels
   end
+
+  get '*path', controller: 'usr/base', action: 'render_404'
 end
