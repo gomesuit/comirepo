@@ -5,7 +5,7 @@ html lang="ja"
       | Comirepo
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
-    = stylesheet_pack_tag 'application'
+    = stylesheet_pack_tag 'adm/application'
   body.bg-light
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       = link_to 'Comirepo', admin_root_path, class: 'navbar-brand'
@@ -29,4 +29,4 @@ html lang="ja"
         p.alert.alert-success = notice
       = yield
     = javascript_include_tag 'application'
-    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'adm/application'

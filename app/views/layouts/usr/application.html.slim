@@ -5,7 +5,7 @@ html lang="ja"
     meta name='viewport' content="width=device-width,initial-scale=1"
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
-    = stylesheet_pack_tag 'application'
+    = stylesheet_pack_tag 'usr/pc/application'
     = analytics_init if Rails.env.production?
   body.bg-light
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
@@ -19,4 +19,4 @@ html lang="ja"
             p.h5 このサイトについて
             = render 'layouts/usr/notice_content'
     = javascript_include_tag 'application'
-    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'usr/pc/application'
