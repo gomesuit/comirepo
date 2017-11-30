@@ -43,9 +43,9 @@ gem 'ransack'
 gem 'sidekiq-scheduler'
 gem 'sinatra'
 gem 'rails-i18n', '~> 5.0.0'
+gem 'mysql2'
 
 group :production do
-  gem 'mysql2'
   gem 'google-analytics-rails'
 end
 
