@@ -11,13 +11,15 @@ services:
     restart: always
   redis:
     image: redis:2.8
-    #  ports:
-    #    - "127.0.0.1:6379:6379"
+    ports:
+      - "127.0.0.1:6379:6379"
   rails:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile.dev
-    command: bin/rails s
+    command: bin/rails s -P /dev/null
+    env_file:
+      - .env
     ports:
       - 3000:3000
     links:
@@ -34,6 +36,21 @@ services:
       - .:/home/rails/app
     depends_on:
       - webpacker
+    stdin_open: true
+    tty: true
+  sidekiq:
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+    command: bundle exec sidekiq
+    env_file:
+      - .env
+    links:
+      - mysql
+      - redis
+    environment: *rails_environment
+    volumes:
+      - .:/home/rails/app
     stdin_open: true
     tty: true
   webpacker:
