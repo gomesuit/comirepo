@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20171128171729) do
 
-  create_table "authors", force: :cascade do |t|
+  create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hided", default: false, null: false
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.string "browse_node_id", null: false
     t.datetime "created_at", null: false
@@ -27,25 +27,25 @@ ActiveRecord::Schema.define(version: 20171128171729) do
     t.boolean "hided", default: false, null: false
   end
 
-  create_table "item_authors", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "author_id", null: false
+  create_table "item_authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "item_id", null: false
+    t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_item_authors_on_author_id"
     t.index ["item_id"], name: "index_item_authors_on_item_id"
   end
 
-  create_table "item_categories", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "category_id", null: false
+  create_table "item_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "item_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_item_categories_on_category_id"
     t.index ["item_id"], name: "index_item_categories_on_item_id"
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title", null: false
     t.text "detail_page_url", null: false
     t.string "asin", null: false
@@ -55,23 +55,28 @@ ActiveRecord::Schema.define(version: 20171128171729) do
     t.date "publication_date", null: false
     t.text "introduction", null: false
     t.boolean "is_adult_content", default: false, null: false
-    t.float "adult_score", null: false
+    t.float "adult_score", limit: 24, null: false
     t.boolean "is_racy_content", default: false, null: false
-    t.float "racy_score", null: false
+    t.float "racy_score", limit: 24, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "label_id"
+    t.bigint "label_id"
     t.date "free_last_date"
     t.boolean "is_magazine", default: false, null: false
     t.boolean "is_novel", default: false, null: false
     t.index ["label_id"], name: "index_items_on_label_id"
   end
 
-  create_table "labels", force: :cascade do |t|
+  create_table "labels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hided", default: false, null: false
   end
 
+  add_foreign_key "item_authors", "authors"
+  add_foreign_key "item_authors", "items"
+  add_foreign_key "item_categories", "categories"
+  add_foreign_key "item_categories", "items"
+  add_foreign_key "items", "labels"
 end

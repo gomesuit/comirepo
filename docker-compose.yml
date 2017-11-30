@@ -11,60 +11,35 @@ services:
     restart: always
   redis:
     image: redis:2.8
-    ports:
-      - "127.0.0.1:6379:6379"
-  nginx:
-    build:
-      context: ./docker/nginx
-      dockerfile: Dockerfile
-    links:
-      - rails
-    ports:
-      - "80:80"
-    environment:
-      - RAILS_HOST=rails
-      - RAILS_PORT=3000
-    restart: always
+    #  ports:
+    #    - "127.0.0.1:6379:6379"
   rails:
     build:
       context: .
-      dockerfile: ./docker/rails/Dockerfile
+      dockerfile: ./docker/rails/Dockerfile.dev
+    command: bin/rails s
     ports:
-      - "127.0.0.1:3000:3000"
+      - 3000:3000
     links:
       - mysql
       - redis
+      - webpacker
     environment: &rails_environment
-      - RAILS_ENV=production
       - DB_POOL=5
       - DB_HOST=mysql
       - DB_USER=root
       - DB_NAME=comirepo
-      - DB_MIGRATE=true
-      - SECRET_KEY_BASE=2fcf495ce43d469ebc2f489880fc729d63f6d852ae7ded00a3546e4da56761a62b3c45e0409332b98a91836318af0c311904dfe435972dca11ba1604efe4cd47
-      - RAILS_SERVE_STATIC_FILES=true
-      - GA_TRACKING_ID=xxxxxxxx
-      - SITE_URL=http://127.0.0.1:3000
-      - BASIC_AUTH_USERNAME=xxxx
-      - BASIC_AUTH_PASSWORD=xxxx
       - SIDEKIQ_REDIS_URL=redis://redis:6379/0
-    restart: always
-  sidekiq:
+    volumes:
+      - .:/home/rails/app
+    depends_on:
+      - webpacker
+    stdin_open: true
+    tty: true
+  webpacker:
     build:
       context: .
-      dockerfile: ./docker/rails/Dockerfile
-    command: bundle exec sidekiq
-    links:
-      - mysql
-      - redis
-    environment: *rails_environment
-  nginx_push:
-    build:
-      context: ./docker/nginx
-      dockerfile: Dockerfile
-    image: "gomesuit/comirepo_nginx:${GIT_COMMIT_ID}"
-  rails_push:
-    build:
-      context: .
-      dockerfile: ./docker/rails/Dockerfile
-    image: "gomesuit/comirepo_rails:${GIT_COMMIT_ID}"
+      dockerfile: ./docker/rails/Dockerfile.dev
+    command: webpack -w
+    volumes:
+      - .:/home/rails/app
