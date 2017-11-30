@@ -41,7 +41,7 @@ services:
   sidekiq:
     build:
       context: .
-      dockerfile: ./docker/rails/Dockerfile
+      dockerfile: ./docker/rails/Dockerfile.dev
     command: bundle exec sidekiq
     env_file:
       - .env
