@@ -18,7 +18,7 @@ ul.nav.nav-tabs.nav-fill.pt-1.h4
     - @days.each do |day|
       li style='list-style-type: none;'
         p.h2.m-0.pt-3.text-center
-          = "#{day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")}まで無料"
+          = "Until #{day.strftime('%m/%d %a')}"
         .swiper-container.pt-2
           .swiper-wrapper
             - Item.published.limited_freedoms.where(free_last_date: day).order(:title).each do |item|

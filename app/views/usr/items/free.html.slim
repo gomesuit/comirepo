@@ -16,8 +16,8 @@ ul.nav.nav-tabs.nav-fill.pt-3.h4
   ul.p-0
     - @days.each do |day|
       li style='list-style-type: none;'
-        p.display-4.m-0.pt-4
-          = "#{day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")}まで無料"
+        p.display-4.m-0.pt-4.text-center
+          = "Until #{day.strftime('%m/%d %a')}"
         hr.mt-0
         .swiper-container
           .swiper-wrapper
