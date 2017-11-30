@@ -17,10 +17,10 @@ ul.nav.nav-tabs.nav-fill.pt-1.h4
   ul.p-0
     - @days.each do |day|
       li style='list-style-type: none;'
-        p.h2.m-0.pt-3
+        p.h2.m-0.pt-3.text-center
           = day.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[day.wday]})")
-        hr.m-0
-        .swiper-container
+        hr.m-0.pb-2
+        .swiper-container.pt-2
           .swiper-wrapper
             - Item.published.not_limited_freedoms.where(publication_date: day).order(:title).each do |item|
               .swiper-slide
@@ -29,9 +29,9 @@ ul.nav.nav-tabs.nav-fill.pt-1.h4
                     = image_tag item.large_image, class: 'card-img-top'
                   - else
                     = image_tag 'noimage_m.png', class: 'card-img-top'
-          /.swiper-pagination
-          .swiper-button-next
-          .swiper-button-prev
-          .swiper-scrollbar
+          .swiper-pagination
+          /.swiper-button-next
+          /.swiper-button-prev
+          /.swiper-scrollbar
 - else
   p.h4.pt-5.text-center style='padding-bottom: 500px;' 発売予定の電子書籍はありません。

@@ -6,7 +6,7 @@ import 'src/usr/sp/items_slider.scss'
 // js
 import 'bootstrap/dist/js/bootstrap.min'
 var itemsSwiper = new Swiper ('.swiper-container', {
-  slidesPerView: 3,
+  slidesPerView: 3.5,
   spaceBetween: 10,
   slidesPerColumn: 2,
   //centeredSlides: true,
@@ -14,7 +14,7 @@ var itemsSwiper = new Swiper ('.swiper-container', {
   freeMode: true,
   pagination: {
     el: '.swiper-pagination',
-    clickable: true,
+    type: 'progressbar',
   },
   scrollbar: {
     el: '.swiper-scrollbar',
