@@ -1,5 +1,4 @@
 // css
-import 'src/swiper'
 import 'src/bootstrap'
 
 // js

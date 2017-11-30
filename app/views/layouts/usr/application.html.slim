@@ -4,7 +4,6 @@ html lang="ja"
     = display_meta_tags default_meta_tags
     meta name='viewport' content="width=device-width,initial-scale=1"
     = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_pack_tag 'usr/pc/application'
     = analytics_init if Rails.env.production?
   body.bg-light
