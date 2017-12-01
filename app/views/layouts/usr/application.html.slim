@@ -10,7 +10,7 @@ html lang="ja"
   body.bg-light style="font-family: 'Nunito', sans-serif;"
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       .container
-        = link_to 'Comirepo', root_path, class: 'navbar-brand'
+        = link_to Settings.site.default.name, root_path, class: 'navbar-brand'
     .container
       = yield
       hr.mt-5
