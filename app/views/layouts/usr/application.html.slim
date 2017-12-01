@@ -5,13 +5,17 @@ html lang="ja"
     meta name='viewport' content="width=device-width,initial-scale=1"
     = csrf_meta_tags
     = stylesheet_pack_tag 'usr/pc/application'
-    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Nunito'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Fredericka+the+Great|Nunito'
     = analytics_init if Rails.env.production?
   body.bg-light style="font-family: 'Nunito', sans-serif;"
-    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    /nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       .container
         = link_to Settings.site.default.name, root_path, class: 'navbar-brand'
-    .container
+    .container.pt-2
+      .text-center
+        p.display-1 style="font-family: 'Fredericka the Great', cursive;" = Settings.site.default.name
+        p.h5
+          | 好みの表紙から漫画を選ぼう
       = yield
       hr.mt-5
         .row
