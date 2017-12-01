@@ -15,23 +15,6 @@ ul.nav.nav-tabs.nav-fill.pt-3.h4
 - if @days.present?
   ul.p-0
     - @days.each do |day|
-      li style='list-style-type: none;'
-        p.display-4.m-0.pt-4.text-center
-          = day.strftime('%m/%d %a')
-        hr.mt-0
-        .swiper-container
-          .swiper-wrapper
-            - Item.published.not_limited_freedoms.where(publication_date: day).order(:title).each do |item|
-              .swiper-slide
-                = link_to item_path(item), target: '_blank'
-                  - if item.large_image
-                    = image_tag item.large_image, class: 'card-img-top'
-                  - else
-                    = image_tag 'noimage_m.png', class: 'card-img-top'
-          /.swiper-pagination
-          .swiper-button-next
-          .swiper-button-prev
-          .swiper-scrollbar
-
+      = render partial: 'day_items', locals: { day: day, items: Item.published.not_limited_freedoms.where(publication_date: day).order(:title) }
 - else
   p.h2.pt-5.text-center style='padding-bottom: 500px;' 発売予定の電子書籍はありません。

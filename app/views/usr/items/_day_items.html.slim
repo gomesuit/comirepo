@@ -1,0 +1,17 @@
+li style='list-style-type: none;'
+  p.display-4.m-0.pt-4.text-center
+    = day.strftime('%m/%d %a')
+  hr.mt-0
+  .swiper-container
+    .swiper-wrapper
+      - items.each do |item|
+        .swiper-slide
+          = link_to item_path(item), target: '_blank'
+            - if item.large_image
+              = image_tag item.large_image, class: 'card-img-top'
+            - else
+              = image_tag 'noimage_m.png', class: 'card-img-top'
+    /.swiper-pagination
+    .swiper-button-next
+    .swiper-button-prev
+    .swiper-scrollbar
