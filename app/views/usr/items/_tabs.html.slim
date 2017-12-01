@@ -1,0 +1,13 @@
+ul.nav.nav-tabs.nav-fill.pt-3.h4
+  li.nav-item
+    = link_to '昨日', yesterday_path, class: "nav-link #{:active if tab == :yesterday}"
+  li.nav-item
+    = link_to '今日', today_path, class: "nav-link #{:active if tab == :today}"
+  li.nav-item
+    = link_to '明日', tomorrow_path, class: "nav-link #{:active if tab == :tomorrow}"
+  li.nav-item
+    = link_to '今週', thisweek_path, class: "nav-link #{:active if tab == :thisweek}"
+  li.nav-item
+    = link_to '来週', nextweek_path, class: "nav-link #{:active if tab == :nextweek}"
+  li.nav-item
+    = link_to '無料', free_path, class: "nav-link #{:active if tab == :free}"
