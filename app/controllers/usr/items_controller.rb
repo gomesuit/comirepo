@@ -37,5 +37,11 @@ class Usr::ItemsController < Usr::BaseController
 
   def count
     @item = Item.find(params[:id])
+    @type = params[:type]
+    if %w[cute_count cool_count funny_count horror_count].include?(@type)
+      @item.increment!(@type)
+    else
+      render_404
+    end
   end
 end

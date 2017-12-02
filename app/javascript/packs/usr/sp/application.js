@@ -5,6 +5,7 @@ import 'src/usr/sp/items_slider.scss'
 
 // js
 import 'bootstrap/dist/js/bootstrap.min'
+
 var itemsSwiper = new Swiper ('.swiper-container', {
   slidesPerView: 2.5,
   spaceBetween: 10,
