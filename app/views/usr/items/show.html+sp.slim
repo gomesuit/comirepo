@@ -14,11 +14,9 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
 
 .bg-white.p-2.rounded
   h1.h4 = @item.title
-  p
+  p.mb-0
     = link_to 'amazon購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark btn-sm'
     span.pl-3 = "著者: #{@item.authors.map(&:name).join(', ')}"
-  p.m-0.h6
-    == CGI.unescapeHTML @item.introduction
 
 .bg-white.mt-2.p-2.rounded
   .text-center
@@ -27,3 +25,7 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
         = image_tag @item.large_image, class: 'img-thumbnail'
       - else
         = image_tag 'noimage_m.png', class: 'img-thumbnail'
+
+.bg-white.mt-2.p-2.rounded
+  p.m-0.h6
+    == CGI.unescapeHTML @item.introduction
