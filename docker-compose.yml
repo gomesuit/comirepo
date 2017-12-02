@@ -32,6 +32,7 @@ services:
       - DB_USER=root
       - DB_NAME=comirepo
       - SIDEKIQ_REDIS_URL=redis://redis:6379/0
+      - SESSION_STORE=redis://redis:6379/1
     volumes:
       - .:/home/rails/app
     depends_on:
