@@ -10,12 +10,8 @@ html lang="ja"
   body.bg-light style="font-family: 'Nunito', sans-serif;"
     /nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       = link_to Settings.site.default.name, root_path, class: 'navbar-brand'
-    .container.pt-2
-      .text-center
-        = link_to root_path, style: 'color: #495057; text-decoration: none;'
-          p.display-3.mb-1 style="font-family: 'Fredericka the Great', cursive;" = Settings.site.default.name
-        p
-          | 好みの表紙から漫画を選ぼう
+    .container
+      = render 'usr/shared/main_logo'
       = yield
       hr.mt-5
         p.h5 このサイトについて
