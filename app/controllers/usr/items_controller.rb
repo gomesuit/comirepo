@@ -37,6 +37,13 @@ class Usr::ItemsController < Usr::BaseController
 
   def count
     @item = Item.find(params[:id])
+    if session['clicked_count_item_ids']&.include?(@item.id)
+      return
+    else
+      session['clicked_count_item_ids'] = session['clicked_count_item_ids'] || []
+      session['clicked_count_item_ids'].push @item.id
+    end
+
     @type = params[:type]
     if %w[cute_count cool_count funny_count horror_count].include?(@type)
       @item.increment!(@type)
