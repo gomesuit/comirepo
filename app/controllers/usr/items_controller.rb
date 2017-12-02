@@ -34,4 +34,8 @@ class Usr::ItemsController < Usr::BaseController
   def show
     @item = Item.find(params[:id])
   end
+
+  def count
+    @item = Item.find(params[:id])
+  end
 end

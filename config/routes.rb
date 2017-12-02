@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show] do
       member do
+        post :count
       end
       collection do
         get :yesterday
