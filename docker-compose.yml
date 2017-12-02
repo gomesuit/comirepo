@@ -57,6 +57,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile.dev
-    command: webpack -w
+    command: ./bin/webpack-dev-server
     volumes:
       - .:/home/rails/app
