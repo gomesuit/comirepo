@@ -19,18 +19,18 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
     span.pl-3 = "著者: #{@item.authors.map(&:name).join(', ')}"
 
   .pt-1
-  .btn.px-2.py-1 style="color: #fff; background-color: #868e96; border-color: #868e96;"
-    = image_tag 'icons/horror_no.png', width: 16, class: '', style: "margin-top: -1px;"
-    span.pl-1 horror
-  .btn.px-2.py-1.ml-1 style="color: #fff; background-color: #ffc107; border-color: #ffc107;"
-    = image_tag 'icons/funny.png', width: 16, class: '', style: "margin-top: -1px;"
-    span.pl-1 funny
-  .btn.px-2.py-1.ml-1 style="color: #fff; background-color: rgba(220, 53, 69, .5); border-color: rgba(220, 53, 69, 0);"
+  .btn.px-2.py-1 style="color: #fff; background-color: rgba(220, 53, 69, .5); border-color: rgba(220, 53, 69, 0);"
     = image_tag 'icons/cute.png', width: 16, class: '', style: "margin-top: -1px;"
     span.pl-1 cute
   .btn.px-2.py-1.ml-1 style="color: #fff; background-color: #007bff; border-color: #007bff;"
     = image_tag 'icons/cool.png', width: 16, class: '', style: "margin-top: -1px;"
     span.pl-1 cool
+  .btn.px-2.py-1.ml-1 style="color: #fff; background-color: #ffc107; border-color: #ffc107;"
+    = image_tag 'icons/funny.png', width: 16, class: '', style: "margin-top: -1px;"
+    span.pl-1 funny
+  .btn.px-2.py-1.ml-1 style="color: #fff; background-color: #868e96; border-color: #868e96;"
+    = image_tag 'icons/horror_no.png', width: 16, class: '', style: "margin-top: -1px;"
+    span.pl-1 horror
 
 .bg-white.mt-2.p-2.rounded
   .text-center
