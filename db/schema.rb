@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128171729) do
+ActiveRecord::Schema.define(version: 20171202175512) do
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 20171128171729) do
     t.date "free_last_date"
     t.boolean "is_magazine", default: false, null: false
     t.boolean "is_novel", default: false, null: false
+    t.integer "cute_count", default: 0, null: false
+    t.integer "cool_count", default: 0, null: false
+    t.integer "funny_count", default: 0, null: false
+    t.integer "horror_count", default: 0, null: false
     t.index ["label_id"], name: "index_items_on_label_id"
   end
 
