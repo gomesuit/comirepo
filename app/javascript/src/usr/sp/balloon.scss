@@ -40,3 +40,67 @@ span.balloon{
     border-right-color: #fff;
   }
 }
+
+.cute_count{
+  color: #fff;
+  background-color: rgba(220, 53, 69, .5);
+  border-color: rgba(220, 53, 69, 0);
+  width: 100%;
+  .count{
+    background-color: white;
+    padding: 2px 10px 2px 10px;
+    border-radius: 5px;
+    color: rgba(220, 53, 69, .5);
+  }
+  &:active{
+    background-color: rgba(220, 53, 69, 1);
+  }
+}
+
+.cool_count{
+  color: #fff;
+  background-color: rgba(0, 123, 255, .8);
+  border-color: rgba(0, 123, 255, .8);
+  width: 100%;
+  .count{
+    background-color: white;
+    padding: 2px 10px 2px 10px;
+    border-radius: 5px;
+    color: rgba(0, 123, 255, .8);
+  }
+  &:active{
+    background-color: rgba(0, 123, 255, 1);
+  }
+}
+
+.funny_count{
+  color: #fff;
+  background-color: rgba(255, 193, 7, .8);
+  border-color: rgba(255, 193, 7, .8);
+  width: 100%;
+  .count{
+    background-color: white;
+    padding: 2px 10px 2px 10px;
+    border-radius: 5px;
+    color: rgba(255, 193, 7, .8);
+  }
+  &:active{
+    background-color: rgba(255, 193, 7, 1);
+  }
+}
+
+.horror_count{
+  color: #fff;
+  background-color: rgba(134, 142, 150, .8);
+  border-color: rgba(134, 142, 150, .8);
+  width: 100%;
+  .count{
+    background-color: white;
+    padding: 2px 10px 2px 10px;
+    border-radius: 5px;
+    color: rgba(134, 142, 150, .8);
+  }
+  &:active{
+    background-color: rgba(134, 142, 150, 1);
+  }
+}
