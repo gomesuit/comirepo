@@ -91,7 +91,7 @@ table.table
 
   tbody
     - @items.each do |item|
-      tr height=200
+      tr height=200 class="#{'table-secondary' if !item.published?}"
         td.align-middle = item.id
         td.align-middle
           = link_to edit_admin_item_path(item)

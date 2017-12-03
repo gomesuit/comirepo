@@ -53,6 +53,10 @@ class Item < ApplicationRecord
   scope :limited_freedoms, -> { where.not(free_last_date: nil) }
   scope :not_limited_freedoms, -> { where(free_last_date: nil) }
 
+  def published?
+    Item.published.exists?(id)
+  end
+
   def is_limited_free
     free_last_date.present?
   end
@@ -88,16 +92,6 @@ class Item < ApplicationRecord
 
     def category_filter
       categories = Category.hided.ids
-      # categories = [
-      #   2293147051, # ボーイズラブコミックス
-      #   12075851,   # ボーイズラブコミックス
-      #   3432431051, # ティーンズラブ
-      #   3686141051, # ロマンス
-      #   2291905051, # ビジネス・経済
-      #   2291948051, # 経営学
-      #   3686143051, # スポーツ
-      #   3418785051  # コミック雑誌
-      # ]
       sub = select(:id).joins(:categories).where(categories: { id: categories })
       where.not(id: sub)
     end
