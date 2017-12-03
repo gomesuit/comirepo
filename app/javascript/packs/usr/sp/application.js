@@ -1,7 +1,7 @@
 // css
 import 'src/bootstrap'
 import 'src/swiper'
-import 'src/usr/sp/items_slider.scss'
+import 'src/usr/sp/application'
 
 // js
 import 'bootstrap/dist/js/bootstrap.min'
