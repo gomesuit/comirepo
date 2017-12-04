@@ -77,4 +77,16 @@
         tr
           th is_novel
           td = @item.is_novel
+        tr
+          th cute_count
+          td = f.number_field :cute_count
+        tr
+          th cool_count
+          td = f.number_field :cool_count
+        tr
+          th funny_count
+          td = f.number_field :funny_count
+        tr
+          th horror_count
+          td = f.number_field :horror_count
     = f.submit '更新', class: 'btn btn-primary'

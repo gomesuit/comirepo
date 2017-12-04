@@ -32,16 +32,16 @@
   .col-6
     h2 Cute Top5
     hr
-    = render partial: 'items', locals: { items: Item.cute.limit(5) }
+    = render partial: 'items', locals: { items: Item.published.cute.limit(5) }
   .col-6
     h2 Cool Top5
     hr
-    = render partial: 'items', locals: { items: Item.cool.limit(5) }
+    = render partial: 'items', locals: { items: Item.published.cool.limit(5) }
   .col-6
     h2 Funny Top5
     hr
-    = render partial: 'items', locals: { items: Item.funny.limit(5) }
+    = render partial: 'items', locals: { items: Item.published.funny.limit(5) }
   .col-6
     h2 Horror Top5
     hr
-    = render partial: 'items', locals: { items: Item.horror.limit(5) }
+    = render partial: 'items', locals: { items: Item.published.horror.limit(5) }
