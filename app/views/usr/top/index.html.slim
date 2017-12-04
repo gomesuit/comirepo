@@ -2,7 +2,7 @@
   .col-6
     h2 発売日から探す
     hr
-    .top-swiper-container
+    .top-swiper-container.pb-4
       .swiper-wrapper
         - @items.each do |item|
           .swiper-slide
@@ -31,7 +31,7 @@
   .col-6
     h2 期間限定無料から探す
     hr
-    .top-swiper-container
+    .top-swiper-container.pb-4
       .swiper-wrapper
         - @free_items.each do |item|
           .swiper-slide
