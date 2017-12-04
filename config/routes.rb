@@ -3,7 +3,7 @@ require 'sidekiq-scheduler/web'
 
 Rails.application.routes.draw do
   scope module: :usr do
-    root 'items#index'
+    root 'top#index'
 
     resources :items, only: [:index, :show] do
       member do

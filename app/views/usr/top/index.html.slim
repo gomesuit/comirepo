@@ -1,0 +1,8 @@
+= render partial: 'usr/items/tabs', locals: { tab: @tab }
+
+- if @days.present?
+  ul.p-0
+    - @days.each do |day|
+      = render partial: 'usr/items/day_items', locals: { day: day, day_str: day.strftime('%m/%d %a'), items: Item.published.not_limited_freedoms.where(publication_date: day).order(:title) }
+- else
+  p.h2.pt-5.text-center style='padding-bottom: 500px;' 発売予定の電子書籍はありません。

@@ -10,7 +10,7 @@ module Usr::BaseHelper
         title: :title,
         type: 'article',
         url: request.original_url,
-        image: "#{root_url}#{asset_path('noimage_m.png')}",
+        image: "#{root_url}#{asset_path('logo.png')}",
         site_name: Settings.site.default.name,
         description: :description,
         locale: 'ja_JP'
@@ -20,7 +20,7 @@ module Usr::BaseHelper
         site: '@comirepo',
         title: :title,
         description: :description,
-        image: "#{root_url}#{asset_path('noimage_m.png')}"
+        image: "#{root_url}#{asset_path('logo.png')}"
       }
     }
   end
