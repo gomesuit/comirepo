@@ -37,3 +37,20 @@
       .col-12
         = link_to free_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
           span.h4 期間限定無料
+.row.pt-5
+  .col-12
+    h2 Cute Top5
+    hr
+    = render partial: 'items', locals: { items: Item.cute.limit(5) }
+  .col-12
+    h2 Cool Top5
+    hr
+    = render partial: 'items', locals: { items: Item.cool.limit(5) }
+  .col-12
+    h2 Funny Top5
+    hr
+    = render partial: 'items', locals: { items: Item.funny.limit(5) }
+  .col-12
+    h2 Horror Top5
+    hr
+    = render partial: 'items', locals: { items: Item.horror.limit(5) }
