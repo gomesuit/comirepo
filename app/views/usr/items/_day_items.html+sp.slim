@@ -8,9 +8,9 @@ li style='list-style-type: none;'
         .swiper-slide
           = link_to item_path(item), target: '_blank'
             - if item.large_image
-              = image_tag item.large_image, class: 'card-img-top'
+              = image_tag item.large_image, class: 'card-img-top', style: 'box-shadow: 5px 5px 24px -6px #000000;'
             - else
-              = image_tag 'noimage_m.png', class: 'card-img-top'
+              = image_tag 'noimage_m.png', class: 'card-img-top', style: 'box-shadow: 5px 5px 24px -6px #000000;'
     .swiper-pagination
     /.swiper-button-next
     /.swiper-button-prev

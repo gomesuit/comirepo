@@ -13,16 +13,16 @@ var itemsSwiper = new Swiper ('.swiper-container', {
   //centeredSlides: true,
   //loop: true,
   freeMode: true,
-  //pagination: {
-  //  el: '.swiper-pagination',
-  //  type: 'progressbar',
-  //},
-  //scrollbar: {
-  //  el: '.swiper-scrollbar',
-  //  draggable: true,
-  //},
-  //navigation: {
-  //  nextEl: '.swiper-button-next',
-  //  prevEl: '.swiper-button-prev',
-  //},
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'progressbar',
+  },
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
 })
