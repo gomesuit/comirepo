@@ -1,8 +1,46 @@
-= render partial: 'usr/items/tabs', locals: { tab: @tab }
-
-- if @days.present?
-  ul.p-0
-    - @days.each do |day|
-      = render partial: 'usr/items/day_items', locals: { day: day, day_str: day.strftime('%m/%d %a'), items: Item.published.not_limited_freedoms.where(publication_date: day).order(:title) }
-- else
-  p.h2.pt-5.text-center style='padding-bottom: 500px;' 発売予定の電子書籍はありません。
+.row.pt-5
+  .col-6
+    h2 発売日から探す
+    hr
+    .top-swiper-container
+      .swiper-wrapper
+        - @items.each do |item|
+          .swiper-slide
+            = link_to item_path(item)
+              - if item.large_image
+                = image_tag item.large_image, class: 'card-img-top', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+              - else
+                = image_tag 'noimage_m.png', class: 'img-thumbnail', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+    .row
+      .col-4
+        = link_to yesterday_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
+          span.h3 昨日
+      .col-4
+        = link_to today_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
+          span.h3 今日
+      .col-4
+        = link_to tomorrow_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
+          span.h3 明日
+    .row
+      .col-6
+        = link_to thisweek_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
+          span.h3 今週
+      .col-6
+        = link_to nextweek_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
+          span.h3 来週
+  .col-6
+    h2 期間限定無料から探す
+    hr
+    .top-swiper-container
+      .swiper-wrapper
+        - @free_items.each do |item|
+          .swiper-slide
+            = link_to item_path(item)
+              - if item.large_image
+                = image_tag item.large_image, class: 'card-img-top', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+              - else
+                = image_tag 'noimage_m.png', class: 'img-thumbnail', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+    .row
+      .col-12
+        = link_to free_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
+          span.h3 期間限定無料

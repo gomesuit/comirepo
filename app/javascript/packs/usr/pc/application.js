@@ -25,3 +25,9 @@ var itemsSwiper = new Swiper ('.swiper-container', {
   //  prevEl: '.swiper-button-prev',
   //},
 })
+
+var topItemsSwiper = new Swiper ('.top-swiper-container', {
+  slidesPerView: 5.5,
+  spaceBetween: 10,
+  slidesPerColumn: 1,
+})
