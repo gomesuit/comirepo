@@ -2,15 +2,7 @@
   .col-6
     h2 発売日から探す
     hr
-    .top-swiper-container.pb-4
-      .swiper-wrapper
-        - @items.each do |item|
-          .swiper-slide
-            = link_to item_path(item)
-              - if item.large_image
-                = image_tag item.large_image, class: 'card-img-top', style: 'box-shadow: 8px 8px 30px -6px #000000;'
-              - else
-                = image_tag 'noimage_m.png', class: 'img-thumbnail', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+    = render partial: 'items', locals: { items: @items }
     .row
       .col-4
         = link_to yesterday_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
@@ -31,15 +23,7 @@
   .col-6
     h2 期間限定無料から探す
     hr
-    .top-swiper-container.pb-4
-      .swiper-wrapper
-        - @free_items.each do |item|
-          .swiper-slide
-            = link_to item_path(item)
-              - if item.large_image
-                = image_tag item.large_image, class: 'card-img-top', style: 'box-shadow: 8px 8px 30px -6px #000000;'
-              - else
-                = image_tag 'noimage_m.png', class: 'img-thumbnail', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+    = render partial: 'items', locals: { items: @free_items }
     .row
       .col-12
         = link_to free_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
