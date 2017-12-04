@@ -2,11 +2,11 @@ li style='list-style-type: none;'
   p.h2.m-0.pt-3.text-center
     = day_str
   hr.m-0.pb-2
-  .swiper-container.pt-2
+  .swiper-container.py-4
     .swiper-wrapper
       - items.each do |item|
         .swiper-slide
-          = link_to item_path(item), target: '_blank'
+          = link_to item_path(item)
             - if item.large_image
               = image_tag item.large_image, class: 'card-img-top', style: 'box-shadow: 5px 5px 24px -6px #000000;'
             - else
