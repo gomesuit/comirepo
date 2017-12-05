@@ -116,6 +116,11 @@ class Item < ApplicationRecord
       sub = select(:id).joins(:authors).where(authors: { id: authors })
       where.not(id: sub)
     end
+
+    def not_tweet_released
+      sub = ItemTweet.released.pluck(:item_id)
+      where.not(id: sub)
+    end
   end
 
   private
