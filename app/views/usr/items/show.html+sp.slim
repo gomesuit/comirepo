@@ -21,26 +21,26 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
 .bg-white.mt-2.p-2.rounded
   .row.m-0.p-0
     .col-6.px-1
-      = link_to count_item_path(type: :cute_count), method: :post, remote: true
+      = link_to count_item_path(@item.id, type: :cute_count), method: :post, remote: true
         .cute_count.btn.px-2.py-2
           = image_tag 'icons/cute.png', width: 18, class: '', style: "margin-top: -1px;"
           span.pl-1 cute
           span#cute_count.ml-2.count = @item.cute_count
     .col-6.px-1
-      = link_to count_item_path(type: :cool_count), method: :post, remote: true
+      = link_to count_item_path(@item.id, type: :cool_count), method: :post, remote: true
         .cool_count.btn.px-2.py-2
           = image_tag 'icons/cool.png', width: 18, class: '', style: "margin-top: -1px;"
           span.pl-1 cool
           span#cool_count.ml-2.count = @item.cool_count
   .row.m-0.pt-2
     .col-6.px-1
-      = link_to count_item_path(type: :funny_count), method: :post, remote: true
+      = link_to count_item_path(@item.id, type: :funny_count), method: :post, remote: true
         .funny_count.btn.px-2.py-2
           = image_tag 'icons/funny.png', width: 18, class: '', style: "margin-top: -1px;"
           span.pl-1 funny
           span#funny_count.ml-2.count = @item.funny_count
     .col-6.px-1
-      = link_to count_item_path(type: :horror_count), method: :post, remote: true
+      = link_to count_item_path(@item.id, type: :horror_count), method: :post, remote: true
         .horror_count.btn.px-2.py-2
           = image_tag 'icons/horror_no.png', width: 18, class: '', style: "margin-top: -1px;"
           span.pl-1 horror
