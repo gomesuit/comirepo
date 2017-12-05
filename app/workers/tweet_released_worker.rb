@@ -1,3 +1,6 @@
+include Rails.application.routes.url_helpers
+Rails.application.routes.default_url_options[:host] = ENV['SITE_URL']
+
 class TweetReleasedWorker
   include Sidekiq::Worker
 
@@ -10,6 +13,7 @@ class TweetReleasedWorker
     end
 
     item = Item.published.today.not_tweet_released.first
+    return if item.blank?
 
     contents =<<-EOS
 【本日発売！】 #Kindle
