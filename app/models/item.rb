@@ -33,6 +33,7 @@ class Item < ApplicationRecord
   has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
   belongs_to :label, optional: true
+  has_many :tweets, class_name: 'ItemTweet', dependent: :destroy
 
   before_validation :save_free_last_date,
                     :save_label,
