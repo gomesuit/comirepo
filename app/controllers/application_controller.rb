@@ -5,10 +5,18 @@ class ApplicationController < ActionController::Base
     rescue_from ActionView::MissingTemplate, with: :render_404
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
     rescue_from ActionController::RoutingError, with: :render_404
-    rescue_from Exception, with: :render_404
+    rescue_from Exception, with: :render_500
   end
 
   def render_404
+    respond_to do |format|
+      format.html { render 'errors/404', status: 404 }
+      format.all { head :not_found }
+    end
+  end
+
+  def render_500(e = nil)
+    logger.error e
     respond_to do |format|
       format.html { render 'errors/404', status: 404 }
       format.all { head :not_found }
