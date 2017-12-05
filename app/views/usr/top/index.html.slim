@@ -29,19 +29,27 @@
         = link_to free_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
           span.h3 期間限定無料
 .row.pt-5
-  .col-6
-    h2 Cute Top5
+  .col-6.p-3.bg-cute.rounded.border.border-white
+    h2
+      = image_tag 'icons/cute.png', width: 24, class: '', style: "margin-top: -5px;"
+      span.pl-1 Cute Top5
     hr
     = render partial: 'items', locals: { items: Item.published.cute.limit(5) }
-  .col-6
-    h2 Cool Top5
+  .col-6.p-3.bg-cool.rounded.border.border-white
+    h2
+      = image_tag 'icons/cool.png', width: 24, class: '', style: "margin-top: -5px;"
+      span.pl-1 Cool Top5
     hr
     = render partial: 'items', locals: { items: Item.published.cool.limit(5) }
-  .col-6
-    h2 Funny Top5
+  .col-6.p-3.bg-funny.rounded.border.border-white
+    h2
+      = image_tag 'icons/funny.png', width: 24, class: '', style: "margin-top: -5px;"
+      span.pl-1 Funny Top5
     hr
     = render partial: 'items', locals: { items: Item.published.funny.limit(5) }
-  .col-6
-    h2 Horror Top5
+  .col-6.p-3.bg-horror.rounded.border.border-white
+    h2
+      = image_tag 'icons/horror_no.png', width: 24, class: '', style: "margin-top: -5px;"
+      span.pl-1 Horror Top5
     hr
     = render partial: 'items', locals: { items: Item.published.horror.limit(5) }

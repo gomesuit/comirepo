@@ -27,7 +27,7 @@ var itemsSwiper = new Swiper ('.swiper-container', {
 })
 
 var topItemsSwiper = new Swiper ('.top-swiper-container', {
-  slidesPerView: 5.5,
+  slidesPerView: 4.5,
   spaceBetween: 10,
   slidesPerColumn: 1,
 })
