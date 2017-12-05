@@ -89,4 +89,9 @@
         tr
           th horror_count
           td = f.number_field :horror_count
+        tr
+          th tweets
+          td
+            - @item.tweets.each do |tweet|
+              p = "#{tweet.tweet_type} / #{tweet.created_at}"
     = f.submit '更新', class: 'btn btn-primary'
