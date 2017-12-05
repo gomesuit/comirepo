@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
 
   def render_500(e = nil)
     logger.error e
+    logger.error e.message
+    e.backtrace.each { |line| logger.error line }
     respond_to do |format|
       format.html { render 'errors/404', status: 404 }
       format.all { head :not_found }
