@@ -23,6 +23,7 @@ class CollectWorker
       loop do
         m.page.parser.css('li.s-result-item.celwidget').each do |node|
           # 画像がないものはスキップ
+          next if node.css('.s-access-image.cfMarker').blank?
           next if node.css('.s-access-image.cfMarker').attribute('src').value.include? 'no-img'
 
           asin = node.attributes['data-asin'].value
