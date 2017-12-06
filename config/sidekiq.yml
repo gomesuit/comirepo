@@ -3,5 +3,5 @@
     cron: '0 0 4 * * *'
     class: CollectWorker
   tweet_released:
-    cron: '0 */10 1,7-23 * * *'
+    cron: '0 */10 0,7-23 * * *'
     class: TweetReleasedWorker

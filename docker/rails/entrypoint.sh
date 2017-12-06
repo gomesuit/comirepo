@@ -5,4 +5,8 @@ if [ "$DB_MIGRATE" == 'true' ]; then
   bin/rails db:migrate
 fi
 
+if [ "$SITEMAP_GENERATE" == 'true' ]; then
+  bin/rails sitemap:create
+fi
+
 exec "$@"
