@@ -19,7 +19,9 @@ class CollectWorker
   def perform
     asins = []
     Mechanize.start do |m|
-      m.get('https://www.amazon.co.jp/s/?rh=n%3A2250738051%2Cn%3A%212250739051%2Cn%3A2275256051%2Cn%3A2293143051%2Cp_n_date%3A2275273051')
+      retry_on_error times: 10 do
+        m.get('https://www.amazon.co.jp/s/?rh=n%3A2250738051%2Cn%3A%212250739051%2Cn%3A2275256051%2Cn%3A2293143051%2Cp_n_date%3A2275273051')
+      end
       loop do
         m.page.parser.css('li.s-result-item.celwidget').each do |node|
           # 画像がないものはスキップ
