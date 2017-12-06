@@ -1,1 +1,2 @@
 - bundle exec annotate
+- docker-compose -f docker-compose.push.yml build rails
