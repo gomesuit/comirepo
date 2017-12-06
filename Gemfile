@@ -46,6 +46,7 @@ gem 'rails-i18n', '~> 5.0.0'
 gem 'mysql2'
 gem 'redis-rails'
 gem 'twitter'
+gem 'fog-aws'
 
 group :production do
   gem 'google-analytics-rails'
