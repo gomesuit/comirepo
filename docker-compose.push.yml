@@ -24,6 +24,7 @@ services:
     environment:
       - RAILS_HOST=rails
       - RAILS_PORT=3000
+      - S3_BUCKET=${AWS_BUCKET}
     restart: always
   rails:
     build:

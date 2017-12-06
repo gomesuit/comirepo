@@ -13,6 +13,18 @@ services:
     image: redis:2.8
     ports:
       - "127.0.0.1:6379:6379"
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    links:
+      - rails
+    ports:
+      - "80:80"
+    environment:
+      - RAILS_HOST=rails
+      - RAILS_PORT=3000
+      - S3_BUCKET=${AWS_BUCKET}
   rails:
     build:
       context: .
