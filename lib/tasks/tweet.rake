@@ -1,8 +1,7 @@
-include Rails.application.routes.url_helpers
-Rails.application.routes.default_url_options[:host] = ENV['SITE_URL']
-
 namespace :tweet do
   desc 'description'
+  include Rails.application.routes.url_helpers
+  Rails.application.routes.default_url_options[:host] = ENV['SITE_URL']
   task :sample => :environment do
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_CONSUMERKEY']

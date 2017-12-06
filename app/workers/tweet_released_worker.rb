@@ -1,8 +1,7 @@
-include Rails.application.routes.url_helpers
-Rails.application.routes.default_url_options[:host] = ENV['SITE_URL']
-
 class TweetReleasedWorker
   include Sidekiq::Worker
+  include Rails.application.routes.url_helpers
+  Rails.application.routes.default_url_options[:host] = ENV['SITE_URL']
 
   def perform(*args)
     client = Twitter::REST::Client.new do |config|
