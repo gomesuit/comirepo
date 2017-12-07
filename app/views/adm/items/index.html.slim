@@ -1,6 +1,13 @@
+
+.pt-3
+= form_with url: regist_admin_items_path, method: :post, local: true do
+  .d-flex.flex-row
+    = text_field_tag :asin, nil, class: 'col-3 form-control'
+    = submit_tag '登録', class: 'btn btn-primary'
+
 h1.pt-3 検索
 
-.row
+.row.mt-3
   .col-7
     .bg-dark.text-white.rounded.p-3
       = search_form_for @search, url: admin_items_path do |f|

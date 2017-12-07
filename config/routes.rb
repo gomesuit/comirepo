@@ -36,6 +36,9 @@ Rails.application.routes.draw do
       member do
         post :ecs
       end
+      collection do
+        post :regist
+      end
     end
     resources :authors
     resources :categories

@@ -7,6 +7,7 @@ class Adm::ItemsController < Adm::BaseController
     @search = Item.search(params[:q])
     @items = @search.result
                     .includes(:authors, :label, :categories)
+                    .order(id: :desc)
                     .page(params[:page])
   end
 
@@ -51,6 +52,12 @@ class Adm::ItemsController < Adm::BaseController
   def ecs
     UpdateItemWorker.perform_async [@item.asin]
     redirect_to edit_admin_item_url(@item), notice: '更新Jobの追加が正常終了しました。'
+  end
+
+  def regist
+    asin = params[:asin]
+    UpdateItemWorker.perform_async [asin]
+    redirect_to admin_items_url, notice: '登録Jobの追加が正常終了しました。'
   end
 
   private
