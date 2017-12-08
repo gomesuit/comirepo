@@ -1,0 +1,54 @@
+= paginate items
+= page_entries_info items
+
+.pt-3
+table.table
+  thead.thead-light
+    tr
+      th id
+      th image
+      th title
+      th publication_date
+      th categories
+      th authors
+      th label
+      th is_adult_content
+      th adult_score
+      th is_racy_content
+      th racy_score
+      th created_at
+      th updated_at
+      th tweet
+      th destroy
+
+  tbody
+    - items.each do |item|
+      tr height=200 class="#{'table-secondary' if !item.published?}"
+        td.align-middle = item.id
+        td.align-middle
+          = link_to edit_admin_item_path(item)
+            - if item.medium_image
+              = image_tag item.medium_image, width: 120
+            - else
+              = image_tag 'noimage_m.png', width: 120
+        td.align-middle = item.title
+        td.align-middle = item.publication_date
+        td.align-middle
+          - item.categories.each do |category|
+            p = link_to "#{category.name}[#{category.browse_node_id}]", edit_admin_category_path(category)
+        td.align-middle
+          - item.authors.each do |author|
+            p = link_to author.name, edit_admin_author_path(author)
+        td.align-middle
+          - if item.label
+            = link_to item.label.name, edit_admin_label_path(item.label)
+        td.align-middle = item.is_adult_content
+        td.align-middle = item.adult_score.round 2
+        td.align-middle = item.is_racy_content
+        td.align-middle = item.racy_score.round 2
+        td.align-middle = l item.created_at, format: :short
+        td.align-middle = l item.updated_at, format: :short
+        td.align-middle = item.tweets.exists?
+        td.align-middle = link_to 'Destroy', admin_item_path(item), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
+
+= paginate items

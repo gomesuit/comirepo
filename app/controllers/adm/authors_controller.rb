@@ -20,6 +20,7 @@ class Adm::AuthorsController < Adm::BaseController
 
   # GET /authors/1/edit
   def edit
+    @items = @author.items.order(id: :desc).page(params[:page])
   end
 
   # POST /authors
