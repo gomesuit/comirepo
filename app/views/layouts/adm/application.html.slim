@@ -21,7 +21,7 @@ html lang="ja"
             = link_to 'Author', admin_authors_path, class: 'nav-link'
           li.nav-item
             = link_to 'sidekiq', admin_sidekiq_web_path, class: 'nav-link'
-    .container-fluid
+    .container-fluid.pt-5
       - if notice.present?
         .pt-3
         p.alert.alert-success = notice
