@@ -12,6 +12,10 @@ h1.pt-3 検索
     .bg-dark.text-white.rounded.p-3
       = search_form_for @search, url: admin_items_path do |f|
         .form-group.row
+          = f.label :asin_eq, 'asin', class: 'col-3 col-form-label'
+          .col-9
+            = f.text_field :asin_eq, class: 'form-control'
+        .form-group.row
           = f.label :title_cont, 'タイトル（含む）', class: 'col-3 col-form-label'
           .col-9
             = f.text_field :title_cont, class: 'form-control'
