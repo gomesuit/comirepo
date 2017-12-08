@@ -21,6 +21,7 @@ class Adm::LabelsController < Adm::BaseController
 
   # GET /adm/labels/1/edit
   def edit
+    @items = @label.items.order(id: :desc).page(params[:page])
   end
 
   # POST /adm/labels

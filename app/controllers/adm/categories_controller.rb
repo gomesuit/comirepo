@@ -20,6 +20,7 @@ class Adm::CategoriesController < Adm::BaseController
 
   # GET /categories/1/edit
   def edit
+    @items = @category.items.order(id: :desc).page(params[:page])
   end
 
   # POST /categories
