@@ -11,5 +11,5 @@
 
 class ItemTweet < ApplicationRecord
   belongs_to :item
-  enum tweet_type: { released: 0, scheduled: 1}
+  enum tweet_type: { released: 0, scheduled: 1, free_last_date: 2 }
 end

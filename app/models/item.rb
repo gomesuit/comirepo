@@ -121,6 +121,11 @@ class Item < ApplicationRecord
       sub = ItemTweet.released.pluck(:item_id)
       where.not(id: sub)
     end
+
+    def not_tweet_free_last_date
+      sub = ItemTweet.free_last_date.pluck(:item_id)
+      where.not(id: sub)
+    end
   end
 
   private

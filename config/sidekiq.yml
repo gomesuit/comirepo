@@ -5,3 +5,6 @@
   tweet_released:
     cron: '0 */10 0,7-23 * * *'
     class: TweetReleasedWorker
+  tweet_free_last_date:
+    cron: '0 */15 0,7-23 * * *'
+    class: TweetFreeLastDateWorker

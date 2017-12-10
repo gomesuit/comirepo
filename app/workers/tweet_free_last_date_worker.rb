@@ -1,4 +1,4 @@
-class TweetReleasedWorker
+class TweetFreeLastDateWorker
   include Sidekiq::Worker
   include Rails.application.routes.url_helpers
   Rails.application.routes.default_url_options[:host] = ENV['SITE_URL']
@@ -12,22 +12,21 @@ class TweetReleasedWorker
     end
 
     item = Item.published
-           .today
-           .not_tweet_released
-           .order(:title)
-           .first
+               .where(free_last_date: Date.today)
+               .not_tweet_free_last_date
+               .order(:title)
+               .first
     return if item.blank?
 
     contents =<<-EOS
-【本日発売！】 #Kindle
+【本日まで無料！】 #Kindle
 『<%= item.title %>』
-発売日:<%= item.publication_date %>
 <%= item_url(item) %>
     EOS
 
     erb = ERB.new(contents)
     #puts erb.result(binding)
     client.update(erb.result(binding))
-    item.tweets.create!(tweet_type: :released)
+    item.tweets.create!(tweet_type: :free_last_date)
   end
 end
