@@ -58,4 +58,4 @@ USER rails
 
 ENTRYPOINT ["docker/rails/entrypoint.sh"]
 
-CMD exec bundle exec puma -t 5:5 -p 3000 -e "$RAILS_ENV" -C config/puma.rb
+CMD exec bundle exec puma -t "$PUMA_THREADS":"$PUMA_THREADS" -p 3000 -e "$RAILS_ENV" -C config/puma.rb
