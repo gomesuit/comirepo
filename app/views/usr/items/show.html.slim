@@ -16,7 +16,10 @@ ol.breadcrumb.bg-light.m-0.p-2
   h1 = @item.title
   p
     = link_to 'amazon購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark btn-sm', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
-    span.pl-3 = "著者: #{@item.authors.map(&:name).join(', ')}"
+    span.pl-3 = '著者: '
+    - @item.authors.each do |author|
+      span.pl-1
+        = link_to author.name, author_path(author.id)
   .row
     .col-5
       .row.m-0.p-0

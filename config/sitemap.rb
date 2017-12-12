@@ -19,4 +19,8 @@ SitemapGenerator::Sitemap.create do
   Item.all.each do |item|
     add item_path(item), lastmod: item.updated_at
   end
+
+  Author.all.each do |author|
+    add author_path(author), lastmod: author.updated_at
+  end
 end

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
 
     resources :items, only: %w[index show]
+    resources :authors, only: %w[show]
   end
 
   scope module: :adm, as: :admin, path: :admin do

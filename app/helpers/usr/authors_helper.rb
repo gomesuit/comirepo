@@ -1,0 +1,2 @@
+module Usr::AuthorsHelper
+end
