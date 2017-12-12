@@ -6,7 +6,7 @@ if [ "$DB_MIGRATE" == 'true' ]; then
 fi
 
 if [ "$SITEMAP_GENERATE" == 'true' ]; then
-  bin/rails sitemap:create
+  bin/rails sitemap:refresh
 fi
 
 exec "$@"
