@@ -15,7 +15,7 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
 .bg-white.p-2.rounded
   h1.h4 = @item.title
   p.mb-0
-    = link_to 'amazon購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark btn-sm'
+    = link_to 'amazon購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark btn-sm', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
     span.pl-3 = "著者: #{@item.authors.map(&:name).join(', ')}"
 
 .bg-white.mt-2.p-2.rounded
@@ -48,7 +48,7 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
 
 .bg-white.mt-2.p-2.rounded
   .text-center
-    = link_to @item.detail_page_url, target: '_blank'
+    = link_to @item.detail_page_url, target: '_blank', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
       - if @item.large_image
         = image_tag @item.large_image, class: 'img-thumbnail'
       - else
