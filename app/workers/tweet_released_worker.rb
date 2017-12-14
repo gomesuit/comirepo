@@ -19,9 +19,9 @@ class TweetReleasedWorker
     return if item.blank?
 
     contents =<<-EOS
-【本日発売！】 #Kindle
+【本日配信開始！】 #Kindle
 『<%= item.title %>』
-発売日:<%= item.publication_date %>
+配信開始日:<%= item.publication_date %>
 <%= item_url(item) %>
     EOS
 

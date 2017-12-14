@@ -19,7 +19,7 @@ class TweetFreeLastDateWorker
     return if item.blank?
 
     contents =<<-EOS
-【本日まで無料！】 #Kindle
+【期間限定無料は今日まで！】 #Kindle
 『<%= item.title %>』
 <%= item_url(item) %>
     EOS
