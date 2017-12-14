@@ -44,7 +44,7 @@ h1.pt-3 検索
           .col-9
             = f.collection_select :categories_id_in, Category.all, :id, :name, { include_blank: '指定なし' }, { class: 'form-control' }
         .form-group.row
-          = f.label :is_adult_content_eq, 'アダルトコンテンツ', class: 'col-3 col-form-label'
+          = f.label :is_adult_content_eq, '成人向けコンテンツ', class: 'col-3 col-form-label'
           .col-9
             .form-check.form-check-inline
               label.form-check-label.ml-3
@@ -57,7 +57,7 @@ h1.pt-3 検索
                 = f.radio_button :is_adult_content_eq, false, class: 'form-check-input'
                 | false
         .form-group.row
-          = f.label :is_racy_content_eq, '卑猥なコンテンツ', class: 'col-3 col-form-label'
+          = f.label :is_racy_content_eq, 'わいせつ性', class: 'col-3 col-form-label'
           .col-9
             .form-check.form-check-inline
               label.form-check-label.ml-3
