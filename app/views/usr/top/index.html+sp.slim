@@ -2,7 +2,8 @@
   .col-12
     .row
       .col-12
-        h2 発売日から探す
+        h2.text-center
+          | 配信開始日から探す
         hr.my-2
     .row
       .col-12
@@ -28,7 +29,8 @@
   .col-12
     .row
       .col-12
-        h2 期間限定無料から探す
+        h2.text-center
+          | 期間限定無料から探す
         hr.my-2
     .row
       .col-12
@@ -39,25 +41,25 @@
           span.h4 もっと見る
 .row.pt-5.px-2
   .col-12.bg-cute.rounded.py-2
-    h2
+    h2.text-center
       = image_tag 'icons/cute.png', width: 24, class: '', style: "margin-top: -5px;"
       span.pl-1 Cute Top5
     hr.my-2
     = render partial: 'items', locals: { items: Item.published.cute.limit(5) }
   .col-12.bg-cool.rounded.py-2.mt-2
-    h2
+    h2.text-center
       = image_tag 'icons/cool.png', width: 24, class: '', style: "margin-top: -5px;"
       span.pl-1 Cool Top5
     hr.my-2
     = render partial: 'items', locals: { items: Item.published.cool.limit(5) }
   .col-12.bg-funny.rounded.py-2.mt-2
-    h2
+    h2.text-center
       = image_tag 'icons/funny.png', width: 24, class: '', style: "margin-top: -5px;"
       span.pl-1 Funny Top5
     hr.my-2
     = render partial: 'items', locals: { items: Item.published.funny.limit(5) }
   .col-12.bg-horror.rounded.py-2.mt-2
-    h2
+    h2.text-center
       = image_tag 'icons/horror_no.png', width: 24, class: '', style: "margin-top: -5px;"
       span.pl-1 Horror Top5
     hr.my-2

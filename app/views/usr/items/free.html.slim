@@ -1,4 +1,4 @@
-- title @tab.to_s
+- title t("items.#{@tab}")
 = render partial: 'tabs', locals: { tab: @tab }
 
 - if @days.present?
