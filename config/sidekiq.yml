@@ -8,3 +8,6 @@
   tweet_free_last_date:
     cron: '0 */15 0,7-23 * * *'
     class: TweetFreeLastDateWorker
+  tweet_registed:
+    cron: '0 */10 0,7-23 * * *'
+    class: TweetRegistedWorker
