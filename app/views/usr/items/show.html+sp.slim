@@ -53,9 +53,9 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
   .text-center
     = link_to @item.detail_page_url, target: '_blank', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
       - if @item.large_image
-        = image_tag @item.large_image, class: 'img-thumbnail'
+        = image_tag @item.large_image, alt: @item.title, class: 'img-thumbnail'
       - else
-        = image_tag 'noimage_m.png', class: 'img-thumbnail'
+        = image_tag 'noimage_m.png', alt: @item.title, class: 'img-thumbnail'
 
 .bg-white.mt-2.p-2.rounded
   p.m-0.h6

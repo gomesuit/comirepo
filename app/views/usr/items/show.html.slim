@@ -51,9 +51,9 @@ ol.breadcrumb.bg-light.m-0.p-2
       .text-center.pt-3
         = link_to @item.detail_page_url, target: '_blank', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
           - if @item.large_image
-            = image_tag @item.large_image, style: 'box-shadow: 8px 8px 30px -6px #000000;'
+            = image_tag @item.large_image, alt: @item.title, style: 'box-shadow: 8px 8px 30px -6px #000000;'
           - else
-            = image_tag 'noimage_m.png', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+            = image_tag 'noimage_m.png', alt: @item.title, style: 'box-shadow: 8px 8px 30px -6px #000000;'
     .col-7
       p.m-0
         == CGI.unescapeHTML @item.introduction
