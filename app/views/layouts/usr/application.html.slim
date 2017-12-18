@@ -7,10 +7,9 @@ html lang="ja"
     = stylesheet_pack_tag 'usr/pc/application'
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Fredericka+the+Great|Nunito'
     = analytics_init if Rails.env.production?
+    = render 'layouts/usr/gtm_js', gtm_id: ENV['GTM_ID'] if ENV['GTM_ID']
   body.bg-light style="font-family: 'Nunito', sans-serif;"
-    /nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-      .container
-        = link_to Settings.site.default.name, root_path, class: 'navbar-brand'
+    = render 'layouts/usr/gtm_noscript', gtm_id: ENV['GTM_ID'] if ENV['GTM_ID']
     .container
       = render 'usr/shared/main_logo'
       = yield
