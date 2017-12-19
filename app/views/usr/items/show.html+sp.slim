@@ -56,7 +56,7 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
         = image_tag @item.large_image, alt: @item.title, class: 'img-thumbnail'
       - else
         = image_tag 'noimage_m.png', alt: @item.title, class: 'img-thumbnail'
-  .mt-2
+  .mt-2.text-right
     = render 'usr/shared/tweet_button'
 
 .bg-white.mt-2.p-2.rounded
