@@ -8,7 +8,7 @@ html lang="ja"
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Fredericka+the+Great|Nunito'
     = analytics_init if Rails.env.production?
     = render 'layouts/usr/gtm_js', gtm_id: ENV['GTM_ID'] if ENV['GTM_ID']
-  body.bg-light style="font-family: 'Nunito', sans-serif;"
+  body.bg-light style="font-family:'Nunito', sans-serif;"
     = render 'layouts/usr/gtm_noscript', gtm_id: ENV['GTM_ID'] if ENV['GTM_ID']
     .container
       = render 'usr/shared/main_logo'
