@@ -13,10 +13,10 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
 .bg-white.p-2.rounded
   h1.h4 = @item.title
   p.mb-0
-    span = '配信開始日: '
+    span.font-weight-bold = '配信開始日: '
     span.pl-1
       = @item.publication_date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[@item.publication_date.wday]})")
-    span.pl-3 = '著者: '
+    span.font-weight-bold.pl-3 = '著者: '
     - @item.authors.each do |author|
       span.pl-1
         = link_to author.name, author_path(author.id)
