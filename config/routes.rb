@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :items do
       member do
         post :ecs
+        post :racy_content
       end
       collection do
         post :regist

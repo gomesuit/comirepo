@@ -1,5 +1,5 @@
 class Adm::ItemsController < Adm::BaseController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :ecs]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :ecs, :racy_content]
 
   # GET /items
   # GET /items.json
@@ -52,6 +52,10 @@ class Adm::ItemsController < Adm::BaseController
   def ecs
     UpdateItemWorker.perform_async [@item.asin]
     redirect_to edit_admin_item_url(@item), notice: '更新Jobの追加が正常終了しました。'
+  end
+
+  def racy_content
+    @item.update!(is_racy_content: !@item.is_racy_content)
   end
 
   def regist
