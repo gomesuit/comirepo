@@ -127,7 +127,7 @@ table.table
         td.align-middle
           p id="racy_content_#{item.id}" = item.is_racy_content
           = form_with url: { action: :racy_content, id: item.id } do |form|
-            = form.submit 'reverse'
+            = form.submit 'reverse', class: 'btn btn-primary btn-sm'
         td.align-middle = item.racy_score.round 2
         td.align-middle = l item.created_at, format: :short
         td.align-middle = l item.updated_at, format: :short
