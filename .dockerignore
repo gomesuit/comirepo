@@ -9,6 +9,7 @@
 !public/*.png
 !public/favicon.ico
 !public/robots.txt
+!public/images/*
 !config.ru
 !Gemfile
 !Gemfile.lock

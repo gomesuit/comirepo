@@ -15,3 +15,8 @@ li style='list-style-type: none;'
     /.swiper-button-next
     /.swiper-button-prev
     /.swiper-scrollbar
+
+/.bookshelf--frame
+  - items.each do |item|
+    .book-wrapper
+      = image_tag item.large_image, alt: item.title
