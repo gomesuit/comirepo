@@ -13,6 +13,7 @@ class TweetRegistedWorker
 
     item = Item.published
            .where(created_at: Time.zone.now.all_day)
+           .where('publication_date >= ?', Date.today + 2)
            .not_tweet_registed
            .order(:title)
            .first
