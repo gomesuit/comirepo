@@ -136,7 +136,7 @@ class Item < ApplicationRecord
   private
 
   def save_free_last_date
-    reg = /(\d+年\d+月\d+日).*までの期間限定無料/
+    reg = /(\d+年\d+月\d+日)[\d:]*までの期間限定無料/
     match = introduction.match(reg)
     if match
       free_last_date = Date.strptime(match[1],'%Y年%m月%d日')

@@ -23,6 +23,12 @@
           th title
           td = @item.title
         tr
+          th publication_date
+          td = @item.publication_date
+        tr
+          th free_last_date
+          td = @item.free_last_date
+        tr
           th large_image
           td = image_tag @item.large_image
         tr
