@@ -145,10 +145,12 @@ class Item < ApplicationRecord
   end
 
   def save_label
-    match = title.match(/.+\((.+?)\)/)
+    match = title.match(/.+\(([^0-9].+?)\)/)
     if match
       label = Label.find_or_initialize_by(name: match[1])
       self.label = label
+    else
+      self.label = nil
     end
   end
 
