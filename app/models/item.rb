@@ -141,6 +141,13 @@ class Item < ApplicationRecord
     if match
       free_last_date = Date.strptime(match[1],'%Y年%m月%d日')
       self.free_last_date = free_last_date
+    else
+      reg = /(\d+年\d+月\d+日)までの期間限定/
+      match = introduction.match(reg)
+      if match
+        free_last_date = Date.strptime(match[1],'%Y年%m月%d日')
+        self.free_last_date = free_last_date
+      end
     end
   end
 
