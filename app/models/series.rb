@@ -9,4 +9,6 @@
 #
 
 class Series < ApplicationRecord
+  has_many :item_series, dependent: :destroy
+  has_many :items, through: :item_series
 end
