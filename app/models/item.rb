@@ -32,6 +32,9 @@ class Item < ApplicationRecord
   has_many :authors, through: :item_authors
   has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
+  has_one :item_series, dependent: :destroy
+  has_one :series, through: :item_series
+
   belongs_to :label, optional: true
   has_many :tweets, class_name: 'ItemTweet', dependent: :destroy
 
