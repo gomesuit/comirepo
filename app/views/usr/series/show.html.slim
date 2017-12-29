@@ -1,0 +1,11 @@
+- title "#{@series.name}のシリーズ一覧"
+- description "#{@series.name}のシリーズ一覧"
+/- keywords @item.authors
+
+ol.breadcrumb.bg-light.m-0.p-2
+  li.breadcrumb-item
+    = link_to 'Home', root_path
+  li.breadcrumb-item.active
+    = @series.name
+
+= render partial: 'items', locals: { items: @series.items.order(:title) }

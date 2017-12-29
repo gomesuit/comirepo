@@ -49,13 +49,17 @@ ol.breadcrumb.bg-light.m-0.p-2
     .col-7
       = render 'usr/shared/tweet_button'
       p
-        span.font-weight-bold = '配信開始日: '
+        span.font-weight-bold 配信開始日:
         span.pl-1
           = @item.publication_date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[@item.publication_date.wday]})")
         span.font-weight-bold.pl-3 = '著者: '
         - @item.authors.each do |author|
           span.pl-1
             = link_to author.name, author_path(author.id)
+        - if @item.series.present?
+          span.font-weight-bold.pl-3 シリーズ:
+          span.pl-1
+            = link_to @item.series.name, series_path(@item.series.id)
       p
         == CGI.unescapeHTML @item.introduction
       = link_to 'amazonで購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark w-100 py-2', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"

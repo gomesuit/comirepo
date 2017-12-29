@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
     resources :items, only: %w[index show]
     resources :authors, only: %w[show]
+    resources :series, only: %w[show]
   end
 
   scope module: :adm, as: :admin, path: :admin do

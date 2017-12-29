@@ -23,4 +23,8 @@ SitemapGenerator::Sitemap.create do
   Author.all.each do |author|
     add author_path(author), lastmod: author.updated_at
   end
+
+  Series.all.each do |series|
+    add series_path(series), lastmod: series.updated_at
+  end
 end

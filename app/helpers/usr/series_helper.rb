@@ -1,0 +1,2 @@
+module Usr::SeriesHelper
+end

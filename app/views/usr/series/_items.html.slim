@@ -1,0 +1,17 @@
+li style='list-style-type: none;'
+  /p.display-4.m-0.pt-4.text-center
+    | 作品一覧
+  hr.mt-0
+  .swiper-container.pb-4
+    .swiper-wrapper
+      - items.each do |item|
+        .swiper-slide
+          = link_to item_path(item)
+            - if item.large_image
+              = image_tag item.large_image, alt: item.title, class: 'card-img-top', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+            - else
+              = image_tag 'noimage_m.png', alt: item.title, class: 'card-img-top', style: 'box-shadow: 8px 8px 30px -6px #000000;'
+    /.swiper-pagination
+    /.swiper-button-next
+    /.swiper-button-prev
+    /.swiper-scrollbar
