@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229102751) do
+ActiveRecord::Schema.define(version: 20171229103821) do
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20171229102751) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_item_categories_on_category_id"
     t.index ["item_id"], name: "index_item_categories_on_item_id"
+  end
+
+  create_table "item_series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "item_id", null: false
+    t.bigint "series_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_series_on_item_id"
+    t.index ["series_id"], name: "index_item_series_on_series_id"
   end
 
   create_table "item_tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -96,6 +105,8 @@ ActiveRecord::Schema.define(version: 20171229102751) do
   add_foreign_key "item_authors", "items"
   add_foreign_key "item_categories", "categories"
   add_foreign_key "item_categories", "items"
+  add_foreign_key "item_series", "items"
+  add_foreign_key "item_series", "series"
   add_foreign_key "item_tweets", "items"
   add_foreign_key "items", "labels"
 end
