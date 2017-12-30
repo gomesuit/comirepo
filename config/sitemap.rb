@@ -24,7 +24,7 @@ SitemapGenerator::Sitemap.create do
     add author_path(author), lastmod: author.updated_at
   end
 
-  Series.all.each do |series|
-    add series_path(series), lastmod: series.updated_at
+  ItemSeries.group(:series_id).each do |item_series|
+    add series_path(item_series.series), lastmod: item_series.series.updated_at
   end
 end
