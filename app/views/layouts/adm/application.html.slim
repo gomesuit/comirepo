@@ -20,6 +20,8 @@ html lang="ja"
           li.nav-item
             = link_to 'Author', admin_authors_path, class: 'nav-link'
           li.nav-item
+            = link_to 'Series', admin_series_index_path, class: 'nav-link'
+          li.nav-item
             = link_to 'sidekiq', admin_sidekiq_web_path, class: 'nav-link'
     .container-fluid.pt-5
       - if notice.present?

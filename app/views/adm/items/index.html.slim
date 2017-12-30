@@ -92,6 +92,7 @@ table.table
       th categories
       th authors
       th label
+      th series
       th is_adult_content
       th = sort_link @search, :adult_score, 'adult_score'
       th is_racy_content
@@ -122,6 +123,9 @@ table.table
         td.align-middle
           - if item.label
             = link_to item.label.name, edit_admin_label_path(item.label)
+        td.align-middle
+          - if item.series
+            = link_to item.series.name, edit_admin_series_path(item.series)
         td.align-middle = item.is_adult_content
         td.align-middle = item.adult_score.round 2
         td.align-middle

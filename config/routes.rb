@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     resources :authors, only: %w[index edit update]
     resources :categories, only: %w[index edit update]
     resources :labels, only: %w[index edit update]
+    resources :series, only: %w[index edit update]
   end
 
   get '*path', controller: 'usr/base', action: 'render_404'

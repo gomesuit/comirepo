@@ -1,0 +1,16 @@
+.pt-3
+  = paginate @series
+  = page_entries_info @series
+
+.pt-3
+table.table
+  thead.thead-light
+    tr
+      th = sort_link @search, :id, 'id'
+      th = sort_link @search, :name, 'name'
+
+  tbody
+    - @series.each do |item|
+      tr
+        td = item.id
+        td = link_to item.name, edit_admin_series_path(item)
