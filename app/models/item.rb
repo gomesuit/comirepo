@@ -41,7 +41,8 @@ class Item < ApplicationRecord
   before_validation :save_free_last_date,
                     :save_label,
                     :save_is_magazine,
-                    :save_is_novel
+                    :save_is_novel,
+                    :save_series
 
   enum is_magazine: { is_magazine: true, is_not_magazine: false }
   enum is_novel: { is_novel: true, is_not_novel: false }
@@ -170,5 +171,17 @@ class Item < ApplicationRecord
 
   def save_is_novel
     self.is_novel = :is_novel if title.include?('文庫')
+  end
+
+  def save_series
+    Series.where('name like ?', "#{title.first 2}%").each do |x|
+      if title.start_with?("#{x.name}　") ||
+         title.start_with?("#{x.name} ") ||
+         title.start_with?("#{x.name}(") ||
+         title.start_with?("#{x.name}（") ||
+         title == x.name
+        self.series = x
+      end
+    end
   end
 end
