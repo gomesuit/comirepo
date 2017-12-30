@@ -1,8 +1,6 @@
 class Adm::ItemsController < Adm::BaseController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :ecs, :racy_content]
 
-  # GET /items
-  # GET /items.json
   def index
     @search = Item.search(params[:q])
     @items = @search.result
@@ -11,22 +9,9 @@ class Adm::ItemsController < Adm::BaseController
                     .page(params[:page])
   end
 
-  # GET /items/1
-  # GET /items/1.json
-  def show
-  end
-
-  # GET /items/new
-  def new
-    @item = Item.new
-  end
-
-  # GET /items/1/edit
   def edit
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
       if @item.update(item_params)
@@ -39,8 +24,6 @@ class Adm::ItemsController < Adm::BaseController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item.destroy
     respond_to do |format|

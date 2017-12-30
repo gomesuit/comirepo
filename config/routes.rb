@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
     root 'items#index'
 
-    resources :items do
+    resources :items, only: %w[index edit update destroy] do
       member do
         post :ecs
         post :racy_content
