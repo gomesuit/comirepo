@@ -8,9 +8,11 @@ table.table
     tr
       th = sort_link @search, :id, 'id'
       th = sort_link @search, :name, 'name'
+      th count
 
   tbody
     - @series.each do |item|
       tr
         td = item.id
         td = link_to item.name, edit_admin_series_path(item)
+        td = item.items.count

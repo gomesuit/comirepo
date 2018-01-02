@@ -1,2 +1,32 @@
 .pt-3
+= form_for [:admin, @series] do |f|
+  - if @series.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@series.errors.count, "error")} prohibited this series from being saved:"
+      ul
+        - @series.errors.full_messages.each do |message|
+          li = message
+
+  table.table.table-bordered
+    tbody
+      tr
+        th id
+        td = @series.id
+      tr
+        th name
+        td = f.text_field :name, readonly: true
+      tr
+        th hided
+        td
+          .form-check
+            label.form-check-label
+              = f.radio_button :hided, :hided, checked: @series.hided?, class: 'form-check-input'
+              | hided
+          .form-check
+            label.form-check-label
+              = f.radio_button :hided, :displayed, checked: @series.displayed?, class: 'form-check-input'
+              | displayed
+  = f.submit '更新', class: 'btn btn-primary'
+
+.pt-3
 = render partial: 'adm/common/items', locals: { items: @items }
