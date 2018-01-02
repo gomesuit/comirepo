@@ -51,6 +51,7 @@ class Item < ApplicationRecord
     category_filter.adult_filter
                    .label_filter
                    .author_filter
+                   .series_filter
                    .is_not_magazine
                    .is_not_novel
   end
@@ -118,6 +119,12 @@ class Item < ApplicationRecord
     def author_filter
       authors = Author.hided.ids
       sub = select(:id).joins(:authors).where(authors: { id: authors })
+      where.not(id: sub)
+    end
+
+    def series_filter
+      series = Series.hided.ids
+      sub = select(:id).joins(:series).where(series: { id: series })
       where.not(id: sub)
     end
 
