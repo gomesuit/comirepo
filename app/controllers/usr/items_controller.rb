@@ -7,8 +7,6 @@ class Usr::ItemsController < Usr::BaseController
     render :index
   end
 
-  # GET /items
-  # GET /items.json
   def index
     @tab = :thisweek
     @days = Item.published.thisweek
@@ -29,8 +27,6 @@ class Usr::ItemsController < Usr::BaseController
                 .free_last_dates
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
     @item = Item.find(params[:id])
   end
