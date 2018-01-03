@@ -58,10 +58,12 @@ class Item < ApplicationRecord
 
   scope :limited_freedoms, -> { where.not(free_last_date: nil).where('free_last_date >= ?', Date.today) }
   scope :not_limited_freedoms, -> { where(free_last_date: nil) }
-  scope :cute, -> { where(cute_count: 1..Float::INFINITY).order(cute_count: :desc).order(publication_date: :asc) }
-  scope :cool, -> { where(cool_count: 1..Float::INFINITY).order(cool_count: :desc).order(publication_date: :asc) }
-  scope :funny, -> { where(funny_count: 1..Float::INFINITY).order(funny_count: :desc).order(publication_date: :asc) }
-  scope :horror, -> { where(horror_count: 1..Float::INFINITY).order(horror_count: :desc).order(publication_date: :asc) }
+
+  scope :rank_range, -> { where(publication_date: Date.today - 2.week..Date.today + 1.month) }
+  scope :cute,   -> { rank_range.where(cute_count: 1..Float::INFINITY).order(cute_count: :desc).order(publication_date: :asc) }
+  scope :cool,   -> { rank_range.where(cool_count: 1..Float::INFINITY).order(cool_count: :desc).order(publication_date: :asc) }
+  scope :funny,  -> { rank_range.where(funny_count: 1..Float::INFINITY).order(funny_count: :desc).order(publication_date: :asc) }
+  scope :horror, -> { rank_range.where(horror_count: 1..Float::INFINITY).order(horror_count: :desc).order(publication_date: :asc) }
 
   def published?
     Item.published.exists?(id)
