@@ -16,7 +16,11 @@ SitemapGenerator::Sitemap.create do
   add thisweek_items_path
   add nextweek_items_path
 
-  Item.all.each do |item|
+  Item.not_limited_freedoms.each do |item|
+    add item_path(item), lastmod: item.updated_at
+  end
+
+  Item.limited_freedoms.each do |item|
     add item_path(item), lastmod: item.updated_at
   end
 

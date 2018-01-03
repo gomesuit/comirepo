@@ -56,7 +56,7 @@ class Item < ApplicationRecord
                    .is_not_novel
   end
 
-  scope :limited_freedoms, -> { where.not(free_last_date: nil) }
+  scope :limited_freedoms, -> { where.not(free_last_date: nil).where('free_last_date >= ?', Date.today) }
   scope :not_limited_freedoms, -> { where(free_last_date: nil) }
   scope :cute, -> { where(cute_count: 1..Float::INFINITY).order(cute_count: :desc).order(publication_date: :asc) }
   scope :cool, -> { where(cool_count: 1..Float::INFINITY).order(cool_count: :desc).order(publication_date: :asc) }
@@ -97,7 +97,7 @@ class Item < ApplicationRecord
     end
 
     def free_last_dates
-      where('free_last_date >= ?', Date.today).order(free_last_date: :asc).pluck('DISTINCT free_last_date')
+      order(free_last_date: :asc).pluck('DISTINCT free_last_date')
     end
 
     def category_filter
