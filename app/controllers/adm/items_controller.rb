@@ -15,11 +15,9 @@ class Adm::ItemsController < Adm::BaseController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to edit_admin_item_url(@item), notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
+        format.html { redirect_to ({ action: :edit }), notice: 'Item was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -14,11 +14,9 @@ class Adm::LabelsController < Adm::BaseController
   def update
     respond_to do |format|
       if @label.update(label_params)
-        format.html { redirect_to edit_admin_label_url(@label), notice: 'Label was successfully updated.' }
-        format.json { render :show, status: :ok, location: @label }
+        format.html { redirect_to ({ action: :edit }), notice: 'Label was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @label.errors, status: :unprocessable_entity }
       end
     end
   end

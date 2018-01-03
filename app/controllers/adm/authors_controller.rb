@@ -13,7 +13,7 @@ class Adm::AuthorsController < Adm::BaseController
   def update
     respond_to do |format|
       if @author.update(author_params)
-        format.html { redirect_to edit_admin_author_url(@author), notice: 'Author was successfully updated.' }
+        format.html { redirect_to ({ action: :edit }), notice: 'Author was successfully updated.' }
       else
         format.html { render :edit }
       end
