@@ -4,6 +4,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.cache_store = :redis_store, ENV['CACHE_STORE'], { expires_in: 1.hour }
   config.session_store :redis_store, servers: ENV['SESSION_STORE'], expire_in: 1.day
 
   # Eager load code on boot. This eager loads most of Rails and

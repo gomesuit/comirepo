@@ -43,6 +43,7 @@ class Usr::ItemsController < Usr::BaseController
     @type = params[:type]
     if %w[cute_count cool_count funny_count horror_count].include?(@type)
       @item.increment!(@type)
+      @item.touch
     else
       render_404
     end
