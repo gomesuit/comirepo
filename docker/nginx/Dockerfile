@@ -1,5 +1,7 @@
 FROM nginx:1.13
 
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 ENV RAILS_HOST rails
 ENV RAILS_PORT 3000
 
