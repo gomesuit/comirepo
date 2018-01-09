@@ -54,7 +54,7 @@ CMD ["./command.sh"]
 
 COPY command.sh ./command.sh
 COPY nginx.conf /etc/nginx/
-RUN mkdir -p /var/lib/nginx/cache
+RUN mkdir -p /var/lib/nginx/cache /var/ngx_pagespeed_cache
 
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log && \
+    ln -sf /dev/stdout /var/log/nginx/access.log
