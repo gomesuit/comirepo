@@ -44,7 +44,7 @@
           .col-12.px-1.text-right style="font-size: 0.6rem;"
             p.text-secondary.m-0.pt-1 ※投票数の多い作品はトップページに表示されます。
         .text-center.pt-3
-          = link_to @item.detail_page_url, target: '_blank', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
+          = link_to @item.amazon_url, target: '_blank', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
             - if @item.large_image
               = image_tag @item.large_image, alt: @item.title, style: 'box-shadow: 8px 8px 30px -6px #000000;'
             - else
@@ -65,4 +65,4 @@
               = link_to @item.series.name, series_path(@item.series.id)
         p
           == CGI.unescapeHTML @item.introduction
-        = link_to 'amazonで購入', @item.detail_page_url, target: '_blank', class: 'btn btn-dark w-100 py-2', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
+        = link_to 'amazonで購入', @item.amazon_url, target: '_blank', class: 'btn btn-dark w-100 py-2', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"

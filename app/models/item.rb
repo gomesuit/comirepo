@@ -73,6 +73,16 @@ class Item < ApplicationRecord
     free_last_date.present?
   end
 
+  def amazon_url
+    "https://www.amazon.co.jp/dp/#{asin}"
+  end
+
+  def amazon_url_with_tag
+    uri = URI(amazon_url)
+    uri.query = { tag: ENV['ASSOCIATE_TAG'] }.to_param
+    uri.to_s
+  end
+
   class << self
     def today
       where(publication_date: Date.today)
