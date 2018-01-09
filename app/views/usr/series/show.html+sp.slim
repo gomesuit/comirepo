@@ -8,4 +8,7 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
   li.breadcrumb-item.active
     = @series.name
 
+.pt-2
+  h1.h3.text-center = "シリーズ『#{@series.name}』一覧"
+
 = render partial: 'items', locals: { items: @series.items.order(:title) }
