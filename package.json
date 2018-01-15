@@ -6,7 +6,7 @@
     "bootstrap": "next",
     "coffeescript": "1.12.7",
     "jquery": "^3.2.1",
-    "popper.js": "^1.12.6",
+    "popper.js": "^1.12.9",
     "swiper": "^4.0.7"
   },
   "devDependencies": {
