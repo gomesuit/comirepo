@@ -1,10 +1,7 @@
-// css
-import 'src/bootstrap'
-import 'src/swiper'
+import 'lib/bootstrap'
+import 'lib/swiper'
+import Swiper from 'swiper/dist/js/swiper.min'
 import 'src/usr/sp/application'
-
-// js
-import 'bootstrap/dist/js/bootstrap.min'
 
 var itemsSwiper = new Swiper ('.swiper-container', {
   slidesPerView: 2.5,
