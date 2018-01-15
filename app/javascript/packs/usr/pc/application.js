@@ -2,6 +2,7 @@ import 'lib/bootstrap'
 import 'lib/swiper'
 import Swiper from 'swiper/dist/js/swiper.min'
 import 'src/usr/pc/application'
+import 'components/usr/items/items.pc'
 
 var itemsSwiper = new Swiper ('.swiper-container', {
   slidesPerView: 5.5,
