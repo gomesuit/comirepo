@@ -1,8 +1,8 @@
 import './day-items.pc.scss'
-import 'components/usr/item/item.pc'
+import 'components/usr/slide-items/slide-items.pc'
 import Swiper from 'swiper/dist/js/swiper.min'
 
-const itemsSwiper = new Swiper ('.day-items--swiper-container', {
+const swiper = new Swiper ('.day-items--swiper-container', {
   slidesPerView: 5.5,
   spaceBetween: 10,
   slidesPerColumn: 2,

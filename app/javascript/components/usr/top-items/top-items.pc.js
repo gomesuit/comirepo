@@ -1,28 +1,8 @@
 import './top-items.pc.scss'
-import 'components/usr/item/item.pc'
+import 'components/usr/slide-items/slide-items.pc'
 import Swiper from 'swiper/dist/js/swiper.min'
 
-var itemsSwiper = new Swiper ('.swiper-container', {
-  slidesPerView: 5.5,
-  spaceBetween: 10,
-  slidesPerColumn: 2,
-  //centeredSlides: true,
-  //loop: true,
-  //pagination: {
-  //  el: '.swiper-pagination',
-  //  clickable: true,
-  //},
-  //scrollbar: {
-  //  el: '.swiper-scrollbar',
-  //  draggable: true,
-  //},
-  //navigation: {
-  //  nextEl: '.swiper-button-next',
-  //  prevEl: '.swiper-button-prev',
-  //},
-})
-
-var topItemsSwiper = new Swiper ('.top-items--swiper-container', {
+const swiper = new Swiper ('.top-items--swiper-container', {
   slidesPerView: 4.5,
   spaceBetween: 10,
   slidesPerColumn: 1,

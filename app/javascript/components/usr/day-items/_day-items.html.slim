@@ -3,11 +3,4 @@ li style='list-style-type: none;'
     = day_str
   hr.mt-0
   .day-items--swiper-container.pb-4
-    .swiper-wrapper
-      - items.each do |item|
-        .swiper-slide
-          = render 'components/usr/item/item', item: item
-    /.swiper-pagination
-    /.swiper-button-next
-    /.swiper-button-prev
-    /.swiper-scrollbar
+    = render 'components/usr/slide-items/slide-items', items: items
