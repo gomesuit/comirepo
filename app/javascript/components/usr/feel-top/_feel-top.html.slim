@@ -1,0 +1,6 @@
+.p-3.rounded.border.border-white class="bg-#{type}"
+  h2.text-center
+    = image_tag "icons/#{type}.png", width: 24, class: '', style: "margin-top: -5px;"
+    span.pl-1 = "#{type.capitalize} Top5"
+  hr
+  = render 'components/usr/items/items', items: Item.published.send(type).limit(5)

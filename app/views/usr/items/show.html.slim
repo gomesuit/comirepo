@@ -38,7 +38,7 @@
           .col-6.px-1
             = link_to count_item_path(@item.id, type: :horror_count), method: :post, remote: true, onclick: "ga('send', 'event', 'horror_count', 'count', '#{@item.id}');"
               .horror_count.btn.px-2.py-2
-                = image_tag 'icons/horror_no.png', width: 18, class: '', style: "margin-top: -1px;"
+                = image_tag 'icons/horror.png', width: 18, class: '', style: "margin-top: -1px;"
                 span.pl-1 horror
                 span#horror_count.ml-2.count = @item.horror_count
           .col-12.px-1.text-right style="font-size: 0.6rem;"
