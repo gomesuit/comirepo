@@ -1,5 +1,5 @@
 import './top-items.pc.scss'
-import 'components/usr/slide-items/slide-items.pc'
+import 'components/usr/item/item.pc'
 import Swiper from 'swiper/dist/js/swiper.min'
 
 const swiper = new Swiper ('.top-items--swiper-container', {

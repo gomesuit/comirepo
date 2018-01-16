@@ -1,2 +1,5 @@
 .top-items--swiper-container.pb-4
-  = render 'components/usr/slide-items/slide-items', items: items
+  .swiper-wrapper
+    - items.each do |item|
+      .swiper-slide
+        = render 'components/usr/item/item', item: item
