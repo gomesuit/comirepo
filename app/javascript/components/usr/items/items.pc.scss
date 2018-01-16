@@ -23,7 +23,10 @@
   align-items: center;
 }
 
-.top-swiper-container {
-  width: 100%;
-  overflow-x: auto;
+.items {
+  &--top-swiper-container {
+    width: 100%;
+    overflow-x: auto;
+    min-height: 150px;
+  }
 }

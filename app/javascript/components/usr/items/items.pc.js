@@ -1,4 +1,5 @@
 import './items.pc.scss'
+import 'components/usr/item/item.pc'
 import Swiper from 'swiper/dist/js/swiper.min'
 
 var itemsSwiper = new Swiper ('.swiper-container', {
@@ -21,7 +22,7 @@ var itemsSwiper = new Swiper ('.swiper-container', {
   //},
 })
 
-var topItemsSwiper = new Swiper ('.top-swiper-container', {
+var topItemsSwiper = new Swiper ('.items--top-swiper-container', {
   slidesPerView: 4.5,
   spaceBetween: 10,
   slidesPerColumn: 1,
