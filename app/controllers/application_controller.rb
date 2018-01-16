@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, except: :render_404
+  prepend_view_path Rails.root.join('app/javascript')
 
   if !Rails.env.development?
     rescue_from ActionView::MissingTemplate, with: :render_404
