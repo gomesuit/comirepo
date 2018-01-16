@@ -1,5 +1,5 @@
 import 'lib/bootstrap'
 import 'lib/swiper'
-import 'components/usr/items/items.pc'
+import 'components/usr/top-items/top-items.pc'
 import 'components/usr/counter/counter.pc'
 import 'components/usr/feel-top/feel-top.pc'

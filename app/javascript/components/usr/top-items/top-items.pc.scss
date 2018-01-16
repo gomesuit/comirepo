@@ -23,8 +23,8 @@
   align-items: center;
 }
 
-.items {
-  &--top-swiper-container {
+.top-items {
+  &--swiper-container {
     width: 100%;
     overflow-x: auto;
     min-height: 150px;

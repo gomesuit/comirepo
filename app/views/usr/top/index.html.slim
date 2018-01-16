@@ -4,7 +4,7 @@
       h2.text-center
         | 配信開始日から探す
       hr
-      = render 'components/usr/items/items', items: @items
+      = render 'components/usr/top-items/top-items', items: @items
       .row
         .col-4
           = link_to yesterday_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
@@ -26,7 +26,7 @@
       h2.text-center
         | 期間限定無料から探す
       hr
-      = render 'components/usr/items/items', items: @free_items
+      = render 'components/usr/top-items/top-items', items: @free_items
       .row
         .col-12
           = link_to free_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'

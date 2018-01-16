@@ -1,4 +1,4 @@
-import './items.sp.scss'
+import './top-items.sp.scss'
 import Swiper from 'swiper/dist/js/swiper.min'
 
 var itemsSwiper = new Swiper ('.swiper-container', {
