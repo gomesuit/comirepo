@@ -13,8 +13,8 @@ html lang="ja"
     .container
       = render 'usr/shared/main_logo'
       = yield
-      hr.mt-5
-        p.h5 このサイトについて
-        = render 'layouts/usr/notice_content'
+      hr.mt-5.mb-5
+        /p.h5 このサイトについて
+        /= render 'layouts/usr/notice_content'
     = javascript_include_tag 'application'
     = javascript_pack_tag 'usr/sp/application'
