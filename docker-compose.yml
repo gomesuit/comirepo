@@ -25,7 +25,7 @@ services:
       - RAILS_HOST=rails
       - RAILS_PORT=3000
       - S3_BUCKET=${AWS_BUCKET}
-      - TARGET_DOMAIN=http://localhost
+      - TARGET_DOMAIN=localhost
   rails:
     build:
       context: .
