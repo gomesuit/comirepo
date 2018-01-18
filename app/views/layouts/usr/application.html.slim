@@ -13,10 +13,13 @@ html lang="ja"
     .container
       = render 'usr/shared/main_logo'
       = yield
-      hr.mt-5.mb-5
+      hr.mt-5
         /.row
           .col-4
-            p.h5 このサイトについて
-            = render 'layouts/usr/notice_content'
+            /p.h5 このサイトについて
+            /= render 'layouts/usr/notice_content'
+        .text-center.mb-4
+          p.h5 PR
+          = render 'layouts/usr/raku'
     = javascript_include_tag 'application'
     = javascript_pack_tag 'usr/pc/application'
