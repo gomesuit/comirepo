@@ -47,6 +47,7 @@ gem 'mysql2'
 gem 'redis-rails'
 gem 'twitter'
 gem 'fog-aws'
+gem 'rakuten_web_service'
 
 group :production do
   gem 'google-analytics-rails'
