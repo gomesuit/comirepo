@@ -72,6 +72,7 @@ class UpdateItemWorker
       end
 
       data.save!
+      # UpdateAfiWorkerWorker.perform_async data.asin
     rescue => error
       pp item
       puts error.message
