@@ -48,6 +48,7 @@ gem 'redis-rails'
 gem 'twitter'
 gem 'fog-aws'
 gem 'rakuten_web_service'
+gem 'retryable'
 
 group :production do
   gem 'google-analytics-rails'

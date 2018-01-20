@@ -282,6 +282,7 @@ GEM
       redis-store (>= 1.2, < 2)
     redis-store (1.4.1)
       redis (>= 2.2, < 5)
+    retryable (3.0.0)
     ruby-hmac (0.4.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
@@ -406,6 +407,7 @@ DEPENDENCIES
   rakuten_web_service
   ransack
   redis-rails
+  retryable
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq-scheduler
