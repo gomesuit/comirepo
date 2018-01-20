@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102201223) do
+ActiveRecord::Schema.define(version: 20180120201602) do
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hided", default: false, null: false
+  end
+
+  create_table "bookshelf_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "bookshelf_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookshelf_id"], name: "index_bookshelf_items_on_bookshelf_id"
+    t.index ["item_id"], name: "index_bookshelf_items_on_item_id"
+  end
+
+  create_table "bookshelves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "uuid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -85,6 +100,8 @@ ActiveRecord::Schema.define(version: 20180102201223) do
     t.integer "cool_count", default: 0, null: false
     t.integer "funny_count", default: 0, null: false
     t.integer "horror_count", default: 0, null: false
+    t.string "isbn10"
+    t.string "rakuten_url"
     t.index ["label_id"], name: "index_items_on_label_id"
   end
 
@@ -102,6 +119,8 @@ ActiveRecord::Schema.define(version: 20180102201223) do
     t.boolean "hided", default: false, null: false
   end
 
+  add_foreign_key "bookshelf_items", "bookshelves"
+  add_foreign_key "bookshelf_items", "items"
   add_foreign_key "item_authors", "authors"
   add_foreign_key "item_authors", "items"
   add_foreign_key "item_categories", "categories"

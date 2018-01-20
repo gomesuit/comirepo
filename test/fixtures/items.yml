@@ -25,6 +25,8 @@
 #  cool_count       :integer          default(0), not null
 #  funny_count      :integer          default(0), not null
 #  horror_count     :integer          default(0), not null
+#  isbn10           :string(255)
+#  rakuten_url      :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
