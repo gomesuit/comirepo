@@ -65,4 +65,9 @@
               = link_to @item.series.name, series_path(@item.series.id)
         p
           == CGI.unescapeHTML @item.introduction
-        = link_to 'amazonで購入', @item.amazon_url, target: '_blank', class: 'btn btn-dark w-100 py-2', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
+        = link_to @item.amazon_url, target: '_blank', class: 'btn btn-dark w-100 py-2', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
+          span.font-weight-bold amazonで購入
+        - if @item.rakuten_url.present?
+          .mt-1
+          = link_to @item.rakuten_url, target: '_blank', class: 'btn bg-warning text-white w-100 py-2', onclick: "ga('send', 'event', 'rakuten_link', 'click', '#{@item.id}');"
+            span.font-weight-bold 楽天で購入

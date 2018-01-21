@@ -72,4 +72,10 @@
     p.m-0.h6
       == CGI.unescapeHTML @item.introduction
 
-  = link_to 'amazonで購入', @item.amazon_url, target: '_blank', class: 'btn btn-dark w-100 py-3 mt-2', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
+  .mt-2
+  = link_to @item.amazon_url, target: '_blank', class: 'btn btn-dark w-100 py-3', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
+    span.h5.font-weight-bold amazonで購入
+  - if @item.rakuten_url.present?
+    .mt-2
+    = link_to @item.rakuten_url, target: '_blank', class: 'btn bg-warning text-white w-100 py-3', onclick: "ga('send', 'event', 'rakuten_link', 'click', '#{@item.id}');"
+      span.h5.font-weight-bold 楽天で購入
