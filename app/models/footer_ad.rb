@@ -1,0 +1,2 @@
+class FooterAd < ApplicationRecord
+end
