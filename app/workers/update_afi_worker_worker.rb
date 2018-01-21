@@ -4,14 +4,17 @@ class UpdateAfiWorkerWorker
   sidekiq_options retry: 3
 
   def perform(asin)
-    isbn = parse_isbn(asin)
+    item = Item.find_by(asin: asin)
+
+    isbn = item.isbn10 || parse_isbn(asin)
     pp isbn
     return if isbn.nil?
+
     rakuten_url = get_rakuten_url(isbn)
     pp rakuten_url
     return if rakuten_url.nil?
 
-    Item.find_by(asin: asin).update!(isbn10: isbn, rakuten_url: rakuten_url)
+    item.update!(isbn10: isbn, rakuten_url: rakuten_url)
   end
 
   def parse_isbn(asin)

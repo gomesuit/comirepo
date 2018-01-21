@@ -72,7 +72,10 @@ class UpdateItemWorker
       end
 
       data.save!
-      UpdateAfiWorkerWorker.perform_async data.asin if Item.published.exists?(asin: data.asin)
+
+      if Item.published.exists?(asin: data.asin) && data.rakuten_url.blank?
+        UpdateAfiWorkerWorker.perform_async data.asin
+      end
     rescue => error
       pp item
       puts error.message
