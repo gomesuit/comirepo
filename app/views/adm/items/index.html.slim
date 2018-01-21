@@ -44,6 +44,10 @@ h1.pt-3 検索
           .col-9
             = f.collection_select :categories_id_in, Category.all, :id, :name, { include_blank: '指定なし' }, { class: 'form-control' }
         .form-group.row
+          = f.label :rakuten_url_present, 'RAKUTEN', class: 'col-3 col-form-label'
+          .col-9.align-self-center
+            = f.check_box :rakuten_url_present, class: ''
+        .form-group.row
           = f.label :is_adult_content_eq, '成人向けコンテンツ', class: 'col-3 col-form-label'
           .col-9
             .form-check.form-check-inline
