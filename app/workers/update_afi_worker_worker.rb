@@ -11,7 +11,7 @@ class UpdateAfiWorkerWorker
     pp rakuten_url
     return if rakuten_url.nil?
 
-    Item.find(asin: asin).update!(isbn: isbn, rakuten_url: rakuten_url)
+    Item.find_by(asin: asin).update!(isbn10: isbn, rakuten_url: rakuten_url)
   end
 
   def parse_isbn(asin)
@@ -39,6 +39,6 @@ class UpdateAfiWorkerWorker
 
     items = RakutenWebService::Books::Book.search(isbn: isbn)
     return nil if items.count == 0
-    items.first.affiliateUrl
+    items.first.affiliate_url
   end
 end
