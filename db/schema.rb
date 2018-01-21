@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 20180121182914) do
 
   create_table "footer_ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
-    t.text "dom", null: false
+    t.text "dom_pc", null: false
+    t.text "dom_sp", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resources :categories, only: %w[index edit update]
     resources :labels, only: %w[index edit update]
     resources :series, only: %w[index edit update]
+    resources :footer_ads, only: %w[index new edit update create destroy]
   end
 
   get '*path', controller: 'usr/base', action: 'render_404'
