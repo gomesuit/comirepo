@@ -9,12 +9,13 @@ class UpdateAfiWorkerWorker
     isbn = item.isbn10 || parse_isbn(asin)
     pp isbn
     return if isbn.nil?
+    item.update!(isbn10: isbn)
 
     rakuten_url = get_rakuten_url(isbn)
     pp rakuten_url
     return if rakuten_url.nil?
 
-    item.update!(isbn10: isbn, rakuten_url: rakuten_url)
+    item.update!(rakuten_url: rakuten_url)
   end
 
   def parse_isbn(asin)
