@@ -1,6 +1,8 @@
-.p-3.rounded.border.border-white class="bg-#{type}"
-  h2.text-center
-    = image_tag "icons/#{type}.png", width: 24, class: 'feel-top--icon'
-    span.pl-1 = "#{type.capitalize} Top5"
-  hr
-  = render 'components/usr/top-items/top-items', items: Item.published.send(type).limit(5)
+- item = Item.published.send(type).limit(5)
+- cache item
+  .p-3.rounded.border.border-white class="bg-#{type}"
+    h2.text-center
+      = image_tag "icons/#{type}.png", width: 24, class: 'feel-top--icon'
+      span.pl-1 = "#{type.capitalize} Top5"
+    hr
+    = render 'components/usr/top-items/top-items', items: Item.published.send(type).limit(5)
