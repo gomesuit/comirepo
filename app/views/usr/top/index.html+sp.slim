@@ -8,7 +8,7 @@
           hr.my-2
       .row
         .col-12
-          = render partial: 'items', locals: { items: @items }
+          = render 'components/usr/top-items/top-items', items: @items
       .row
         .col-4.pr-1
           = link_to yesterday_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
@@ -35,7 +35,7 @@
           hr.my-2
       .row
         .col-12
-          = render partial: 'items', locals: { items: @free_items }
+          = render 'components/usr/top-items/top-items', items: @free_items
       .row
         .col-12
           = link_to free_items_path, class: 'btn btn-outline-dark w-100 py-3 my-2'
@@ -50,22 +50,22 @@
         = image_tag 'icons/cute.png', width: 24, class: '', style: "margin-top: -5px;"
         span.pl-1 Cute Top5
       hr.my-2
-      = render partial: 'items', locals: { items: Item.published.cute.limit(5) }
+      = render 'components/usr/top-items/top-items', items: Item.published.cute.limit(5)
     .col-12.bg-cool.rounded.py-2.mt-2
       h2.text-center
         = image_tag 'icons/cool.png', width: 24, class: '', style: "margin-top: -5px;"
         span.pl-1 Cool Top5
       hr.my-2
-      = render partial: 'items', locals: { items: Item.published.cool.limit(5) }
+      = render 'components/usr/top-items/top-items', items: Item.published.cool.limit(5)
     .col-12.bg-funny.rounded.py-2.mt-2
       h2.text-center
         = image_tag 'icons/funny.png', width: 24, class: '', style: "margin-top: -5px;"
         span.pl-1 Funny Top5
       hr.my-2
-      = render partial: 'items', locals: { items: Item.published.funny.limit(5) }
+      = render 'components/usr/top-items/top-items', items: Item.published.funny.limit(5)
     .col-12.bg-horror.rounded.py-2.mt-2
       h2.text-center
         = image_tag 'icons/horror.png', width: 24, class: '', style: "margin-top: -5px;"
         span.pl-1 Horror Top5
       hr.my-2
-      = render partial: 'items', locals: { items: Item.published.horror.limit(5) }
+      = render 'components/usr/top-items/top-items', items: Item.published.horror.limit(5)
