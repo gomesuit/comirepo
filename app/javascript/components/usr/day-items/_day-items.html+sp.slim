@@ -1,0 +1,13 @@
+li.day-items--list-style
+  p.h2.m-0.pt-3.text-center
+    = day_str
+  hr.m-0.pb-2
+  .swiper-container.day-items--swiper-container.py-4
+    .swiper-wrapper
+      - items.each do |item|
+        .swiper-slide
+          = render 'components/usr/item/item', item: item
+    .swiper-pagination
+    /.swiper-button-next
+    /.swiper-button-prev
+    /.swiper-scrollbar

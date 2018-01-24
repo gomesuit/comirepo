@@ -6,6 +6,6 @@
   - if @days.present?
     ul.p-0
       - @days.each do |day|
-        = render partial: 'day_items', locals: { day: day, day_str: day.strftime('%m/%d %a'), items: Item.published.not_limited_freedoms.where(publication_date: day).order(:title) }
+        = render 'components/usr/day-items/day-items', day: day, day_str: day.strftime('%m/%d %a'), items: Item.published.not_limited_freedoms.where(publication_date: day).order(:title)
   - else
     p.h4.pt-5.text-center style='padding-bottom: 500px;' 発売予定の電子書籍はありません。
