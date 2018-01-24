@@ -11,4 +11,4 @@ ol.breadcrumb.bg-light.m-0.p-2.h6
 .pt-2
   h1.h3.text-center = "『#{@author.name}』の作品一覧"
 
-= render partial: 'items', locals: { items: @author.items.order(:title) }
+= render 'components/usr/day-items/day-items', day: nil, day_str: nil, items: @author.items.order(:title)
