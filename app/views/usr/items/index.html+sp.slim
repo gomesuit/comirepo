@@ -1,7 +1,7 @@
 - title "#{t("items.#{@tab}")}の配信開始一覧"
 
 - cache "#{@tab}/#{@days.hash}"
-  = render partial: 'tabs', locals: { tab: @tab }
+  = render 'tabs', tab: @tab
 
   - if @days.present?
     ul.p-0
