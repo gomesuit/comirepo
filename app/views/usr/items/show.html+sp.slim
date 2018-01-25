@@ -60,7 +60,7 @@
 
   .bg-white.mt-2.p-2.rounded
     .text-center
-      = link_to @item.amazon_url, target: '_blank', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
+      = link_to @item.amazon_url, target: '_blank'
         - if @item.large_image
           = image_tag @item.large_image, alt: @item.title, class: 'img-thumbnail'
         - else
@@ -73,7 +73,7 @@
       == CGI.unescapeHTML @item.introduction
 
   .mt-2
-  = link_to @item.amazon_url, target: '_blank', class: 'btn btn-dark w-100 py-3', onclick: "ga('send', 'event', 'amazon_link', 'click', '#{@item.id}');"
+  = link_to @item.amazon_url, target: '_blank', class: 'btn btn-dark w-100 py-3'
     span.h5.font-weight-bold amazonで購入
   - if @item.rakuten_url.present?
     .mt-2
