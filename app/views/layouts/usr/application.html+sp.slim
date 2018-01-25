@@ -11,7 +11,7 @@ html lang="ja"
   body.bg-light style="font-family: 'Nunito', sans-serif;"
     = render 'layouts/usr/gtm_noscript', gtm_id: ENV['GTM_ID'] if ENV['GTM_ID']
     .container
-      = render 'usr/shared/main_logo'
+      = render 'components/usr/main-logo/main-logo'
       = yield
       hr.mt-5
         /p.h5 このサイトについて
