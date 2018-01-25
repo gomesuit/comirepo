@@ -1,4 +1,5 @@
 - title "#{t("items.#{@tab}")}の配信開始一覧"
+- description "#{t("items.#{@tab}")}配信開始される電子書籍を一覧で確認出来ます。"
 
 - cache "#{@tab}/#{@days.hash}"
   = render 'tabs', tab: @tab
@@ -6,6 +7,8 @@
   - if @days.present?
     ul.p-0
       - @days.each do |day|
-        = render 'components/usr/day-items/day-items', day_str: day.strftime('%m/%d %a'), items: Item.published.not_limited_freedoms.where(publication_date: day).order(:title)
+        = render 'components/usr/day-items/day-items',
+                 day_str: day.strftime('%m/%d %a'),
+                 items: Item.published.not_limited_freedoms.where(publication_date: day).order(:title)
   - else
     p.h2.pt-5.text-center style='padding-bottom: 500px;' 発売予定の電子書籍はありません。

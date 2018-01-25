@@ -1,4 +1,5 @@
 - title t("items.#{@tab}")
+- description "#{t("items.#{@tab}")}で配信されている電子書籍を一覧で確認出来ます。"
 
 - cache "#{@tab}/#{@days.hash}"
   = render 'tabs', tab: @tab
