@@ -2,6 +2,10 @@
   &__link{
     color: #495057;
     text-decoration: none;
+    &:hover{
+      color: #495057;
+      text-decoration: none;
+    }
   }
   &__font{
     font-family: 'Fredericka the Great', cursive;
