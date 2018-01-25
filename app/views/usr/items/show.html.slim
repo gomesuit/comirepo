@@ -69,5 +69,5 @@
           span.font-weight-bold amazonで購入
         - if @item.rakuten_url.present?
           .mt-1
-          = link_to @item.rakuten_url, target: '_blank', class: 'btn bg-warning text-white w-100 py-2', onclick: "ga('send', 'event', 'rakuten_link', 'click', '#{@item.id}');"
+          = link_to @item.rakuten_url, target: '_blank', class: 'btn bg-warning text-white w-100 py-2'
             span.font-weight-bold 楽天で購入
