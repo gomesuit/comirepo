@@ -9,6 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  sort       :integer          default(0), not null
+#  hided      :boolean          default(FALSE), not null
 #
 
 class FooterAd < ApplicationRecord
