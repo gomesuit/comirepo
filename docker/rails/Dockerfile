@@ -45,14 +45,14 @@ RUN yarn install
 
 # assets precompile
 COPY Rakefile .babelrc ./
+COPY bin bin
 COPY config config
 COPY app app
-COPY bin bin
 RUN RAILS_ENV=production bin/rails assets:precompile
 
 COPY . /home/rails/app
-RUN mkdir -p tmp/uploads
-RUN chown rails.rails . * db/schema.rb && \
+RUN mkdir -p tmp/uploads && \
+    chown rails.rails . * db/schema.rb && \
     chown rails.rails -R log tmp
 USER rails
 
