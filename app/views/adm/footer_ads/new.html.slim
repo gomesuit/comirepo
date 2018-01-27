@@ -7,8 +7,8 @@
         td = f.text_field :name
       tr
         th dom_pc
-        td = f.text_area :dom_pc
+        td = f.text_area :dom_pc, class: 'w-100', style: 'height: 300px'
       tr
         th dom_sp
-        td = f.text_area :dom_sp
-  = f.submit '作成', class: 'btn btn-primary'
+        td = f.text_area :dom_sp, class: 'w-100', style: 'height: 300px'
+  = f.submit '保存', class: 'btn btn-primary'

@@ -10,6 +10,7 @@ class Adm::FooterAdsController < Adm::BaseController
   end
 
   def edit
+    render 'new'
   end
 
   def update
