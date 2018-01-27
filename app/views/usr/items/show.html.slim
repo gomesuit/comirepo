@@ -67,7 +67,7 @@
           == CGI.unescapeHTML @item.introduction
         = link_to @item.amazon_url, target: '_blank', class: 'btn btn-dark w-100 py-2'
           span.font-weight-bold amazonで購入
-        - unless @item.rakuten_url.blank? && @item.is_limited_free
+        - if @item.rakuten_url.present? && ! @item.is_limited_free
           .mt-1
           = link_to @item.rakuten_url, target: '_blank', class: 'btn bg-warning text-white w-100 py-2'
             span.font-weight-bold 楽天で購入
