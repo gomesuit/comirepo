@@ -2,7 +2,7 @@ class Adm::FooterAdsController < Adm::BaseController
   before_action :set_footer_ad, only: [:edit, :update, :destroy]
 
   def index
-    @footer_ads = FooterAd.all
+    @footer_ads = FooterAd.all.order(:sort)
   end
 
   def new
@@ -37,6 +37,7 @@ class Adm::FooterAdsController < Adm::BaseController
     def ad_params
       params.require(:footer_ad).permit(
         :name,
+        :sort,
         :dom_pc,
         :dom_sp
       )

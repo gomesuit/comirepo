@@ -8,6 +8,7 @@
 #  dom_sp     :text(65535)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  sort       :integer          default(0), not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

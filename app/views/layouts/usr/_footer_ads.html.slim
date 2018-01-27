@@ -1,3 +1,4 @@
-- cache FooterAd.all
-  - FooterAd.all.each do |footer_ad|
+- @ads = FooterAd.all.order(:sort)
+- cache @ads
+  - @ads.each do |footer_ad|
     = raw footer_ad.dom_pc
