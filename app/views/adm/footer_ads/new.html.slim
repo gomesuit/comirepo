@@ -9,6 +9,17 @@
         th sort
         td = f.number_field :sort
       tr
+        th hided
+        td
+          .form-check
+            label.form-check-label
+              = f.radio_button :hided, :hided, checked: @footer_ad.hided?, class: 'form-check-input'
+              | hided
+          .form-check
+            label.form-check-label
+              = f.radio_button :hided, :displayed, checked: @footer_ad.displayed?, class: 'form-check-input'
+              | displayed
+      tr
         th dom_pc
         td = f.text_area :dom_pc, class: 'w-100', style: 'height: 300px'
       tr

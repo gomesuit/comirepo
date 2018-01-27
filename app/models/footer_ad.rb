@@ -13,4 +13,5 @@
 #
 
 class FooterAd < ApplicationRecord
+  enum hided: { hided: true, displayed: false }
 end

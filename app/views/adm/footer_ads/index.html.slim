@@ -13,7 +13,7 @@ table.table
       th delete
   tbody
     - @footer_ads.each do |footer_ad|
-      tr
+      tr class="#{'table-secondary' if footer_ad.hided?}"
         td = footer_ad.id
         td = footer_ad.sort
         td = link_to footer_ad.name, edit_admin_footer_ad_path(footer_ad)

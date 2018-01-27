@@ -38,6 +38,7 @@ class Adm::FooterAdsController < Adm::BaseController
       params.require(:footer_ad).permit(
         :name,
         :sort,
+        :hided,
         :dom_pc,
         :dom_sp
       )
