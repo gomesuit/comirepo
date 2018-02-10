@@ -1,2 +1,5 @@
 import './feel-top.sp.scss'
-import './static/*.png'
+import './static/cool.png'
+import './static/cute.png'
+import './static/funny.png'
+import './static/horror.png'
