@@ -23,7 +23,7 @@ module Comirepo
 
     config.active_job.queue_adapter = :sidekiq
 
-    if defined?(AwsSsmEnv) && ENV['DOCKER_BUILD'] != 1
+    if defined?(AwsSsmEnv) && ENV['DOCKER_BUILD'] != 'true'
       AwsSsmEnv.load(
         path: "/#{ENV['RAILS_ENV']}/comeel",
         ssm_client_args: {
