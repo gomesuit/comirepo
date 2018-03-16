@@ -49,6 +49,7 @@ gem 'twitter'
 gem 'fog-aws'
 gem 'rakuten_web_service'
 gem 'retryable'
+gem 'aws-ssm-env'
 
 group :production do
   gem 'google-analytics-rails'

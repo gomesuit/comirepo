@@ -22,5 +22,17 @@ module Comirepo
     config.encoding = 'utf-8'
 
     config.active_job.queue_adapter = :sidekiq
+
+    if defined?(AwsSsmEnv)
+      AwsSsmEnv.load(
+        path: "/#{ENV['RAILS_ENV']}/comeel",
+        ssm_client_args: {
+          access_key_id: ENV['AWS_ACCESS'],
+          secret_access_key: ENV['AWS_SECRET'],
+          region: 'ap-northeast-1',
+        },
+        overwrite: true
+      )
+    end
   end
 end
