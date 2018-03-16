@@ -48,7 +48,7 @@ COPY Rakefile .babelrc ./
 COPY bin bin
 COPY config config
 COPY app app
-RUN RAILS_ENV=production bin/rails assets:precompile
+RUN DOCKER_BUILD=1 RAILS_ENV=production bin/rails assets:precompile
 
 COPY . /home/rails/app
 RUN mkdir -p tmp/uploads && \
