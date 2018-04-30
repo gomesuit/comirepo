@@ -40,6 +40,7 @@ services:
       - mysql
       - redis
     environment: &rails_environment
+      - RAILS_ENV=development
       - DB_POOL=5
       - DB_HOST=mysql
       - DB_USER=root
