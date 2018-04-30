@@ -8,4 +8,7 @@ cp .env.default .env
 vim .env
 
 docker-compose build rails
+docker-compose run --rm rails yarn install
+docker-compose run --rm rails bundle install --path vendor/bundle
+docker-compose run --rm rails bin/rails db:create db:migrate
 ```
